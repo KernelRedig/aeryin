@@ -4,10 +4,52 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
+// Force Vercel to bundle these directories into the serverless function
+try {
+  fs.readdirSync(path.join(__dirname, 'auth'));
+  fs.readdirSync(path.join(__dirname, 'mm2', 'values'));
+  fs.readdirSync(path.join(__dirname, 'blox-fruits', 'values'));
+  fs.readdirSync(path.join(__dirname, 'assets', 'images'));
+  fs.readFileSync(path.join(__dirname, 'create-account.html'));
+  fs.readFileSync(path.join(__dirname, 'inventory-calculator.html'));
+  fs.readFileSync(path.join(__dirname, 'trade-checker.html'));
+  fs.readFileSync(path.join(__dirname, 'watchlist.html'));
+  fs.readFileSync(path.join(__dirname, 'terms.html'));
+  fs.readFileSync(path.join(__dirname, '404.html'));
+  fs.readFileSync(path.join(__dirname, 'mm2', 'index.html'));
+} catch (e) {}
+
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
-app.use(express.static(__dirname));
+app.use((req, res, next) => {
+  if (req.method !== 'GET') return next();
+  
+  // Clean URL to remove trailing slash if present (for logic only)
+  let requestPath = req.path.endsWith('/') && req.path.length > 1 ? req.path.slice(0, -1) : req.path;
+  
+  // 1. Try exact path (if it has extension like .css, .png, etc.)
+  let exactPath = path.join(__dirname, requestPath);
+  if (fs.existsSync(exactPath) && fs.statSync(exactPath).isFile()) {
+    return res.sendFile(exactPath);
+  }
+  
+  // 2. Try .html extension (clean URLs)
+  let htmlPath = path.join(__dirname, requestPath + '.html');
+  if (fs.existsSync(htmlPath) && fs.statSync(htmlPath).isFile()) {
+    return res.sendFile(htmlPath);
+  }
+  
+  // 3. Try index.html in directory
+  let indexPath = path.join(__dirname, requestPath, 'index.html');
+  if (fs.existsSync(indexPath) && fs.statSync(indexPath).isFile()) {
+    return res.sendFile(indexPath);
+  }
+  
+  next();
+});
+
+app.use(express.static(__dirname, { extensions: ['html'] }));
 app.use(express.urlencoded({ extended: true }));
 
 // Profile routes (@username)
@@ -65,8 +107,6 @@ function ensureDir(dir) {
     fs.mkdirSync(dir, { recursive: true });
   }
 }
-
-ensureDir(BACKUP_DIR);
 
 function getPassword() {
   if (fs.existsSync(ADMIN_PASSWORD_FILE)) {
@@ -442,6 +482,10 @@ app.get('/oauth/callback', async (req, res) => {
   res.sendFile(path.join(__dirname, 'oauth', 'callback.html'));
 });
 
+app.get('/auth/callback', (req, res) => {
+  res.sendFile(path.join(__dirname, 'auth', 'callback.html'));
+});
+
 app.post('/api/verify', (req, res) => {
   const { username, userId } = req.body;
   
@@ -484,9 +528,11 @@ app.get('/api/user/:username', (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
 app.get('/@:username', (req, res) => {
   const { username } = req.params;

@@ -1,7 +1,27 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [],
+  "functions": {
+    "server.js": {
+      "includeFiles": [
+        "*.html",
+        "assets/**",
+        "mm2/**",
+        "blox-fruits/**",
+        "profile/**",
+        "topics/**",
+        "oauth/**",
+        "auth/**",
+        "admin/**",
+        "data/**"
+      ]
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/server.js"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
