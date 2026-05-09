@@ -7,6 +7,33 @@ const crypto = require('crypto');
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
+app.use((req, res, next) => {
+  if (req.method !== 'GET') return next();
+  
+  // Clean URL to remove trailing slash if present (for logic only)
+  let requestPath = req.path.endsWith('/') && req.path.length > 1 ? req.path.slice(0, -1) : req.path;
+  
+  // 1. Try exact path (if it has extension like .css, .png, etc.)
+  let exactPath = path.join(__dirname, requestPath);
+  if (fs.existsSync(exactPath) && fs.statSync(exactPath).isFile()) {
+    return res.sendFile(exactPath);
+  }
+  
+  // 2. Try .html extension (clean URLs)
+  let htmlPath = path.join(__dirname, requestPath + '.html');
+  if (fs.existsSync(htmlPath) && fs.statSync(htmlPath).isFile()) {
+    return res.sendFile(htmlPath);
+  }
+  
+  // 3. Try index.html in directory
+  let indexPath = path.join(__dirname, requestPath, 'index.html');
+  if (fs.existsSync(indexPath) && fs.statSync(indexPath).isFile()) {
+    return res.sendFile(indexPath);
+  }
+  
+  next();
+});
+
 app.use(express.static(__dirname, { extensions: ['html'] }));
 app.use(express.urlencoded({ extended: true }));
 
