@@ -4,6 +4,21 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
+// Force Vercel to bundle these directories into the serverless function
+try {
+  fs.readdirSync(path.join(__dirname, 'auth'));
+  fs.readdirSync(path.join(__dirname, 'mm2', 'values'));
+  fs.readdirSync(path.join(__dirname, 'blox-fruits', 'values'));
+  fs.readdirSync(path.join(__dirname, 'assets', 'images'));
+  fs.readFileSync(path.join(__dirname, 'create-account.html'));
+  fs.readFileSync(path.join(__dirname, 'inventory-calculator.html'));
+  fs.readFileSync(path.join(__dirname, 'trade-checker.html'));
+  fs.readFileSync(path.join(__dirname, 'watchlist.html'));
+  fs.readFileSync(path.join(__dirname, 'terms.html'));
+  fs.readFileSync(path.join(__dirname, '404.html'));
+  fs.readFileSync(path.join(__dirname, 'mm2', 'index.html'));
+} catch (e) {}
+
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
@@ -465,6 +480,10 @@ app.post('/api/admin/restore', (req, res) => {
 
 app.get('/oauth/callback', async (req, res) => {
   res.sendFile(path.join(__dirname, 'oauth', 'callback.html'));
+});
+
+app.get('/auth/callback', (req, res) => {
+  res.sendFile(path.join(__dirname, 'auth', 'callback.html'));
 });
 
 app.post('/api/verify', (req, res) => {
