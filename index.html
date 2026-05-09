@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Values - The Best Roblox values Website</title>
+  <meta name="description" content="Best free website to view values of roblox games Scure Fast and Easy to Use">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Golden Values - The Best Roblox Values Website">
+  <meta property="og:description"
+    content="The best place to check MM2, Blox Fruits and other Roblox game values. Trade safely!">
+  <meta property="og:image" content="https://goldenvalues.vercel.app/assets/images/LinkEmbed.png">
+  <meta property="og:url" content="https://goldenvalues.vercel.app">
+  <meta name="theme-color" content="#facc15">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background-color: #06080f;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    }
+
+    body.slide-out {
+      transform: translateX(-100vw);
+      opacity: 0;
+    }
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .grid-bg::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 45%;
+      background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.03) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .topbar {
+      height: 70px;
+      background: rgba(6, 8, 15, 0.7);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .category-card {
+      position: relative;
+      background: rgba(10, 12, 20, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      z-index: 20;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body class="pt-[80px]">
+
+  <!-- ===== TOS ACCEPTANCE MODAL ===== -->
+  <div id="tos-modal"
+    style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:20px;">
+    <div
+      style="background:#111214; border:1px solid rgba(255,255,255,0.08); border-radius:16px; max-width:560px; width:100%; max-height:80vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 25px 60px rgba(0,0,0,0.6);">
+
+      <!-- Header -->
+      <div style="padding:24px 28px 16px; border-bottom:1px solid rgba(255,255,255,0.06);">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+          <img src="assets/images/mainLogo.png" alt="Golden Values" style="width:32px; height:32px; object-fit:contain;">
+          <h2 style="font-size:1.25rem; font-weight:800; color:#fff; margin:0;">Terms of Service</h2>
+        </div>
+        <p style="color:#6b7280; font-size:0.8rem; margin:0;">Please read and accept our Terms of Service to continue.
+        </p>
+      </div>
+
+      <!-- Scrollable content -->
+      <div id="tos-scroll"
+        style="flex:1; overflow-y:auto; padding:20px 28px; color:#9ca3af; font-size:0.82rem; line-height:1.7; scrollbar-width:thin; scrollbar-color:#333 transparent;">
+        <p style="margin-bottom:12px;"><strong style="color:#e5e7eb;">Last updated:</strong> May 1, 2026</p>
+        <p style="margin-bottom:12px;">Welcome to <strong style="color:#e5e7eb;">Golden Values</strong>, a website
+          dedicated to providing information, estimates, and values related to items, currencies, and trades in Roblox
+          games. By accessing or using our website, you agree to the terms outlined below.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">1. Acceptance of Terms</h3>
+        <p>By accessing Golden Values, you confirm that you have read, understood, and agree to comply with these Terms
+          of Service, as well as all applicable laws and regulations.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">2. Description of Service</h3>
+        <p>Golden Values provides estimated values of virtual items and currencies, information about trades and in-game
+          economies, and informational content related to Roblox games. <strong style="color:#e5e7eb;">All values shown
+            are estimates and may change over time.</strong></p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">3. No Affiliation with Roblox
+        </h3>
+        <p>Golden Values is <strong style="color:#e5e7eb;">not affiliated with, associated with, or officially connected
+            to Roblox</strong>. All Roblox-related rights belong to their respective owners.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">4. Acceptable Use</h3>
+        <p>You agree to use the website only for lawful purposes, not exploit vulnerabilities or attempt to harm the
+          website, and not copy, distribute, or modify content without permission.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">5. Accuracy of Information</h3>
+        <p>We do not guarantee complete accuracy. Market values may change quickly. Use of the information is at your
+          own risk.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">6. Accounts and Data</h3>
+        <p>You are responsible for maintaining the security of your account. Do not share your account with others. We
+          may suspend accounts that violate these terms.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">7. User Content</h3>
+        <p>If you submit content, you grant Golden Values the right to use that content. Offensive or illegal content
+          may be removed.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">8. Limitation of Liability</h3>
+        <p>Golden Values is not responsible for losses from in-game trades, decisions made based on provided values, or
+          any direct or indirect damages resulting from use of the site.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">9. Changes to Terms</h3>
+        <p>We may update these Terms at any time. You are encouraged to review them periodically.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">10. Termination of Access</h3>
+        <p>We reserve the right to suspend or terminate access to the website and remove content or users that violate
+          these terms.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">11. Contact</h3>
+        <p>For questions or support, contact us via email at support@goldenvalues.vercel.app or our website contact
+          page.</p>
+
+        <h3 style="color:#facc15; font-size:0.9rem; font-weight:700; margin:16px 0 6px;">12. Governing Law</h3>
+        <p>These Terms are governed by the laws of Brazil.</p>
+      </div>
+
+      <!-- Footer with buttons -->
+      <div
+        style="padding:16px 28px 20px; border-top:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <a href="terms.html" target="_blank" style="color:#facc15; font-size:0.78rem; text-decoration:underline;">Read
+          full Terms</a>
+        <div style="display:flex; gap:10px;">
+          <button id="tos-decline"
+            style="padding:10px 22px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:transparent; color:#9ca3af; font-weight:600; font-size:0.85rem; cursor:pointer; transition:all 0.2s;">Decline</button>
+          <button id="tos-accept"
+            style="padding:10px 28px; border-radius:10px; border:none; background:linear-gradient(135deg,#facc15,#d97706); color:#000; font-weight:700; font-size:0.85rem; cursor:pointer; transition:all 0.2s;">I
+            Agree</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-bg"></div>
+
+  <nav class="topbar">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-1.5 bg-black/50 border border-white/10 rounded-full px-3 py-1 shadow-inner"
+        title="Real Visitors">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          class="w-4 h-4 text-gray-400">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+        </svg>
+        <span id="contador-real" class="text-xs font-bold text-gray-200 tracking-wider">0</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <img src="assets/images/mainLogo.png" alt="Golden Values Logo" class="w-8 h-8 object-contain">
+        <span class="font-extrabold text-xl tracking-tight text-white hidden sm:block">Golden Values</span>
+      </div>
+    </div>
+
+    <div class="hidden md:flex items-center gap-6 font-semibold text-sm">
+      <a href="create-account.html" class="text-yellow-500 hover:text-yellow-400 transition-colors page-link">Create
+        Account</a>
+      <a href="mm2/index.html" class="text-gray-400 hover:text-white transition-colors page-link">MM2 Values</a>
+      <a href="blox-fruits/index.html" class="text-gray-400 hover:text-white transition-colors page-link">Blox Fruits
+        Values</a>
+      <a href="trade-checker.html" class="text-yellow-500 hover:text-yellow-400 transition-colors page-link">Trade
+        Checker</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 flex flex-col items-center justify-start max-w-6xl mx-auto px-5 w-full pt-16 pb-20">
+
+    <div class="text-center w-full max-w-3xl mx-auto mb-16">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-white drop-shadow-lg tracking-tight">
+        <span id="dynamic-greeting">Welcome</span> to <br> <span
+          class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-600">Golden Values</span>
+      </h1>
+      <p class="text-gray-400 text-lg md:text-xl">
+        Your #1 source for the most accurate and up-to-date trading values.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-5xl mx-auto">
+
+      <a href="mm2/index.html" class="category-card page-link group"
+        style="border-bottom: 4px solid rgba(239, 68, 68, 0.8);">
+        <img src="assets/images/mm2.webp" alt="Murder Mystery 2"
+          class="w-20 h-20 mb-4 object-contain transition-transform duration-300 group-hover:scale-110"
+          onerror="this.src='fallback-image.png'">
+        <h2 class="text-2xl font-bold mb-2 text-white group-hover:text-red-400 transition-colors">Murder Mystery 2</h2>
+        <p class="text-sm text-gray-400">View values of the Game MM2</p>
+      </a>
+
+      <a href="blox-fruits/index.html" class="category-card page-link group"
+        style="border-bottom: 4px solid rgba(0, 191, 255, 0.8);">
+        <img src="assets/images/bloxfruits.webp" alt="Blox Fruits"
+          class="w-20 h-20 mb-4 object-contain transition-transform duration-300 group-hover:scale-110"
+          onerror="this.src='fallback-image.png'">
+        <h2 class="text-2xl font-bold mb-2 text-white group-hover:text-cyan-400 transition-colors">Blox Fruits</h2>
+        <p class="text-sm text-gray-400">View values of the Game Blox Fruits</p>
+      </a>
+
+      <a href="trade-checker.html" class="category-card page-link group sm:col-span-2 lg:col-span-1"
+        style="border-bottom: 4px solid rgba(212, 175, 55, 0.8);">
+        <img src="assets/images/mainLogo.png" alt="Credits"
+          class="w-20 h-20 mb-4 object-cowntain transition-transform duration-300 group-hover:scale-110"
+          onerror="this.src='fallback-image.png'">
+        <h2 class="text-2xl font-bold mb-2 text-white group-hover:text-yellow-400 transition-colors">Trade Checker</h2>
+        <p class="text-sm text-gray-400">Golden Values Trade Checker</p>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="w-full mt-[50vh]" style="background:#111214;">
+
+    <!-- Description - primeiro -->
+    <div class="max-w-7xl mx-auto px-6 py-6 flex items-start gap-4">
+      <img src="assets/images/mainLogo.png" alt="Golden Values" class="h-8 w-8 object-contain flex-shrink-0">
+      <p class="text-gray-500 text-xs leading-relaxed max-w-xl">
+        <strong>Golden Values</strong> is a Brazil-based platform dedicated to providing accurate and up-to-date
+        values for items and trades within Roblox games. Our mission is to help players make smarter and safer
+        decisions by offering reliable, well-organized, and easy-to-access information. Focused on the community, we
+        continuously update our data to reflect market changes, promoting a fairer and more transparent trading
+        experience for all users.
+      </p>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/5" style="background:#0d0e10;">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+
+        <span>&copy; 2026 Golden Values - All rights reserved.</span>
+        <span>Not affiliated with Roblox, MM2, or Any game that Shows Here.</span>
+        <a href="terms.html" class="hover:text-gray-300 transition-colors">Terms and Conditions</a>
+        <span>Made with <span class="text-red-500">❤</span> by <strong class="text-gray-300">Aeeryin
+            Productions</strong></span>
+      </div>
+    </div>
+
+  </footer>
+
+  <script>
+    function setDynamicGreeting() {
+      const hour = new Date().getHours();
+      let greeting = "Good Evening";
+      if (hour < 12) greeting = "Good Morning";
+      else if (hour < 18) greeting = "Good Afternoon";
+      document.getElementById('dynamic-greeting').innerText = greeting;
+    }
+
+    function animateValue(obj, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    async function registarVisita() {
+      const elementoContador = document.getElementById('contador-real');
+      try {
+        const resposta = await fetch('https://api.counterapi.dev/v1/goldenvalues_visitas_reais/visitas/up');
+        if (!resposta.ok) throw new Error('Erro na API');
+        const dados = await resposta.json();
+        let numeroPuro = parseInt(dados.count.toString().replace(/,/g, ''));
+        animateValue(elementoContador, 0, numeroPuro, 2000);
+      } catch (erro) {
+        elementoContador.innerText = "1,000+";
+      }
+    }
+
+    function setupPageTransitions() {
+      const links = document.querySelectorAll('.page-link');
+
+      links.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetUrl = this.href;
+
+          document.body.classList.add('slide-out');
+
+          setTimeout(() => {
+            window.location.href = targetUrl;
+          }, 400);
+        });
+      });
+    }
+
+    // ===== TOS ACCEPTANCE SYSTEM =====
+    // Change this version string whenever you update the Terms of Service.
+    // Users who accepted an older version will be prompted again.
+    const TOS_VERSION = '2026-05-01';
+
+    function checkTosAcceptance() {
+      const accepted = localStorage.getItem('gv_tos_accepted');
+      if (accepted !== TOS_VERSION) {
+        const modal = document.getElementById('tos-modal');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function setupTosModal() {
+      const modal = document.getElementById('tos-modal');
+      const acceptBtn = document.getElementById('tos-accept');
+      const declineBtn = document.getElementById('tos-decline');
+
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('gv_tos_accepted', TOS_VERSION);
+        modal.style.opacity = '0';
+        modal.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      });
+
+      declineBtn.addEventListener('click', () => {
+        window.location.href = 'https://www.google.com';
+      });
+
+      // Hover effects
+      acceptBtn.addEventListener('mouseenter', () => { acceptBtn.style.transform = 'scale(1.03)'; acceptBtn.style.boxShadow = '0 4px 20px rgba(250,204,21,0.3)'; });
+      acceptBtn.addEventListener('mouseleave', () => { acceptBtn.style.transform = 'scale(1)'; acceptBtn.style.boxShadow = 'none'; });
+      declineBtn.addEventListener('mouseenter', () => { declineBtn.style.borderColor = 'rgba(255,255,255,0.25)'; declineBtn.style.color = '#fff'; });
+      declineBtn.addEventListener('mouseleave', () => { declineBtn.style.borderColor = 'rgba(255,255,255,0.1)'; declineBtn.style.color = '#9ca3af'; });
+    }
+
+    window.onload = () => {
+      setDynamicGreeting();
+      registarVisita();
+      setupPageTransitions();
+      setupTosModal();
+      checkTosAcceptance();
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/navbar-auth.js"></script>
+  <script src="/assets/js/security.js"></script>
+</body>
+
+</html>

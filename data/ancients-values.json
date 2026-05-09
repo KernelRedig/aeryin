@@ -1,0 +1,340 @@
+{
+  "last_update": "2026-03-27T00:00:00Z",
+  "currency": "value_points",
+  "items": [
+    {
+      "id": "nikscythe",
+      "name": "Nik's Scythe",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 1800000,
+        "demand": 11,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Gift From Nikilis",
+        "box": "Gift From Nikilis"
+      },
+      "stats": {
+        "rarity_score": 11,
+        "demand_score": 11
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/11/NiksScytheUpdated.png/revision/latest/scale-to-width-down/268?cb=20211026061736",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "gingerscope",
+      "name": "Gingerscope",
+      "type": "Ancient",
+      "category": "gun",
+      "rarity": "Ancient",
+      "value": {
+        "base": 20670,
+        "demand": 7,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Xmas 2023 (Tier 20)",
+        "history": [
+          18200,
+          17250
+        ]
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/ee/Gingerscope.png/revision/latest/scale-to-width-down/268?cb=20231221055850",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "travaxe",
+      "name": "Traveler's Axe",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 8800,
+        "demand": 7,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Hallows 2023 (Tier 30)"
+      },
+      "stats": {
+        "rarity_score": 5,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/17/TravellersAxe.png/revision/latest/scale-to-width-down/268?cb=20231228055048",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "celestial",
+      "name": "Celestial",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 1775,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Xmas 2024 (Tier 20)"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/2c/2024Celestial.png/revision/latest?cb=20241221020829",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "vampaxe",
+      "name": "Vampire's Axe",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 925,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Hallows 2024 (Tier 20)"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/48/VampiresAxe.png/revision/latest/scale-to-width-down/268?cb=20241017021747",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "harvester",
+      "name": "Harvester",
+      "type": "Ancient",
+      "category": "gun",
+      "rarity": "Ancient",
+      "value": {
+        "base": 320,
+        "demand": 5,
+        "trend": "Underpaid For"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Hallows 2021 (Tier 30)",
+        "history": [
+          375,
+          480
+        ]
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b5/HarvesterImproved.png/revision/latest/scale-to-width-down/268?cb=20231013001129",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "icepiercer",
+      "name": "Icepiercer",
+      "type": "Ancient",
+      "category": "gun",
+      "rarity": "Ancient",
+      "value": {
+        "base": 252,
+        "demand": 3,
+        "trend": "Underpaid For"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Xmas 2022 (Tier 20)",
+        "history": [
+          220,
+          300
+        ]
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/89/Icepiercer.png/revision/latest/scale-to-width-down/268?cb=20231227081854",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "icebreaker",
+      "name": "Icebreaker",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 105,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Xmas 2020 (Tier 20)"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/eb/Icebreaker.png/revision/latest?cb=20210203191357",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "swirlyaxe",
+      "name": "Swirly Axe",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 52,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Xmas 2021 (Tier 20)"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/93/SwirlAxe.png/revision/latest/scale-to-width-down/268?cb=20211222062459",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "batwing",
+      "name": "Batwing",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 50,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Hallows 2018 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f8/BatwingUpdated2.png/revision/latest?cb=20210906074412",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "elderwoodscythe",
+      "name": "Elderwood Scythe",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 50,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Hallows 2019 (Tier 40)"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/5e/ElderwoodScythev2.png/revision/latest?cb=20201129131723",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "hallowscythe",
+      "name": "Hallowscythe",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 35,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Hallows 2020 (Tier 30)"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/3/3e/Hallowscythe.png/revision/latest?cb=20201027160056",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "logchopper",
+      "name": "Logchopper",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 20,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Xmas 2019 (Tier 30)"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/16/Logchopper.png/revision/latest?cb=20191224103030",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "icewing",
+      "name": "Icewing",
+      "type": "Ancient",
+      "category": "knive",
+      "rarity": "Ancient",
+      "value": {
+        "base": 15,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tiers",
+        "box": "Xmas 2019 (Tier 30)"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1a/Icewingknife.png/revision/latest/scale-to-width-down/268?cb=20210221133627",
+      "last_updated": "2026-03-27"
+    }
+  ]
+}

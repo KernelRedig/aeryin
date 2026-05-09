@@ -1,0 +1,18 @@
+{
+  "last_date": "2026-03-27T00:00:00Z",
+  "currency": "value_points",
+  "items": [
+    {
+      "id": "corrupt",
+      "name": "Corrupt",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": { "base": 690, "demand": 3, "trend": "Stable", "history": ["800, 600"] },
+      "availability": { "obtainable": false, "method": "", "box": "" },
+      "stats": { "rarity_score": 4, "demand_score": 6 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/49/Corrupt_Transparent.png/revision/latest?cb=20200227150354",
+      "last_dated": "2026-03-27"
+    }
+  ]
+}

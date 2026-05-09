@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Values - MM2 Categories</title>
+  <meta property="og:title" content="Golden Values - MM2 Values">
+  <meta property="og:description" content="View the latest MM2 item values. Trade safely with accurate prices.">
+  <meta property="og:image" content="https://goldenvalues.vercel.app/assets/images/LinkEmbed.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://goldenvalues.vercel.app/mm2/index.html">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="/assets/images/faviconmm2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #06080f; }
+    ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
+    
+    body { background-color: #06080f; background-image: linear-gradient(rgba(6, 8, 15, 0.85), rgba(6, 8, 15, 0.95)), url('/assets/images/mm2weapons.webp'); background-size: cover; background-position: center; background-attachment: fixed; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+    
+    #particles-js { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+    
+    #loader { position: fixed; inset: 0; background-color: #06080f; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
+    .pulse-logo { width: 120px; height: 120px; animation: pulse 1.5s infinite alternate; filter: drop-shadow(0 0 20px rgba(212,175,55,0.8)); }
+    @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; } 100% { transform: scale(1.05); opacity: 1; } }
+
+    .grid-bg { position: fixed; inset: 0; z-index: -2; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+
+    .topbar { height: 70px; background: rgba(6, 8, 15, 0.7); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; position: fixed; top: 0; width: 100%; z-index: 1000; }
+    
+    .global-search { background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); border: 2px solid rgba(255,255,255,0.1); transition: border-color 0.3s, box-shadow 0.3s; }
+    .global-search:focus-within { border-color: #d4af37; box-shadow: 0 0 20px rgba(212,175,55,0.3); }
+
+    .category-card { background: rgba(10, 12, 20, 0.8); backdrop-filter: blur(10px); border-radius: 16px; padding: 2rem; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+    
+    .category-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 25px var(--glow-color); z-index: 20; border-color: rgba(255,255,255,0.2); }
+  </style>
+</head>
+<body class="pt-[80px]">
+
+  <div id="loader">
+    <img src="/assets/images/mainLogo.png" alt="Loading" class="pulse-logo mb-4">
+    <h2 class="text-xl font-bold text-yellow-500 tracking-widest animate-pulse">LOADING CATEGORIES...</h2>
+  </div>
+
+  <div id="particles-js"></div>
+  <div class="grid-bg"></div>
+
+  <nav class="topbar">
+    <div class="flex items-center gap-4">
+      <a href="../index.html" class="flex items-center gap-3 hover:opacity-80 transition">
+        <img src="/assets/images/mainLogo.png" alt="Golden Values Logo" class="w-8 h-8 object-contain">
+        <span class="font-extrabold text-xl tracking-tight text-white hidden sm:block">Golden Values</span>
+      </a>
+    </div>
+    <div class="hidden md:flex items-center gap-6 font-semibold text-sm">
+      <a href="values/ancients.html" class="text-gray-400 hover:text-white transition-colors">Ancients</a>
+      <a href="values/chromas.html" class="text-gray-400 hover:text-white transition-colors">Chromas</a>
+      <a href="values/vintages.html" class="text-gray-400 hover:text-white transition-colors">Vintages</a>
+      <a href="values/evos.html" class="text-gray-400 hover:text-white transition-colors">Evos</a>
+      <a href="values/godlies.html" class="text-gray-400 hover:text-white transition-colors">Godlies</a>
+      <a href="values/unique.html" class="text-gray-400 hover:text-white transition-colors">Uniques</a>
+      <a href="values/common.html" class="text-gray-400 hover:text-white transition-colors">Commons</a>
+    </div>
+  </nav>
+
+  <main class="flex-1 flex flex-col items-center justify-start max-w-6xl mx-auto px-5 w-full pt-16 pb-20">
+    
+    <div class="text-center w-full max-w-3xl mx-auto mb-12">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-white drop-shadow-lg tracking-tight">Murder Mystery 2 <br> <span class="text-yellow-500">Value List</span></h1>
+      <p class="text-gray-400 text-lg md:text-xl mb-10">Search a weapon or choose a tier below.</p>
+
+      <div class="relative w-full max-w-2xl mx-auto flex items-center global-search rounded-full px-5 py-3">
+        <svg class="w-6 h-6 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        
+        <input type="text" id="searchInput" class="w-full bg-transparent border-none text-white text-lg outline-none placeholder-gray-500">
+        
+        <div class="absolute right-4 hidden sm:flex items-center gap-1 pointer-events-none">
+          <kbd class="bg-white/10 text-gray-400 px-2 py-1 rounded-md text-[10px] border border-white/20 font-bold">CTRL</kbd>
+          <kbd class="bg-white/10 text-gray-400 px-2 py-1 rounded-md text-[10px] border border-white/20 font-bold">K</kbd>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl z-10">
+      
+      <a href="mm2/values/godlies.html" class="category-card group" style="border-bottom: 4px solid #ff69b4; --glow-color: rgba(255, 105, 180, 0.4);">
+        <h2 class="text-2xl font-bold mb-2 text-pink-400 group-hover:text-pink-300 transition-colors">Godlies</h2>
+        <p class="text-sm text-gray-400">View values for standard Godly weapons.</p>
+      </a>
+      
+      <a href="mm2/values/chromas.html" class="category-card group" style="border-bottom: 4px solid #00d0da; --glow-color: rgba(0, 208, 218, 0.4);">
+        <h2 class="text-2xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-green-400 to-blue-400">Chromas</h2>
+        <p class="text-sm text-gray-400">View values for color-changing Chroma items.</p>
+      </a>
+      
+      <a href="mm2/values/ancients.html" class="category-card group" style="border-bottom: 4px solid #a855f7; --glow-color: rgba(168, 85, 247, 0.4);">
+        <h2 class="text-2xl font-bold mb-2 text-purple-400 group-hover:text-purple-300 transition-colors">Ancients</h2>
+        <p class="text-sm text-gray-400">View values for the rare Ancient weapons.</p>
+      </a>
+      
+      <a href="mm2/values/vintages.html" class="category-card group" style="border-bottom: 4px solid #ffd700; --glow-color: rgba(255, 215, 0, 0.4);">
+        <h2 class="text-2xl font-bold mb-2 text-yellow-400 group-hover:text-yellow-300 transition-colors">Vintages</h2>
+        <p class="text-sm text-gray-400">View values for classic Murder Mystery 1 items.</p>
+      </a>
+      
+      <a href="mm2/values/evos.html" class="category-card group sm:col-span-2 lg:col-span-1" style="border-bottom: 4px solid #06b6d4; --glow-color: rgba(6, 182, 212, 0.4);">
+        <h2 class="text-2xl font-bold mb-2 text-cyan-400 group-hover:text-cyan-300 transition-colors">Evos</h2>
+        <p class="text-sm text-gray-400">View values for evolving weapons.</p>
+      </a>
+
+    </div>
+  </main>
+
+  <footer class="w-full py-6 text-gray-500 text-sm border-t border-white/5 mt-auto bg-black/40 z-10">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+      <p>&copy; 2026 Golden Values. Not affiliated with Roblox or MM2.</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }, 800);
+    });
+
+    particlesJS("particles-js", {
+      particles: { 
+        number: { value: 40 }, 
+        color: { value: ["#d4af37", "#ff4500", "#ff69b4"] }, 
+        shape: { type: "circle" }, 
+        opacity: { value: 0.5, random: true }, 
+        size: { value: 3, random: true }, 
+        line_linked: { enable: false }, 
+        move: { enable: true, speed: 1.5, direction: "top", out_mode: "out" } 
+      },
+      interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "bubble" } } },
+      retina_detect: true
+    });
+
+    const inputSearch = document.getElementById('searchInput');
+    const phrases = ["Search Harvester...", "Search Corrupt...", "Search Icepiercer...", "Search Bat...", "Search Chromas..."];
+    let i = 0, j = 0, isDeleting = false;
+    
+    function typeWriter() {
+      const currentPhrase = phrases[i];
+      if (isDeleting) {
+        inputSearch.placeholder = currentPhrase.substring(0, j - 1);
+        j--;
+      } else {
+        inputSearch.placeholder = currentPhrase.substring(0, j + 1);
+        j++;
+      }
+      
+      let typeSpeed = isDeleting ? 50 : 100;
+      
+      if (!isDeleting && j === currentPhrase.length) { 
+        typeSpeed = 2000; 
+        isDeleting = true; 
+      } else if (isDeleting && j === 0) { 
+        isDeleting = false; 
+        i = (i + 1) % phrases.length; 
+        typeSpeed = 500; 
+      }
+      
+      if (document.activeElement !== inputSearch && inputSearch.value === "") { 
+        setTimeout(typeWriter, typeSpeed); 
+      }
+    }
+    setTimeout(typeWriter, 1500);
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault(); 
+        inputSearch.focus();
+      }
+    });
+  </script>
+  <script src="/assets/js/security.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/navbar-auth.js"></script>
+</body>
+</html>

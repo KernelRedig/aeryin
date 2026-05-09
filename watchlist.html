@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watchlist - Golden Values</title>
+  <meta property="og:title" content="Golden Values - Watchlist">
+  <meta property="og:description" content="Track your favorite MM2 items and get notified when values change.">
+  <meta property="og:image" content="https://goldenvalues.vercel.app/assets/images/LinkEmbed.png">
+  <link rel="icon" type="image/png" href="/assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#06080f;color:#fff;font-family:'Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+    .grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px}
+    .grid-bg::after{content:'';position:absolute;bottom:0;left:0;right:0;height:45%;background:radial-gradient(ellipse 80% 50% at 50% 100%,rgba(212,175,55,.08) 0%,rgba(212,175,55,.03) 40%,transparent 70%);pointer-events:none}
+    .topbar{height:70px;background:rgba(6,8,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;padding:0 40px;position:fixed;top:0;width:100%;z-index:1000}
+    .main{flex:1;max-width:1100px;margin:0 auto;padding:100px 20px 60px;width:100%}
+    .back-link{color:#9ca3af;text-decoration:none;font-size:14px;transition:.2s;display:inline-flex;align-items:center;gap:4px}
+    .back-link:hover{color:#fff}
+
+    /* Page header */
+    .page-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+    .page-title{font-size:32px;font-weight:900;background:linear-gradient(135deg,#fff,#d4af37);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .page-subtitle{color:#6b7280;font-size:14px;margin-top:4px}
+
+    /* Stats bar */
+    .stats-bar{display:flex;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+    .stat-card{background:rgba(10,12,20,.8);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 20px;flex:1;min-width:140px}
+    .stat-card .label{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-bottom:4px}
+    .stat-card .val{font-size:22px;font-weight:800;color:#e5e7eb}
+    .stat-card .val.gold{color:#d4af37}
+    .stat-card .val.green{color:#22c55e}
+    .stat-card .val.red{color:#ef4444}
+
+    /* Search & filters */
+    .controls{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+    .search-box{flex:1;min-width:200px;position:relative}
+    .search-box input{width:100%;padding:12px 14px 12px 42px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:.3s}
+    .search-box input:focus{border-color:#d4af37;box-shadow:0 0 20px rgba(212,175,55,.15)}
+    .search-box i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#6b7280;font-size:16px}
+    .filter-btn{padding:10px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#9ca3af;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+    .filter-btn:hover,.filter-btn.active{background:rgba(212,175,55,.15);border-color:rgba(212,175,55,.4);color:#d4af37}
+
+    /* Add item modal */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:.2s}
+    .modal-overlay.open{opacity:1;pointer-events:auto}
+    .modal{background:#111214;border:1px solid rgba(255,255,255,.1);border-radius:20px;width:100%;max-width:600px;max-height:80vh;display:flex;flex-direction:column;overflow:hidden}
+    .modal-header{padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center}
+    .modal-header h2{font-size:18px;font-weight:800}
+    .modal-close{background:none;border:none;color:#6b7280;cursor:pointer;font-size:20px;padding:4px}
+    .modal-close:hover{color:#fff}
+    .modal-search{padding:16px 24px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .modal-search input{width:100%;padding:12px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:14px;outline:none;font-family:'Inter',sans-serif}
+    .modal-search input:focus{border-color:#d4af37}
+    .modal-body{flex:1;overflow-y:auto;padding:12px 24px 24px}
+    .modal-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;cursor:pointer;transition:.15s;border:1px solid transparent}
+    .modal-item:hover{background:rgba(255,255,255,.05)}
+    .modal-item.added{opacity:.4;pointer-events:none}
+    .modal-item img{width:48px;height:48px;object-fit:contain;border-radius:8px;background:rgba(255,255,255,.03)}
+    .modal-item-info{flex:1;min-width:0}
+    .modal-item-name{font-size:14px;font-weight:600;color:#e5e7eb}
+    .modal-item-meta{font-size:12px;color:#6b7280}
+    .modal-item-value{font-size:14px;font-weight:700;color:#d4af37}
+    .modal-item-add{background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);color:#d4af37;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+    .modal-item-add:hover{background:rgba(212,175,55,.25)}
+
+    /* Watchlist items */
+    .wl-empty{text-align:center;padding:80px 20px}
+    .wl-empty i{font-size:64px;color:#333;margin-bottom:16px;display:block}
+    .wl-empty h3{font-size:20px;font-weight:700;color:#9ca3af;margin-bottom:8px}
+    .wl-empty p{color:#6b7280;font-size:14px;margin-bottom:24px}
+    .btn{padding:12px 24px;border-radius:12px;border:none;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:.3s;display:inline-flex;align-items:center;gap:6px}
+    .btn-gold{background:linear-gradient(135deg,#d4af37,#f4d03f);color:#000}
+    .btn-gold:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(212,175,55,.3)}
+
+    .wl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+    .wl-card{background:rgba(10,12,20,.85);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px;transition:.25s;position:relative;overflow:hidden}
+    .wl-card:hover{border-color:rgba(212,175,55,.3);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+    .wl-card-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+    .wl-card-img{width:56px;height:56px;object-fit:contain;border-radius:10px;background:rgba(255,255,255,.03);flex-shrink:0}
+    .wl-card-info{flex:1;min-width:0}
+    .wl-card-name{font-size:16px;font-weight:700;color:#e5e7eb;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .wl-card-type{font-size:12px;color:#6b7280;text-transform:capitalize}
+    .wl-card-remove{position:absolute;top:12px;right:12px;background:none;border:none;color:#4b5563;cursor:pointer;padding:4px;transition:.2s;font-size:16px}
+    .wl-card-remove:hover{color:#ef4444}
+    .wl-card-values{display:flex;gap:12px;align-items:flex-end}
+    .wl-val-current{flex:1}
+    .wl-val-label{font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-bottom:2px}
+    .wl-val-num{font-size:24px;font-weight:800;color:#d4af37}
+    .wl-val-saved{flex:1}
+    .wl-val-saved .wl-val-num{font-size:16px;color:#6b7280}
+    .wl-change{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:700}
+    .wl-change.up{background:rgba(34,197,94,.12);color:#22c55e}
+    .wl-change.down{background:rgba(239,68,68,.12);color:#ef4444}
+    .wl-change.same{background:rgba(255,255,255,.05);color:#6b7280}
+    .wl-card-trend{margin-top:10px;font-size:12px;color:#9ca3af;display:flex;align-items:center;gap:6px}
+    .wl-card-demand{display:inline-flex;gap:2px}
+    .wl-card-demand span{width:6px;height:14px;border-radius:2px;background:rgba(255,255,255,.1)}
+    .wl-card-demand span.filled{background:#d4af37}
+
+    /* Expand toggle */
+    .wl-card-toggle{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;padding:8px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);cursor:pointer;color:#6b7280;font-size:12px;font-weight:600;transition:.2s;user-select:none}
+    .wl-card-toggle:hover{background:rgba(212,175,55,.08);color:#d4af37;border-color:rgba(212,175,55,.2)}
+    .wl-card-toggle i{font-size:14px;transition:transform .25s}
+    .wl-card.expanded .wl-card-toggle i{transform:rotate(180deg)}
+    .wl-card-toggle .toggle-text::after{content:'Show History'}
+    .wl-card.expanded .wl-card-toggle .toggle-text::after{content:'Hide History'}
+
+    /* Expandable history panel */
+    .wl-history{max-height:0;overflow:hidden;transition:max-height .35s ease, opacity .25s;opacity:0}
+    .wl-card.expanded .wl-history{max-height:400px;opacity:1}
+    .wl-history-inner{padding-top:14px;margin-top:12px;border-top:1px solid rgba(255,255,255,.06)}
+    .wl-history-title{font-size:12px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .wl-history-title i{color:#d4af37}
+    .wl-history-chart{width:100%;height:80px;position:relative;margin-bottom:10px;background:rgba(0,0,0,.3);border-radius:8px;overflow:hidden}
+    .wl-history-chart canvas{width:100%!important;height:100%!important}
+    .wl-history-list{display:flex;flex-wrap:wrap;gap:6px}
+    .wl-history-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(255,255,255,.05);color:#9ca3af;border:1px solid rgba(255,255,255,.06)}
+    .wl-history-tag .arrow{font-size:10px}
+    .wl-history-tag .arrow.up{color:#22c55e}
+    .wl-history-tag .arrow.down{color:#ef4444}
+    .wl-history-tag:first-child{background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.2);color:#d4af37}
+    .wl-history-empty{color:#4b5563;font-size:12px;font-style:italic}
+
+    /* Drag & drop */
+    .wl-card{cursor:default}
+    .wl-drag-handle{position:absolute;top:50%;left:0;transform:translateY(-50%);width:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:12px 4px;cursor:grab;opacity:0;transition:opacity .2s;z-index:5}
+    .wl-card:hover .wl-drag-handle{opacity:.4}
+    .wl-drag-handle:hover{opacity:1!important}
+    .wl-drag-handle span{width:12px;height:2px;background:#6b7280;border-radius:1px;display:block}
+    .wl-card.dragging{opacity:.4;transform:scale(.97);border-color:rgba(212,175,55,.4)}
+    .wl-card.drag-over{border-color:rgba(212,175,55,.6);box-shadow:0 0 20px rgba(212,175,55,.15)}
+
+    /* Notification badge */
+    .notif-badge{position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+    /* Toast */
+    .toast{position:fixed;bottom:24px;right:24px;background:#111214;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px 20px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;box-shadow:0 12px 40px rgba(0,0,0,.5);transform:translateY(100px);opacity:0;transition:.3s;z-index:3000}
+    .toast.show{transform:translateY(0);opacity:1}
+    .toast.success{border-color:rgba(34,197,94,.3)}
+    .toast.alert{border-color:rgba(239,68,68,.3)}
+    .toast i{font-size:18px}
+    .toast.success i{color:#22c55e}
+    .toast.alert i{color:#ef4444}
+
+    .loading{position:fixed;inset:0;background:#06080f;z-index:9999;display:flex;align-items:center;justify-content:center}
+    .spinner{width:40px;height:40px;border:3px solid rgba(255,255,255,.1);border-top-color:#d4af37;border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="loading" id="loading"><div class="spinner"></div></div>
+
+  <nav class="topbar">
+    <a href="/" class="flex items-center gap-3" style="text-decoration:none;color:#fff">
+      <img src="/assets/images/mainLogo.png" alt="Logo" class="w-8 h-8 object-contain"><span class="font-extrabold text-xl">Golden Values</span>
+    </a>
+    <a href="/" class="back-link"><i class="ph ph-arrow-left"></i> Back</a>
+  </nav>
+
+  <main class="main" id="mainContent" style="display:none">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title"><i class="ph ph-bell-ringing"></i> Watchlist</h1>
+        <p class="page-subtitle">Track your favorite items and see when values change</p>
+      </div>
+      <button class="btn btn-gold" onclick="openAddModal()"><i class="ph ph-plus-circle"></i> Add Item</button>
+    </div>
+
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-card"><div class="label">Tracked Items</div><div class="val gold" id="statTotal">0</div></div>
+      <div class="stat-card"><div class="label">Value Increased</div><div class="val green" id="statUp">0</div></div>
+      <div class="stat-card"><div class="label">Value Decreased</div><div class="val red" id="statDown">0</div></div>
+      <div class="stat-card"><div class="label">Stable</div><div class="val" id="statSame">0</div></div>
+    </div>
+
+    <div class="controls">
+      <div class="search-box">
+        <i class="ph ph-magnifying-glass"></i>
+        <input type="text" id="wlSearch" placeholder="Search your watchlist...">
+      </div>
+      <button class="filter-btn active" data-filter="all" onclick="setFilter('all',this)">All</button>
+      <button class="filter-btn" data-filter="up" onclick="setFilter('up',this)"><i class="ph ph-trend-up"></i> Up</button>
+      <button class="filter-btn" data-filter="down" onclick="setFilter('down',this)"><i class="ph ph-trend-down"></i> Down</button>
+    </div>
+
+    <div id="watchlistContent"></div>
+  </main>
+
+  <!-- Add Item Modal -->
+  <div class="modal-overlay" id="addModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2><i class="ph ph-magnifying-glass"></i> Add Items</h2>
+        <button class="modal-close" onclick="closeAddModal()"><i class="ph ph-x"></i></button>
+      </div>
+      <div class="modal-search">
+        <input type="text" id="modalSearch" placeholder="Search items by name...">
+      </div>
+      <div class="modal-body" id="modalItemsList"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"><i class="ph ph-check-circle"></i><span id="toastMsg"></span></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/navbar-auth.js"></script>
+  <script>
+    const WL_KEY = 'gv_watchlist';
+    const VALUE_SOURCES = [
+      { file: '/data/godly-values.json', type: 'Godly' },
+      { file: '/data/chromas-values.json', type: 'Chroma' },
+      { file: '/data/ancients-values.json', type: 'Ancient' },
+      { file: '/data/evos-values.json', type: 'Evo' },
+      { file: '/data/vintages-values.json', type: 'Vintage' },
+      { file: '/data/unique-values.json', type: 'Unique' },
+      { file: '/data/sets-values.json', type: 'Set' }
+    ];
+
+    let allItems = [];
+    let watchlist = [];
+    let currentFilter = 'all';
+
+    // --- LocalStorage ---
+    function loadWatchlist() {
+      try { return JSON.parse(localStorage.getItem(WL_KEY)) || []; } catch { return []; }
+    }
+    function saveWatchlist() {
+      localStorage.setItem(WL_KEY, JSON.stringify(watchlist));
+    }
+
+    // --- Load all value JSONs ---
+    async function loadAllItems() {
+      const results = await Promise.allSettled(
+        VALUE_SOURCES.map(async src => {
+          const r = await fetch(src.file);
+          if (!r.ok) return [];
+          const data = await r.json();
+          return (data.items || []).map(item => ({ ...item, sourceType: src.type }));
+        })
+      );
+      allItems = results.flatMap(r => r.status === 'fulfilled' ? r.value : []);
+    }
+
+    // --- Init ---
+    async function init() {
+      await loadAllItems();
+      watchlist = loadWatchlist();
+      checkForChanges();
+      renderWatchlist();
+      renderStats();
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+    }
+
+    // --- Check value changes ---
+    function checkForChanges() {
+      let hasChanges = false;
+      watchlist = watchlist.map(wlItem => {
+        const current = allItems.find(i => i.id === wlItem.id && i.sourceType === wlItem.sourceType);
+        if (!current) return wlItem;
+        const currentVal = current.value?.base || 0;
+        const savedVal = wlItem.savedValue || currentVal;
+        const diff = currentVal - savedVal;
+        if (diff !== 0 && savedVal !== currentVal) hasChanges = true;
+        const history = current.value?.history || current.availability?.history || [];
+        return {
+          ...wlItem,
+          currentValue: currentVal,
+          savedValue: savedVal,
+          diff,
+          trend: current.value?.trend || 'Unknown',
+          demand: current.value?.demand || 0,
+          image: current.image || wlItem.image,
+          name: current.name || wlItem.name,
+          history: history
+        };
+      });
+      saveWatchlist();
+      return hasChanges;
+    }
+
+    // --- Render watchlist ---
+    function renderWatchlist() {
+      const container = document.getElementById('watchlistContent');
+      const search = document.getElementById('wlSearch').value.toLowerCase();
+      let filtered = watchlist.filter(item => {
+        if (search && !item.name.toLowerCase().includes(search)) return false;
+        if (currentFilter === 'up') return item.diff > 0;
+        if (currentFilter === 'down') return item.diff < 0;
+        return true;
+      });
+
+      if (watchlist.length === 0) {
+        container.innerHTML = `
+          <div class="wl-empty">
+            <i class="ph ph-binoculars"></i>
+            <h3>Your watchlist is empty</h3>
+            <p>Add items to track their value changes over time</p>
+            <button class="btn btn-gold" onclick="openAddModal()"><i class="ph ph-plus-circle"></i> Add Your First Item</button>
+          </div>`;
+        return;
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="wl-empty"><h3>No items match your filter</h3><p>Try changing the filter or search term</p></div>';
+        return;
+      }
+
+      container.innerHTML = '<div class="wl-grid" id="wlGrid">' + filtered.map((item, idx) => {
+        const diff = item.diff || 0;
+        const changeClass = diff > 0 ? 'up' : diff < 0 ? 'down' : 'same';
+        const changeIcon = diff > 0 ? 'ph-trend-up' : diff < 0 ? 'ph-trend-down' : 'ph-equals';
+        const changeText = diff > 0 ? `+${diff}` : diff < 0 ? `${diff}` : 'No change';
+        const demandDots = Array.from({length: 10}, (_, i) =>
+          `<span class="${i < (item.demand || 0) ? 'filled' : ''}"></span>`
+        ).join('');
+
+        // Build history with current value prepended
+        const rawHistory = item.history || [];
+        const fullHistory = [item.currentValue || 0, ...rawHistory];
+        const historyTags = fullHistory.map((val, i) => {
+          if (i === 0) return `<span class="wl-history-tag"><i class="ph ph-star" style="font-size:10px"></i> ${val.toLocaleString()} (current)</span>`;
+          const prev = fullHistory[i - 1];
+          const arrowClass = val < prev ? 'down' : val > prev ? 'up' : '';
+          const arrowIcon = val < prev ? '↓' : val > prev ? '↑' : '=';
+          return `<span class="wl-history-tag"><span class="arrow ${arrowClass}">${arrowIcon}</span> ${val.toLocaleString()}</span>`;
+        }).join('');
+        const noHistory = rawHistory.length === 0;
+        const cardId = `wl-${item.id}-${item.sourceType}`;
+        const chartId = `chart-${item.id}-${item.sourceType}`;
+
+        return `
+          <div class="wl-card" id="${cardId}" draggable="true" data-idx="${idx}" ondragstart="onDragStart(event)" ondragover="onDragOver(event)" ondragenter="onDragEnter(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)" ondragend="onDragEnd(event)">
+            <div class="wl-drag-handle" title="Drag to reorder"><span></span><span></span><span></span></div>
+            <button class="wl-card-remove" onclick="removeItem('${item.id}','${item.sourceType}')" title="Remove"><i class="ph ph-x"></i></button>
+            <div class="wl-card-top">
+              <img class="wl-card-img" src="${item.image || ''}" alt="${escapeHtml(item.name)}" onerror="this.src='/assets/images/mainFavicon.png'">
+              <div class="wl-card-info">
+                <div class="wl-card-name">${escapeHtml(item.name)}</div>
+                <div class="wl-card-type">${escapeHtml(item.sourceType)} • ${escapeHtml(item.category || 'item')}</div>
+              </div>
+            </div>
+            <div class="wl-card-values">
+              <div class="wl-val-current">
+                <div class="wl-val-label">Current Value</div>
+                <div class="wl-val-num">${(item.currentValue || 0).toLocaleString()}</div>
+              </div>
+              <div class="wl-val-saved">
+                <div class="wl-val-label">When Added</div>
+                <div class="wl-val-num">${(item.savedValue || 0).toLocaleString()}</div>
+              </div>
+              <div class="wl-change ${changeClass}">
+                <i class="ph ${changeIcon}"></i> ${changeText}
+              </div>
+            </div>
+            <div class="wl-card-trend">
+              <span>${escapeHtml(item.trend || 'Unknown')}</span>
+              <span>•</span>
+              <span>Demand:</span>
+              <div class="wl-card-demand">${demandDots}</div>
+            </div>
+            <div class="wl-card-toggle" onclick="toggleExpand('${cardId}','${chartId}',${JSON.stringify(fullHistory).replace(/"/g,'&quot;')})">
+              <span class="toggle-text"></span>
+              <i class="ph ph-caret-down"></i>
+            </div>
+            <div class="wl-history">
+              <div class="wl-history-inner">
+                <div class="wl-history-title"><i class="ph ph-clock-counter-clockwise"></i> Value History</div>
+                ${noHistory ? '<div class="wl-history-empty">No past values recorded yet</div>' : `
+                  <div class="wl-history-chart"><canvas id="${chartId}"></canvas></div>
+                  <div class="wl-history-list">${historyTags}</div>
+                `}
+              </div>
+            </div>
+          </div>`;
+      }).join('') + '</div>';
+    }
+
+    // --- Stats ---
+    function renderStats() {
+      document.getElementById('statTotal').textContent = watchlist.length;
+      document.getElementById('statUp').textContent = watchlist.filter(i => (i.diff || 0) > 0).length;
+      document.getElementById('statDown').textContent = watchlist.filter(i => (i.diff || 0) < 0).length;
+      document.getElementById('statSame').textContent = watchlist.filter(i => (i.diff || 0) === 0).length;
+    }
+
+    // --- Filter ---
+    function setFilter(f, btn) {
+      currentFilter = f;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderWatchlist();
+    }
+
+    // --- Search ---
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('wlSearch')?.addEventListener('input', () => renderWatchlist());
+    });
+
+    // --- Add item ---
+    function addItem(id, sourceType) {
+      if (watchlist.find(w => w.id === id && w.sourceType === sourceType)) return;
+      const item = allItems.find(i => i.id === id && i.sourceType === sourceType);
+      if (!item) return;
+      watchlist.push({
+        id: item.id,
+        name: item.name,
+        sourceType: item.sourceType,
+        category: item.category || '',
+        image: item.image || '',
+        currentValue: item.value?.base || 0,
+        savedValue: item.value?.base || 0,
+        diff: 0,
+        trend: item.value?.trend || 'Unknown',
+        demand: item.value?.demand || 0,
+        history: item.value?.history || item.availability?.history || [],
+        addedAt: new Date().toISOString()
+      });
+      saveWatchlist();
+      renderWatchlist();
+      renderStats();
+      renderModalItems();
+      showToast('success', `${item.name} added to watchlist!`);
+    }
+
+    function removeItem(id, sourceType) {
+      watchlist = watchlist.filter(w => !(w.id === id && w.sourceType === sourceType));
+      saveWatchlist();
+      renderWatchlist();
+      renderStats();
+      renderModalItems();
+      showToast('alert', 'Item removed from watchlist');
+    }
+
+    // --- Modal ---
+    function openAddModal() {
+      document.getElementById('addModal').classList.add('open');
+      document.getElementById('modalSearch').value = '';
+      renderModalItems();
+      setTimeout(() => document.getElementById('modalSearch').focus(), 100);
+    }
+    function closeAddModal() {
+      document.getElementById('addModal').classList.remove('open');
+    }
+    function renderModalItems() {
+      const search = (document.getElementById('modalSearch')?.value || '').toLowerCase();
+      const container = document.getElementById('modalItemsList');
+      let filtered = allItems;
+      if (search.length > 0) {
+        filtered = allItems.filter(i => i.name.toLowerCase().includes(search));
+      } else {
+        filtered = allItems.slice(0, 30);
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<p style="color:#6b7280;text-align:center;padding:40px">No items found</p>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const isAdded = watchlist.some(w => w.id === item.id && w.sourceType === item.sourceType);
+        return `
+          <div class="modal-item ${isAdded ? 'added' : ''}">
+            <img src="${item.image || '/assets/images/mainFavicon.png'}" alt="" onerror="this.src='/assets/images/mainFavicon.png'">
+            <div class="modal-item-info">
+              <div class="modal-item-name">${escapeHtml(item.name)}</div>
+              <div class="modal-item-meta">${escapeHtml(item.sourceType)} • ${escapeHtml(item.category || 'item')}</div>
+            </div>
+            <div class="modal-item-value">${(item.value?.base || 0).toLocaleString()}</div>
+            <button class="modal-item-add" onclick="addItem('${item.id}','${item.sourceType}')">${isAdded ? '✓ Added' : '+ Add'}</button>
+          </div>`;
+      }).join('');
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('modalSearch')?.addEventListener('input', () => renderModalItems());
+    });
+
+    // Click outside modal to close
+    document.getElementById('addModal')?.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay')) closeAddModal();
+    });
+
+    // --- Toast ---
+    function showToast(type, msg) {
+      const t = document.getElementById('toast');
+      const icon = t.querySelector('i');
+      icon.className = type === 'success' ? 'ph ph-check-circle' : 'ph ph-warning-circle';
+      t.className = 'toast ' + type;
+      document.getElementById('toastMsg').textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function escapeHtml(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+
+    // --- Expand / Collapse with mini chart ---
+    const renderedCharts = {};
+    function toggleExpand(cardId, chartId, historyData) {
+      const card = document.getElementById(cardId);
+      if (!card) return;
+      card.classList.toggle('expanded');
+      // Render chart on first expand
+      if (card.classList.contains('expanded') && !renderedCharts[chartId] && historyData.length > 1) {
+        setTimeout(() => {
+          const canvas = document.getElementById(chartId);
+          if (!canvas) return;
+          const reversed = [...historyData].reverse();
+          const labels = reversed.map((_, i) => i === reversed.length - 1 ? 'Now' : `${reversed.length - 1 - i}`);
+          renderedCharts[chartId] = new Chart(canvas.getContext('2d'), {
+            type: 'line',
+            data: {
+              labels,
+              datasets: [{
+                data: reversed,
+                borderColor: '#d4af37',
+                backgroundColor: 'rgba(212,175,55,.12)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#d4af37',
+                pointBorderColor: '#111'
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false }, tooltip: { backgroundColor: '#111214', titleColor: '#d4af37', bodyColor: '#e5e7eb', borderColor: 'rgba(212,175,55,.3)', borderWidth: 1, padding: 8, displayColors: false, callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' value' } } },
+              scales: { x: { display: false }, y: { display: false } },
+              interaction: { intersect: false, mode: 'index' }
+            }
+          });
+        }, 50);
+      }
+    }
+
+    // --- Drag & Drop reordering ---
+    let dragSrcIdx = null;
+
+    function onDragStart(e) {
+      const card = e.target.closest('.wl-card');
+      if (!card) return;
+      dragSrcIdx = parseInt(card.dataset.idx);
+      card.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', dragSrcIdx);
+    }
+
+    function onDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+    }
+
+    function onDragEnter(e) {
+      e.preventDefault();
+      const card = e.target.closest('.wl-card');
+      if (card && parseInt(card.dataset.idx) !== dragSrcIdx) {
+        card.classList.add('drag-over');
+      }
+    }
+
+    function onDragLeave(e) {
+      const card = e.target.closest('.wl-card');
+      if (card) card.classList.remove('drag-over');
+    }
+
+    function onDrop(e) {
+      e.preventDefault();
+      const card = e.target.closest('.wl-card');
+      if (!card) return;
+      card.classList.remove('drag-over');
+      const dropIdx = parseInt(card.dataset.idx);
+      if (dragSrcIdx === null || dragSrcIdx === dropIdx) return;
+
+      // Reorder watchlist array
+      const moved = watchlist.splice(dragSrcIdx, 1)[0];
+      watchlist.splice(dropIdx, 0, moved);
+      saveWatchlist();
+      renderWatchlist();
+    }
+
+    function onDragEnd(e) {
+      document.querySelectorAll('.wl-card').forEach(c => {
+        c.classList.remove('dragging', 'drag-over');
+      });
+      dragSrcIdx = null;
+    }
+
+    init();
+  </script>
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>

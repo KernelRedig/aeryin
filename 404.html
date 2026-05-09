@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found - Golden Values</title>
+  
+  <link rel="icon" type="image/png" href="/assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { 
+      background-color: #06080f; 
+      color: #ffffff; 
+      font-family: 'Inter', sans-serif; 
+      margin: 0; 
+      min-height: 100vh;
+      display: flex; 
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    
+    /* Background Grid Pattern */
+    .grid-bg { 
+      position: fixed; 
+      inset: 0; 
+      z-index: -1; 
+      pointer-events: none; 
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); 
+      background-size: 40px 40px; 
+    }
+
+    /* Floating Animation for the 404 Image */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Golden Button Styles */
+    .btn-primary {
+      background: #d4af37;
+      color: #000000;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    }
+    .btn-primary:hover {
+      background: #facc15; /* Lighter Yellow */
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Secondary Button Styles */
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-yellow-500/30 selection:text-yellow-200">
+
+  <div class="grid-bg"></div>
+
+  <nav class="fixed top-0 w-full h-[70px] bg-[#06080f]/70 backdrop-blur-md border-b border-white/10 flex items-center px-10 z-50">
+    <a href="/index.html" class="flex items-center gap-3 hover:opacity-80 transition">
+      <img src="/assets/images/mainLogo.png" alt="Golden Values Logo" class="w-8 h-8 object-contain">
+      <span class="font-extrabold text-xl tracking-tight text-white hidden sm:block">Golden Values</span>
+    </a>
+  </nav>
+
+  <main class="flex-1 flex items-center justify-center px-5 pt-20">
+    <div class="max-w-5xl w-full flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
+      
+      <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+        <img 
+          src="/assets/images/404.png" 
+          alt="404 Error Sign" 
+          class="w-[280px] md:w-[400px] object-contain animate-float drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+          onerror="this.src='/fallback-image.png'"
+        >
+      </div>
+
+      <div class="w-full md:w-1/2 text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+          Oops, Something went wrong
+        </h1>
+        <p class="text-[#8C8F96] text-lg mb-8 max-w-md mx-auto md:mx-0">
+          We couldn't find the page you're looking for. It might have been removed, renamed, or did not exist in the first place.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+          <a href="/index.html" class="btn-primary px-8 py-3.5 rounded-lg font-bold text-[15px] transition-all w-full sm:w-auto text-center">
+            Go to Home Page
+          </a>
+          
+          <button onclick="window.location.reload()" class="btn-secondary px-8 py-3.5 rounded-lg font-bold text-[15px] transition-all w-full sm:w-auto">
+            Refresh page
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="/assets/js/security.js"></script>
+
+</body>
+</html>

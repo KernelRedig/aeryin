@@ -1,0 +1,452 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Values - Blox Fruits Value List</title>
+  <meta property="og:title" content="Golden Values - Blox Fruits Values">
+  <meta property="og:description" content="View the latest Blox Fruits item values. Trade safely with accurate prices.">
+  <meta property="og:image" content="https://goldenvalues.vercel.app/assets/images/LinkEmbed.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://goldenvalues.vercel.app/blox-fruits/index.html">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="/assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #06080f; }
+    ::-webkit-scrollbar-thumb { background: #00bfff; border-radius: 4px; }
+    
+    body { background-color: #06080f; background-image: linear-gradient(rgba(6, 8, 15, 0.90), rgba(6, 8, 15, 0.95)), url('/assets/images/bloxfruits-bg.webp'); background-size: cover; background-position: center; background-attachment: fixed; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+    
+    #particles-js { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+    
+    #loader { position: fixed; inset: 0; background-color: #06080f; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
+    .pulse-logo { width: 120px; height: 120px; animation: pulse 1.5s infinite alternate; filter: drop-shadow(0 0 20px rgba(212,175,55,0.8)); }
+    @keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; } 100% { transform: scale(1.05); opacity: 1; } }
+
+    .topbar { height: 70px; background: rgba(6, 8, 15, 0.7); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; position: fixed; top: 0; width: 100%; z-index: 1000; }
+    
+    .global-search { background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.3s, box-shadow 0.3s; }
+    .global-search:focus-within { border-color: #00bfff; box-shadow: 0 0 15px rgba(0, 191, 255, 0.3); }
+
+    .fruit-card { background-color: rgba(10, 12, 20, 0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px; position: relative; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; overflow: visible; }
+    .fruit-card:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.6); z-index: 10; border-color: rgba(255,255,255,0.1); }
+    
+    .glow-img { transition: filter 0.3s; filter: drop-shadow(0 0 15px var(--glow-color, rgba(255,255,255,0.2))); }
+    .fruit-card:hover .glow-img { filter: drop-shadow(0 0 25px var(--glow-color, rgba(255,255,255,0.5))); }
+    
+    .stats-box { border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; font-size: 13px; background: rgba(0,0,0,0.4); margin-top: auto; display: flex; flex-direction: column; }
+    .stat-row { display: flex; justify-content: space-between; margin-bottom: 8px; align-items: center; }
+    .stat-row:last-child { margin-bottom: 0; }
+    .stat-label { color: #8b8d98; font-weight: 700; }
+    
+    .toggle-container { display: flex; background: rgba(0,0,0,0.5); border-radius: 8px; padding: 4px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.05); }
+    .toggle-btn { flex: 1; padding: 6px 0; border-radius: 6px; font-weight: 800; font-size: 12px; cursor: pointer; transition: all 0.2s; text-align: center; color: #8b8d98; border: none; background: transparent; }
+    .toggle-btn.active-regular { background-color: #7c3aed; color: white; box-shadow: 0 0 10px rgba(124, 58, 237, 0.4); } 
+    .toggle-btn.active-permanent { background-color: #4f46e5; color: white; box-shadow: 0 0 10px rgba(79, 70, 229, 0.4); } 
+
+    .bg-mythical { background-color: #dc2626; color: white; } 
+    .bg-legendary { background-color: #f97316; color: white; } 
+    .bg-rare { background-color: #2563eb; color: white; } 
+    .bg-uncommon { background-color: #16a34a; color: white; } 
+    .bg-common { background-color: #4b5563; color: white; } 
+    .bg-limited { background-color: #06b6d4; color: white; } 
+    .bg-gamepass { background-color: #6b7280; color: white; } 
+
+    .list-view .fruit-grid { display: flex !important; flex-direction: column !important; gap: 12px !important; }
+    .list-view .fruit-card { flex-direction: row !important; height: auto !important; padding: 12px 20px !important; align-items: center !important; }
+    .list-view .img-container { width: 60px !important; height: 60px !important; margin-bottom: 0 !important; margin-top: 0 !important; flex-shrink: 0; }
+    .list-view .fruit-name { width: auto !important; min-width: 150px; margin-bottom: 0 !important; text-align: left !important; padding-left: 20px; font-size: 1.2rem !important; flex-grow: 1; }
+    .list-view .toggle-container { margin-bottom: 0 !important; min-width: 180px; flex-shrink: 0; }
+    .list-view .stats-box { margin-top: 0 !important; margin-left: 20px !important; flex-direction: row !important; flex-wrap: wrap; gap: 15px !important; background: transparent !important; border: none !important; padding: 0 !important; flex-grow: 1; justify-content: flex-end; }
+    .list-view .stat-row { flex-direction: column !important; align-items: flex-end !important; margin-bottom: 0 !important; }
+    .list-view hr { display: none !important; }
+    .list-view .badge-rarity { position: relative !important; top: 0 !important; right: 0 !important; margin-left: 20px; }
+
+    #chartModal { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+    #chartModal.show { display: flex; opacity: 1; }
+    .chart-container { background: #0f111a; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; width: 90%; max-width: 600px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; }
+  </style>
+</head>
+<body class="pt-[80px]">
+
+  <div id="loader">
+    <img src="/assets/images/mainLogo.png" alt="Loading" class="pulse-logo mb-4">
+    <h2 class="text-xl font-bold text-white tracking-widest animate-pulse">LOADING VALUES...</h2>
+  </div>
+
+  <div id="particles-js"></div>
+
+  <nav class="topbar">
+    <div class="flex items-center gap-4">
+      <a href="../index.html" class="flex items-center gap-3 hover:opacity-80 transition">
+          <img src="/assets/images/mainLogo.png" alt="Golden Values Logo" class="w-8 h-8 object-contain">
+          <span class="font-extrabold text-xl tracking-tight text-white hidden sm:block">Golden Values</span>
+      </a>
+    </div>
+    <div class="hidden md:flex items-center gap-6 font-semibold text-sm">
+      <a href="../mm2/index.html" class="text-gray-400 hover:text-white transition-colors">MM2 Values</a>
+      <span class="text-[#00bfff] drop-shadow-[0_0_8px_rgba(0,191,255,0.6)] border-b-2 border-[#00bfff] pb-1 font-bold">Blox Fruits</span>
+    </div>
+  </nav>
+
+  <main class="flex-1 flex flex-col items-center justify-start max-w-7xl mx-auto px-5 w-full pt-8 pb-20">
+    
+    <div class="text-center w-full max-w-3xl mx-auto mb-8">
+      <h1 class="text-4xl md:text-5xl font-black mb-3 text-white drop-shadow-md tracking-tight">Blox Fruits <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">Value List</span></h1>
+      <p class="text-[#8b8d98] text-base font-medium">Market values, trends, and demand for all fruits and items.</p>
+    </div>
+
+    <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4 mb-8 bg-[#0a0c14]/80 p-4 rounded-2xl border border-white/5 backdrop-blur-md">
+      <div class="relative w-full md:w-1/2 flex items-center global-search rounded-xl px-4 py-3">
+        <svg class="w-5 h-5 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <input type="text" id="searchInput" class="w-full bg-transparent border-none text-white text-sm outline-none placeholder-gray-500">
+        
+        <div class="absolute right-4 hidden sm:flex items-center gap-1 pointer-events-none">
+          <kbd class="bg-white/10 text-gray-400 px-2 py-1 rounded-md text-[10px] border border-white/20 font-bold">CTRL</kbd>
+          <kbd class="bg-white/10 text-gray-400 px-2 py-1 rounded-md text-[10px] border border-white/20 font-bold">K</kbd>
+        </div>
+      </div>
+      
+      <div class="flex gap-2">
+        <select id="sortSelect" class="w-full sm:w-auto bg-[#0a0c14]/80 border border-white/10 text-white text-sm rounded-xl px-4 py-3 outline-none focus:border-[#00bfff] cursor-pointer appearance-none font-bold">
+          <option value="high">Price: High to Low</option>
+          <option value="low">Price: Low to High</option>
+          <option value="az">Name: A to Z</option>
+        </select>
+        <button id="gridBtn" class="bg-[#00bfff]/20 text-[#00bfff] p-2 rounded-lg border border-[#00bfff]/50 hover:bg-[#00bfff]/30 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg></button>
+        <button id="listBtn" class="bg-black/50 text-gray-400 p-2 rounded-lg border border-white/10 hover:text-white transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></button>
+      </div>
+    </div>
+
+    <div id="noResults" class="hidden text-center text-gray-500 text-lg py-10 w-full font-bold">No items found matching your search.</div>
+
+    <div id="categoriesContainer" class="w-full"></div>
+
+  </main>
+
+  <div id="chartModal">
+    <div class="chart-container">
+      <button onclick="closeChart()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="ph ph-x"></i></button>
+      <h3 id="chartTitle" class="text-xl font-bold text-white mb-2">Price History</h3>
+      <p class="text-sm text-gray-400 mb-4">Estimated value trend over the last 7 days.</p>
+      <canvas id="priceChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+
+  <footer class="w-full py-8 text-gray-500 text-xs border-t border-white/5 mt-auto bg-black/40 z-10 relative">
+    <div class="flex flex-col items-center justify-center gap-4">
+      <p>&copy; 2026 Golden Values. Trading made easy.</p>
+    </div>
+  </footer>
+
+  <script>
+    let fruitsData = [];
+    let currentModes = {}; 
+    let buscaAtual = "";
+    let ordemAtual = "high";
+    let myChart = null;
+
+    const categoryOrder = ["Gamepass", "Limited", "Mythical", "Legendary", "Rare", "Uncommon", "Common"];
+    const rarityGlowColors = {
+      'mythical': 'rgba(220, 38, 38, 0.6)',
+      'legendary': 'rgba(249, 115, 22, 0.6)',
+      'limited': 'rgba(6, 182, 212, 0.6)',
+      'rare': 'rgba(37, 99, 235, 0.6)',
+      'uncommon': 'rgba(22, 163, 74, 0.6)',
+      'common': 'rgba(75, 85, 99, 0.6)',
+      'gamepass': 'rgba(139, 92, 246, 0.6)'
+    };
+
+    function formatValue(num) {
+      if (num === 0 || isNaN(num)) return "N/A";
+      if (num >= 1000000000) return (num / 1000000000).toFixed(num % 1000000000 === 0 ? 0 : 2) + 'B';
+      if (num >= 1000000) return (num / 1000000).toFixed(num % 1000000 === 0 ? 0 : 2) + 'M';
+      if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+      return num.toLocaleString();
+    }
+
+    function getRarityClass(rarity) {
+      const r = rarity.toLowerCase();
+      for (const key in rarityGlowColors) if (r.includes(key)) return `bg-${key}`;
+      return 'bg-common';
+    }
+    
+    function getGlowColor(rarity) {
+      const r = rarity.toLowerCase();
+      for (const key in rarityGlowColors) if (r.includes(key)) return rarityGlowColors[key];
+      return rarityGlowColors['common'];
+    }
+
+    function getTrendColor(trend) {
+      const t = trend.toLowerCase();
+      if (t === 'overpaid' || t === 'soon') return 'text-orange-400';
+      if (t === 'underpaid' || t === 'unstable') return 'text-red-400';
+      return 'text-gray-300';
+    }
+
+    function getDemandColor(demandNum) {
+      if (demandNum >= 8) return 'text-green-400';
+      if (demandNum >= 5) return 'text-orange-400';
+      return 'text-red-500';
+    }
+
+    function createId(name) { return name.toLowerCase().replace(/[^a-z0-9]/g, '-'); }
+
+    function openChart(itemName, currentVal) {
+      const modal = document.getElementById('chartModal');
+      document.getElementById('chartTitle').innerText = `${itemName} - Price History`;
+      modal.classList.add('show');
+
+      const ctx = document.getElementById('priceChart').getContext('2d');
+      if (myChart) myChart.destroy();
+
+      const dataPoints = [];
+      let val = currentVal * 0.8;
+      for(let i=0; i<6; i++) {
+        dataPoints.push(val);
+        val = val + (Math.random() * (currentVal * 0.1)) - (currentVal * 0.05);
+      }
+      dataPoints.push(currentVal);
+
+      myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['6d ago', '5d ago', '4d ago', '3d ago', '2d ago', 'Yesterday', 'Today'],
+          datasets: [{
+            label: 'Value',
+            data: dataPoints,
+            borderColor: '#00bfff',
+            backgroundColor: 'rgba(0, 191, 255, 0.2)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#8b8d98' } },
+            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#8b8d98', callback: function(value) { return formatValue(value); } } }
+          }
+        }
+      });
+    }
+
+    function closeChart() { document.getElementById('chartModal').classList.remove('show'); }
+
+    window.toggleMode = function(fruitId, mode) {
+      currentModes[fruitId] = mode;
+      const item = fruitsData.find(f => createId(f.name) === fruitId);
+      const data = item[mode]; 
+      
+      const btnReg = document.getElementById(`btn-regular-${fruitId}`);
+      const btnPerm = document.getElementById(`btn-permanent-${fruitId}`);
+      if (mode === 'regular') { btnReg.className = 'toggle-btn active-regular'; btnPerm.className = 'toggle-btn'; } 
+      else { btnReg.className = 'toggle-btn'; btnPerm.className = 'toggle-btn active-permanent'; }
+
+      document.getElementById(`val-${fruitId}`).innerText = formatValue(data.value);
+      document.getElementById(`trend-${fruitId}`).innerText = data.trend;
+      document.getElementById(`trend-${fruitId}`).className = `font-bold text-right ${getTrendColor(data.trend)}`;
+      document.getElementById(`demand-${fruitId}`).innerText = `${data.demand}/10`;
+      document.getElementById(`demand-${fruitId}`).className = `font-bold text-right ${getDemandColor(data.demand)}`;
+      document.getElementById(`price-label-${fruitId}`).innerText = data.priceLabel;
+      document.getElementById(`price-val-${fruitId}`).innerText = data.priceValue;
+
+      const chartBtn = document.getElementById(`chart-btn-${fruitId}`);
+      chartBtn.onclick = () => openChart(`${item.name} (${mode.charAt(0).toUpperCase() + mode.slice(1)})`, data.value);
+    };
+
+    function renderFruits(items) {
+      const container = document.getElementById('categoriesContainer');
+      container.innerHTML = '';
+      if (items.length === 0) { document.getElementById('noResults').classList.remove('hidden'); return; }
+      document.getElementById('noResults').classList.add('hidden');
+
+      const groupedItems = {};
+      items.forEach(item => {
+        const r = item.rarity;
+        if (!groupedItems[r]) groupedItems[r] = [];
+        groupedItems[r].push(item);
+      });
+
+      categoryOrder.forEach(category => {
+        if (groupedItems[category] && groupedItems[category].length > 0) {
+          const header = document.createElement('h2');
+          header.className = 'text-3xl font-black text-white mt-12 mb-6 uppercase tracking-widest border-b-2 border-white/10 pb-3 w-full text-left';
+          header.innerHTML = `<span class="px-3 py-1 rounded-md text-xl ${getRarityClass(category)} shadow-lg mr-2"></span> ${category}`;
+          container.appendChild(header);
+
+          const grid = document.createElement('div');
+          grid.className = 'fruit-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 w-full';
+          container.appendChild(grid);
+
+          groupedItems[category].forEach(item => {
+            const id = createId(item.name);
+            if (!currentModes[id]) currentModes[id] = 'regular';
+            const mode = currentModes[id];
+            const data = item[mode];
+
+            const glowColor = getGlowColor(item.rarity);
+
+            const toggleHtml = item.hasPermanent ? `
+              <div class="toggle-container">
+                <button id="btn-regular-${id}" onclick="toggleMode('${id}', 'regular')" class="toggle-btn ${mode === 'regular' ? 'active-regular' : ''}">Regular</button>
+                <button id="btn-permanent-${id}" onclick="toggleMode('${id}', 'permanent')" class="toggle-btn ${mode === 'permanent' ? 'active-permanent' : ''}">Permanent</button>
+              </div>` : `<div class="toggle-container"><button class="toggle-btn active-regular" style="cursor:default">Regular</button></div>`;
+
+            const card = document.createElement('div');
+            card.className = 'fruit-card';
+            card.innerHTML = `
+              <div class="badge-rarity absolute top-2 right-2 ${getRarityClass(item.rarity)} text-[10px] font-black px-2 py-1 rounded uppercase tracking-wider z-10">
+                ${item.rarity}
+              </div>
+              
+              <div class="img-container h-28 w-full flex items-center justify-center mb-4 mt-4">
+                <img src="/blox-fruits/${item.image}" style="--glow-color: ${glowColor};" alt="${item.name}" class="glow-img max-h-full max-w-[85%] object-contain" onerror="this.src='/fallback-image.png'">
+              </div>
+              
+              <h2 class="fruit-name text-lg font-extrabold text-white mb-3 tracking-tight truncate w-full">${item.name}</h2>
+              ${toggleHtml}
+              <div class="stats-box">
+                 <div class="stat-row">
+                   <span class="stat-label">Value</span>
+                   <span id="val-${id}" class="text-white font-extrabold text-base">${formatValue(data.value)}</span>
+                 </div>
+                 <div class="stat-row">
+                   <span class="stat-label flex items-center gap-1">
+                     Trend 
+                     <button id="chart-btn-${id}" onclick="openChart('${item.name.replace(/'/g, "\\'")}', ${data.value})" class="text-cyan-400 hover:text-white p-1 bg-white/5 rounded"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path></svg></button>
+                   </span>
+                   <span id="trend-${id}" class="font-bold text-right ${getTrendColor(data.trend)}">${data.trend}</span>
+                 </div>
+                 <div class="stat-row">
+                   <span class="stat-label">Demand</span>
+                   <span id="demand-${id}" class="font-bold text-right ${getDemandColor(data.demand)}">${data.demand}/10</span>
+                 </div>
+                 <hr class="border-white/5 my-3 w-full">
+                 <div class="stat-row">
+                   <span id="price-label-${id}" class="stat-label">${data.priceLabel}</span>
+                   <span id="price-val-${id}" class="text-[#facc15] font-bold text-right">${data.priceValue}</span>
+                 </div>
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+        }
+      });
+    }
+
+    function aplicarFiltros() {
+      let lista = fruitsData.filter(item => item.name.toLowerCase().includes(buscaAtual));
+      lista.sort((a, b) => {
+        if (ordemAtual === 'high') return b.regular.value - a.regular.value;
+        else if (ordemAtual === 'low') return a.regular.value - b.regular.value;
+        else if (ordemAtual === 'az') return a.name.localeCompare(b.name);
+      });
+      renderFruits(lista);
+    }
+
+    async function loadFruits() {
+      try {
+        const res = await fetch('/blox-fruits/fruits.json');
+        const json = await res.json();
+        
+        fruitsData = json.items.map(item => {
+          const isGamepassOrLimited = item.rarity.toLowerCase().includes('gamepass') || item.rarity.toLowerCase().includes('limited');
+          return {
+            name: item.name, rarity: item.rarity, image: item.image, hasPermanent: !isGamepassOrLimited,
+            regular: { value: item.value, trend: "Stable", demand: 5, priceLabel: isGamepassOrLimited ? "Robux" : "Beli", priceValue: "N/A" },
+            permanent: { value: item.value * 2, trend: "Stable", demand: 5, priceLabel: "Robux", priceValue: "N/A" }
+          };
+        });
+
+        setTimeout(() => { 
+          aplicarFiltros(); 
+          const loader = document.getElementById('loader');
+          loader.style.opacity = '0';
+          setTimeout(() => loader.style.display = 'none', 500);
+        }, 1200);
+
+      } catch (e) {
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('categoriesContainer').innerHTML = "<p class='text-red-400 col-span-full text-center mt-10'>Erro ao carregar dados.</p>";
+      }
+    }
+
+    function iniciarEfeitosExtras() {
+      particlesJS("particles-js", {
+        particles: { number: { value: 30 }, color: { value: "#00bfff" }, shape: { type: "circle" }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 1, direction: "top", out_mode: "out" } },
+        interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "bubble" } } },
+        retina_detect: true
+      });
+
+      const inputSearch = document.getElementById('searchInput');
+      const phrases = ["Search Kitsune...", "Search Dark Blade...", "Search Dragon...", "Search Permanent Fruits..."];
+      let i = 0, j = 0, isDeleting = false;
+      
+      function typeWriter() {
+        const currentPhrase = phrases[i];
+        if (isDeleting) {
+          inputSearch.placeholder = currentPhrase.substring(0, j - 1); j--;
+        } else {
+          inputSearch.placeholder = currentPhrase.substring(0, j + 1); j++;
+        }
+        
+        let typeSpeed = isDeleting ? 50 : 100;
+        if (!isDeleting && j === currentPhrase.length) { typeSpeed = 2000; isDeleting = true; } 
+        else if (isDeleting && j === 0) { isDeleting = false; i = (i + 1) % phrases.length; typeSpeed = 500; }
+        
+        if (document.activeElement !== inputSearch && inputSearch.value === "") { setTimeout(typeWriter, typeSpeed); }
+      }
+      setTimeout(typeWriter, 1500);
+
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          inputSearch.focus();
+        }
+      });
+    }
+
+    function configurarEventos() {
+      const searchInput = document.getElementById('searchInput');
+      const sortSelect = document.getElementById('sortSelect');
+      const gridBtn = document.getElementById('gridBtn');
+      const listBtn = document.getElementById('listBtn');
+      const container = document.getElementById('categoriesContainer');
+
+      searchInput.addEventListener('input', (e) => { buscaAtual = e.target.value.toLowerCase(); aplicarFiltros(); });
+      sortSelect.addEventListener('change', (e) => { ordemAtual = e.target.value; aplicarFiltros(); });
+
+      gridBtn.addEventListener('click', () => {
+        container.classList.remove('list-view');
+        gridBtn.classList.replace('text-gray-400', 'text-[#00bfff]'); gridBtn.classList.replace('bg-black/50', 'bg-[#00bfff]/20'); gridBtn.style.borderColor = 'rgba(0, 191, 255, 0.5)';
+        listBtn.classList.replace('text-[#00bfff]', 'text-gray-400'); listBtn.classList.replace('bg-[#00bfff]/20', 'bg-black/50'); listBtn.style.borderColor = 'rgba(255,255,255,0.1)';
+      });
+
+      listBtn.addEventListener('click', () => {
+        container.classList.add('list-view');
+        listBtn.classList.replace('text-gray-400', 'text-[#00bfff]'); listBtn.classList.replace('bg-black/50', 'bg-[#00bfff]/20'); listBtn.style.borderColor = 'rgba(0, 191, 255, 0.5)';
+        gridBtn.classList.replace('text-[#00bfff]', 'text-gray-400'); gridBtn.classList.replace('bg-[#00bfff]/20', 'bg-black/50'); gridBtn.style.borderColor = 'rgba(255,255,255,0.1)';
+      });
+    }
+
+    window.onload = () => {
+      loadFruits();
+      configurarEventos();
+      iniciarEfeitosExtras();
+    };
+  </script>
+  <script src="/assets/js/watchlist-heart.js"></script>
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>

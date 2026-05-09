@@ -1,0 +1,903 @@
+{
+  "last_date": "2026-03-27T00:00:00Z",
+  "currency": "value_points",
+  "items": [
+    {
+      "id": "chroma_travgun",
+      "name": "Chroma Traveler's Gun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "chroma",
+      "value": {
+        "base": 275800,
+        "demand": 6,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "2023 Halloween Box"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d5/Ctg3.png/revision/latest?cb=20260222171723",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_evergun",
+      "name": "Chroma Evergun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "chroma",
+      "value": {
+        "base": 107500,
+        "demand": 6,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Christmas Event 2023"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/18/Chroma_Evergun.png/revision/latest/scale-to-width-down/268?cb=20231221063125",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_evergreen",
+      "name": "Chroma Evergreen",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "chroma",
+      "value": {
+        "base": 75500,
+        "demand": 6,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Christmas Event 2023"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/71/Chroma_Evergreen.png/revision/latest?cb=20231221063120",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_bauble",
+      "name": "Chroma Bauble",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "chroma",
+      "value": {
+        "base": 51000,
+        "demand": 7,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Christmas Event 2024"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 7
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/83/2024BaubleChroma.png/revision/latest/scale-to-width-down/268?cb=20241221020957",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_vampgun",
+      "name": "Chroma Vampire's Gun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "chroma",
+      "value": {
+        "base": 51678,
+        "demand": 7,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "2023 Halloween"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 7
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f9/ChromaVampiresGun.png/revision/latest?cb=20241017022848",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_constellation",
+      "name": "Chroma Constellation",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "chroma",
+      "value": {
+        "base": 37000,
+        "demand": 7,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Christmas Event 2024"
+      },
+      "stats": {
+        "rarity_score": 5,
+        "demand_score": 7
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/6f/2024ConstellationChroma.png/revision/latest/scale-to-width-down/268?cb=20241221020933",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_alienbeam",
+      "name": "Chroma Alienbeam",
+      "type": "godly",
+      "category": "knife ",
+      "rarity": "chroma",
+      "value": {
+        "base": 35000,
+        "demand": 7,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Christmas Event 2024"
+      },
+      "stats": {
+        "rarity_score": 5,
+        "demand_score": 7
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/49/ChromaAlienbeam.png/revision/latest?cb=20251019081200",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_raygun",
+      "name": "Chroma Raygun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "chroma",
+      "value": {
+        "base": 16780,
+        "demand": 7,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Christmas Event 2024"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 7
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/4e/ChromaRaygun.png/revision/latest?cb=20251019081258",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_blizzard",
+      "name": "Chroma Blizzard",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "chroma",
+      "value": {
+        "base": 13500,
+        "demand": 7,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Christmas Event 2024"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 7
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/4e/CBZ2025.png/revision/latest?cb=20260101120412",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_sunrise",
+      "name": "Chroma Sunrise",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "chroma",
+      "value": {
+        "base": 12500,
+        "demand": 7,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Christmas Event 2024"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 7
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/9d/ChromaSunsetGun.png/revision/latest?cb=20250719033626",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_treat",
+      "name": "Chroma Treat",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "chroma",
+      "value": {
+        "base": 10700,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "../../Chroma_Treat_20260214111349.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_sweet",
+      "name": "Chroma Sweet",
+      "type": "godly",
+      "category": "knife ",
+      "rarity": "chroma",
+      "value": {
+        "base": 9780,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "../../Chroma_Sweet_20260214111358.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_snnowcannon",
+      "name": "Chroma Snowcannon",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 9251,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/58/Chroma_Snowcannon.png/revision/latest?cb=20251215211221",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_snowstorm",
+      "name": "Chroma Snowstorm",
+      "type": "godly",
+      "category": "knife ",
+      "rarity": "chroma",
+      "value": {
+        "base": 7100,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/25/CSS2025.png/revision/latest?cb=20260101120412",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_heartwand",
+      "name": "Chroma Heart Wand",
+      "type": "godly",
+      "category": "knife ",
+      "rarity": "chroma",
+      "value": {
+        "base": 7000,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": "Valentine 2026"
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 5
+      },
+      "image": "../../Chroma_HeartWand_147238447351.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_sunset",
+      "name": "Chroma Sunset",
+      "type": "godly",
+      "category": "knife ",
+      "rarity": "chroma",
+      "value": {
+        "base": 6251,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/0a/ChromaSunsetKnife.png/revision/latest?cb=20250719033618",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_snowdagger",
+      "name": "Chroma Snow Dagger",
+      "type": "godly",
+      "category": "knife ",
+      "rarity": "chroma",
+      "value": {
+        "base": 4820,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/ce/CSD2025.png/revision/latest/scale-to-width-down/268?cb=20260101120412",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_watergun",
+      "name": "Chroma Watergun",
+      "type": "godly",
+      "category": "knife ",
+      "rarity": "chroma",
+      "value": {
+        "base": 3417,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/50/Chroma_Watergun.png/revision/latest?cb=20240706075505",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_ornament",
+      "name": "Chroma Ornament",
+      "type": "godly",
+      "category": "knife ",
+      "rarity": "chroma",
+      "value": {
+        "base": 3400,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/10/Chroma_Ornament.png/revision/latest?cb=20251215215221",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_darkbringer",
+      "name": "Chroma Darkbringer",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 90,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d5/Chroma_Darkbringer_%28without_background%29.png/revision/latest?cb=20210204081211",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_lightbringer",
+      "name": "Chroma Lightbringer",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 85,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b6/Chroma_Lightbringer_%28without_background%29.png/revision/latest/scale-to-width-down/268?cb=20210204081314",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_candleflame",
+      "name": "Chroma Candleflame",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "chroma",
+      "value": {
+        "base": 65,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/10/CandleflameChroma.png/revision/latest/scale-to-width-down/268?cb=20211023113213",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_luger",
+      "name": "Chroma Luger",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 57,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/06/Chroma_Luger.png/revision/latest?cb=20201129113944",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_elderwoodblade",
+      "name": "C. Elderwood Blade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "chroma",
+      "value": {
+        "base": 55,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/15/ChromaElderwoodBlade.png/revision/latest?cb=20221017010614",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_swirlygun",
+      "name": "Chroma Swirly Gun",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 55,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/71/CSwirl_improved.png/revision/latest/scale-to-width-down/268?cb=20220320225020",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_cookiecane",
+      "name": "Chroma Cookiecane",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 50,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/8a/ChromaCookiecane.png/revision/latest/scale-to-width-down/268?cb=20230113235953",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_cookiecane",
+      "name": "Chroma Cookiecane",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 50,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/8a/ChromaCookiecane.png/revision/latest/scale-to-width-down/268?cb=20230113235953",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_laser",
+      "name": "Chroma Laser",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 50,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/22/Chromalaser-0.png/revision/latest?cb=20190725092628",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_deathshard",
+      "name": "Chroma Deathshard",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 50,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/78/Chromads.png/revision/latest?cb=20190725093103",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_slasher",
+      "name": "Chroma Slasher",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 47,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/71/Chromaslasher-0.png/revision/latest/scale-to-width-down/268?cb=20190725092436",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_shark",
+      "name": "Chroma Shark",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 42,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/3/37/Chromashark.png/revision/latest?cb=20190725092901",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_fang",
+      "name": "Chroma Fang",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 42,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/4a/Chromafang_improved.png/revision/latest?cb=20210614033950",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_gemstone",
+      "name": "Chroma Gemstone",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 38,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/91/Chromagemstone.png/revision/latest?cb=20201201210935",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_heat",
+      "name": "Chroma Heat",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 38,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/dc/Chroma_Heat.png/revision/latest/scale-to-width-down/268?cb=20201129114106",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_gingerblade",
+      "name": "Chroma Gingerblade",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 36,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/80/Chroma_Gingerblade.png/revision/latest/scale-to-width-down/268?cb=20190101184620",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_saw",
+      "name": "Chroma Saw",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 36,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/fd/Chromasaw-0.png/revision/latest?cb=20190725092524",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_seer",
+      "name": "Chroma Seer",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 34,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/25/Chromaseer.png/revision/latest?cb=20190725091616",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_tides",
+      "name": "Chroma Tides",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 34,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/42/Chromatides-0.png/revision/latest/scale-to-width-down/268?cb=20190725093139",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chroma_boneblade",
+      "name": "Chroma Boneblade",
+      "type": "godly",
+      "category": "gun ",
+      "rarity": "chroma",
+      "value": {
+        "base": 27,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": true,
+        "method": "Unboxed",
+        "box": ""
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/a4/Chroma_Boneblade.png/revision/latest/scale-to-width-down/268?cb=20190128130917",
+      "last_dated": "2026-03-27"
+    }
+  ]
+}

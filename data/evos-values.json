@@ -1,0 +1,105 @@
+{
+  "last_update": "2026-03-27T00:00:00Z",
+  "currency": "value_points",
+  "items": [
+    {
+      "id": "synthwave_4", "evolution": "Synthwave", "name": "Synthwave (Var. 4)", "type": "Evo", "category": "knife", "rarity": "Ancient",
+      "value": { "base": 500, "demand": 4, "trend": "Stable", "xp_requirement": "864K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Summer 2025 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/e9/Synthwave_Ancient.webp/revision/latest?cb=20250719044725", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "synthwave_3", "evolution": "Synthwave", "name": "Synthwave (Var. 3)", "type": "Evo", "category": "knife", "rarity": "Godly",
+      "value": { "base": 150, "demand": 3, "trend": "Stable", "xp_requirement": "216K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Summer 2025 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/ee/Synthwave_Godly.webp/revision/latest?cb=20250719044718", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "synthwave_2", "evolution": "Synthwave", "name": "Synthwave (Var. 2)", "type": "Evo", "category": "knife", "rarity": "Legendary",
+      "value": { "base": 50, "demand": 2, "trend": "Stable", "xp_requirement": "36K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Summer 2025 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/21/Synthwave_Legendary.webp/revision/latest?cb=20250719044708", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "synthwave_1", "evolution": "Synthwave", "name": "Synthwave (Var. 1)", "type": "Evo", "category": "knife", "rarity": "Rare",
+      "value": { "base": 10, "demand": 1, "trend": "Stable", "xp_requirement": "0" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Summer 2025 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/14/Synthwave_Rare.webp/revision/latest?cb=20250719044654", "last_updated": "2026-03-27"
+    },
+
+    {
+      "id": "gingerscythe_4", "evolution": "Gingerscythe", "name": "Gingerscythe (Var. 4)", "type": "Evo", "category": "knife", "rarity": "Ancient",
+      "value": { "base": 450, "demand": 4, "trend": "Stable", "xp_requirement": "864K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Xmas 2023 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/fa/Gingerscythe_Ancient.png/revision/latest?cb=20231224082916", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "gingerscythe_3", "evolution": "Gingerscythe", "name": "Gingerscythe (Var. 3)", "type": "Evo", "category": "knife", "rarity": "Godly",
+      "value": { "base": 130, "demand": 3, "trend": "Stable", "xp_requirement": "216K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Xmas 2023 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/29/Gingerscythe_Godly.png/revision/latest?cb=20231224082915", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "gingerscythe_2", "evolution": "Gingerscythe", "name": "Gingerscythe (Var. 2)", "type": "Evo", "category": "knife", "rarity": "Legendary",
+      "value": { "base": 40, "demand": 2, "trend": "Stable", "xp_requirement": "36K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Xmas 2023 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b5/Gingerscythe_Legendary.png/revision/latest?cb=20231224082914", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "gingerscythe_1", "evolution": "Gingerscythe", "name": "Gingerscythe (Var. 1)", "type": "Evo", "category": "knife", "rarity": "Rare",
+      "value": { "base": 8, "demand": 1, "trend": "Stable", "xp_requirement": "0" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Xmas 2023 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/ea/Gingerscythe_Rare.png/revision/latest?cb=20231224082914", "last_updated": "2026-03-27"
+    },
+
+    {
+      "id": "icecrusher_4", "evolution": "Icecrusher", "name": "Icecrusher (Variant 4)", "type": "Evo", "category": "knife", "rarity": "Ancient",
+      "value": { "base": 400, "demand": 4, "trend": "Stable", "xp_requirement": "864K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Xmas 2022 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b4/Icecrusher4.png/revision/latest?cb=20221223014619", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "icecrusher_3", "evolution": "Icecrusher", "name": "Icecrusher (Variant 3)", "type": "Evo", "category": "knife", "rarity": "Godly",
+      "value": { "base": 120, "demand": 3, "trend": "Stable", "xp_requirement": "216K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Xmas 2022 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/6e/Icecrusher3.png/revision/latest?cb=20221221182531", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "icecrusher_2", "evolution": "Icecrusher", "name": "Icecrusher (Variant 2)", "type": "Evo", "category": "knife", "rarity": "Legendary",
+      "value": { "base": 35, "demand": 2, "trend": "Stable", "xp_requirement": "36K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Xmas 2022 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d7/Icecrusher2.png/revision/latest?cb=20221221182514", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "icecrusher_1", "evolution": "Icecrusher", "name": "Icecrusher (Variant 1)", "type": "Evo", "category": "knife", "rarity": "Rare",
+      "value": { "base": 5, "demand": 1, "trend": "Stable", "xp_requirement": "0" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Xmas 2022 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/db/Icecrusher1.png/revision/latest?cb=20221221182428", "last_updated": "2026-03-27"
+    },
+
+    {
+      "id": "reaver_4", "evolution": "Reaver", "name": "Reaver (Variant 4)", "type": "Evo", "category": "knife", "rarity": "Ancient",
+      "value": { "base": 420, "demand": 4, "trend": "Stable", "xp_requirement": "864K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Hallows 2021 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/ce/ReaverAncient.png/revision/latest?cb=20211023041933", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "reaver_3", "evolution": "Reaver", "name": "Reaver (Variant 3)", "type": "Evo", "category": "knife", "rarity": "Godly",
+      "value": { "base": 125, "demand": 3, "trend": "Stable", "xp_requirement": "216K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Hallows 2021 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/13/ReaverGodly.png/revision/latest?cb=20211023144600", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "reaver_2", "evolution": "Reaver", "name": "Reaver (Variant 2)", "type": "Evo", "category": "knife", "rarity": "Legendary",
+      "value": { "base": 38, "demand": 2, "trend": "Stable", "xp_requirement": "36K" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Hallows 2021 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b2/ReaverRareUpdated.png/revision/latest?cb=20211029112358", "last_updated": "2026-03-27"
+    },
+    {
+      "id": "reaver_1", "evolution": "Reaver", "name": "Reaver (Variant 1)", "type": "Evo", "category": "knife", "rarity": "Rare",
+      "value": { "base": 6, "demand": 1, "trend": "Stable", "xp_requirement": "0" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "Hallows 2021 Evo Pack" },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/72/ReaverLegendaryUpdated.png/revision/latest?cb=20211029112419", "last_updated": "2026-03-27"
+    }
+  ]
+}

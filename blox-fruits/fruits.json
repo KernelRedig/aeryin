@@ -1,0 +1,478 @@
+{
+  "items": [
+    {
+      "name": "Crimson Kitsune",
+      "value": 4700000000,
+      "rarity": "Limited",
+      "image": "crimson-kitsune.webp"
+    },
+    {
+      "name": "Fruit Notifier",
+      "value": 4550000000,
+      "rarity": "Gamepass",
+      "image": "fruit-notifier.webp"
+    },
+    {
+      "name": "Ember West Dragon",
+      "value": 4230000000,
+      "rarity": "Limited",
+      "image": "ember-west-dragon.webp"
+    },
+    {
+      "name": "West Dragon",
+      "value": 3700000000,
+      "rarity": "Mythical",
+      "image": "west-dragon.webp"
+    },
+    {
+      "name": "East Dragon",
+      "value": 3200000000,
+      "rarity": "Mythical",
+      "image": "east-dragon.webp"
+    },
+    {
+      "name": "Purple Lightning",
+      "value": 2720000000,
+      "rarity": "Limited",
+      "image": "purple-lightning.webp"
+    },
+    {
+      "name": "Mythical Scrolls",
+      "value": 1430000000,
+      "rarity": "Gamepass",
+      "image": "mythical-scrolls.webp"
+    },
+    {
+      "name": "Dark Blade",
+      "value": 980000000,
+      "rarity": "Gamepass",
+      "image": "dark-blade.webp"
+    },
+    {
+      "name": "Yellow Lightning",
+      "value": 950000000,
+      "rarity": "Limited",
+      "image": "yellow-lightning.webp"
+    },
+    {
+      "name": "Red Lightning",
+      "value": 890000000,
+      "rarity": "Limited",
+      "image": "red-lightning.webp"
+    },
+    {
+      "name": "Super Spirit Pain",
+      "value": 890000000,
+      "rarity": "Limited",
+      "image": "super-spirit-pain.webp"
+    },
+    {
+      "name": "Divine Portal",
+      "value": 580000000,
+      "rarity": "Limited",
+      "image": "divine-portal.webp"
+    },
+    {
+      "name": "Kitsune",
+      "value": 490000000,
+      "rarity": "Mythical",
+      "image": "kitsune.webp"
+    },
+    {
+      "name": "Legendary Scrolls",
+      "value": 490000000,
+      "rarity": "Gamepass",
+      "image": "legendary-scrolls.webp"
+    },
+    {
+      "name": "Werewolf",
+      "value": 480000000,
+      "rarity": "Limited",
+      "image": "werewolf.webp"
+    },
+    {
+      "name": "2x Money",
+      "value": 390000000,
+      "rarity": "Gamepass",
+      "image": "2x-money.webp"
+    },
+    {
+      "name": "2x Mastery",
+      "value": 390000000,
+      "rarity": "Gamepass",
+      "image": "2x-mastery.webp"
+    },
+    {
+      "name": "Fiend Yeti",
+      "value": 360000000,
+      "rarity": "Limited",
+      "image": "fiend-yeti.webp"
+    },
+    {
+      "name": "Sadness Pain",
+      "value": 330000000,
+      "rarity": "Limited",
+      "image": "sadness-pain.webp"
+    },
+    {
+      "name": "+1 Fruit Storage",
+      "value": 330000000,
+      "rarity": "Gamepass",
+      "image": "1-fruit-storage.webp"
+    },
+    {
+      "name": "Azura Bomb",
+      "value": 320000000,
+      "rarity": "Limited",
+      "image": "azura-bomb.webp"
+    },
+    {
+      "name": "Thermite Bomb",
+      "value": 320000000,
+      "rarity": "Limited",
+      "image": "thermite-bomb.webp"
+    },
+    {
+      "name": "Nuclear Bomb",
+      "value": 320000000,
+      "rarity": "Limited",
+      "image": "nuclear-bomb.webp"
+    },
+    {
+      "name": "Celestial Pain",
+      "value": 310000000,
+      "rarity": "Limited",
+      "image": "celestial-pain.webp"
+    },
+    {
+      "name": "2x Boss Drops",
+      "value": 300000000,
+      "rarity": "Gamepass",
+      "image": "2x-boss-drops-chance.webp"
+    },
+    {
+      "name": "Fast Boats",
+      "value": 300000000,
+      "rarity": "Gamepass",
+      "image": "fast-boats.webp"
+    },
+    {
+      "name": "Frustration Pain",
+      "value": 280000000,
+      "rarity": "Limited",
+      "image": "frustration-pain.webp"
+    },
+    {
+      "name": "Eagle Matrix",
+      "value": 210000000,
+      "rarity": "Limited",
+      "image": "eagle-matrix.webp"
+    },
+    {
+      "name": "Green Lightning",
+      "value": 160000000,
+      "rarity": "Limited",
+      "image": "green-lightning.webp"
+    },
+    {
+      "name": "Tiger",
+      "value": 150000000,
+      "rarity": "Mythical",
+      "image": "tiger.webp"
+    },
+    {
+      "name": "Rose Quartz Diamond",
+      "value": 150000000,
+      "rarity": "Limited",
+      "image": "rose-quartz-diamond.webp"
+    },
+    {
+      "name": "Yeti",
+      "value": 140000000,
+      "rarity": "Mythical",
+      "image": "yeti.webp"
+    },
+    {
+      "name": "Emerald Diamond",
+      "value": 140000000,
+      "rarity": "Limited",
+      "image": "emerald-diamond.webp"
+    },
+    {
+      "name": "Topaz Diamond",
+      "value": 140000000,
+      "rarity": "Limited",
+      "image": "topaz-diamond.webp"
+    },
+    {
+      "name": "Eagle Requiem",
+      "value": 140000000,
+      "rarity": "Limited",
+      "image": "eagle-requiem.webp"
+    },
+    {
+      "name": "Control",
+      "value": 120000000,
+      "rarity": "Mythical",
+      "image": "control.webp"
+    },
+    {
+      "name": "Lightning",
+      "value": 100000000,
+      "rarity": "Legendary",
+      "image": "lightning.webp"
+    },
+    {
+      "name": "Gas",
+      "value": 60000000,
+      "rarity": "Mythical",
+      "image": "gas.webp"
+    },
+    {
+      "name": "Ruby Diamond",
+      "value": 60000000,
+      "rarity": "Limited",
+      "image": "ruby-diamond.webp"
+    },
+    {
+      "name": "Torment Pain",
+      "value": 50000000,
+      "rarity": "Limited",
+      "image": "torment-pain.webp"
+    },
+    {
+      "name": "Dough",
+      "value": 30000000,
+      "rarity": "Mythical",
+      "image": "dough.webp"
+    },
+    {
+      "name": "T-Rex",
+      "value": 20000000,
+      "rarity": "Mythical",
+      "image": "t-rex.webp"
+    },
+    {
+      "name": "Venom",
+      "value": 20000000,
+      "rarity": "Mythical",
+      "image": "venom.webp"
+    },
+    {
+      "name": "Pain",
+      "value": 10000000,
+      "rarity": "Legendary",
+      "image": "pain.webp"
+    },
+    {
+      "name": "Gravity",
+      "value": 10000000,
+      "rarity": "Mythical",
+      "image": "gravity.webp"
+    },
+    {
+      "name": "Mammoth",
+      "value": 10000000,
+      "rarity": "Mythical",
+      "image": "mammoth.webp"
+    },
+    {
+      "name": "Spirit",
+      "value": 10000000,
+      "rarity": "Mythical",
+      "image": "spirit.webp"
+    },
+    {
+      "name": "Portal",
+      "value": 10000000,
+      "rarity": "Legendary",
+      "image": "portal.webp"
+    },
+    {
+      "name": "Buddha",
+      "value": 10000000,
+      "rarity": "Legendary",
+      "image": "buddha.webp"
+    },
+    {
+      "name": "Eagle Glacier",
+      "value": 10000000,
+      "rarity": "Limited",
+      "image": "eagle-glacier.webp"
+    },
+    {
+      "name": "Shadow",
+      "value": 6500000,
+      "rarity": "Mythical",
+      "image": "shadow.webp"
+    },
+    {
+      "name": "Blizzard",
+      "value": 5000000,
+      "rarity": "Legendary",
+      "image": "blizzard.webp"
+    },
+    {
+      "name": "Celebration Bomb",
+      "value": 5000000,
+      "rarity": "Limited",
+      "image": "celebration-bomb.webp"
+    },
+    {
+      "name": "Creation",
+      "value": 3500000,
+      "rarity": "Legendary",
+      "image": "creation.webp"
+    },
+    {
+      "name": "Phoenix",
+      "value": 2750000,
+      "rarity": "Legendary",
+      "image": "phoenix.webp"
+    },
+    {
+      "name": "Sound",
+      "value": 2500000,
+      "rarity": "Legendary",
+      "image": "sound.webp"
+    },
+    {
+      "name": "Spider",
+      "value": 1500000,
+      "rarity": "Legendary",
+      "image": "spider.webp"
+    },
+    {
+      "name": "Love",
+      "value": 1500000,
+      "rarity": "Legendary",
+      "image": "love.webp"
+    },
+    {
+      "name": "Magma",
+      "value": 1150000,
+      "rarity": "Rare",
+      "image": "magma.webp"
+    },
+    {
+      "name": "Quake",
+      "value": 1000000,
+      "rarity": "Legendary",
+      "image": "quake.webp"
+    },
+    {
+      "name": "Diamond",
+      "value": 1000000,
+      "rarity": "Uncommon",
+      "image": "diamond.webp"
+    },
+    {
+      "name": "Light",
+      "value": 800000,
+      "rarity": "Rare",
+      "image": "light.webp"
+    },
+    {
+      "name": "Ghost",
+      "value": 800000,
+      "rarity": "Rare",
+      "image": "ghost.webp"
+    },
+    {
+      "name": "Eagle",
+      "value": 800000,
+      "rarity": "Uncommon",
+      "image": "eagle.webp"
+    },
+    {
+      "name": "Rubber",
+      "value": 700000,
+      "rarity": "Rare",
+      "image": "rubber.webp"
+    },
+    {
+      "name": "Ice",
+      "value": 550000,
+      "rarity": "Uncommon",
+      "image": "ice.webp"
+    },
+    {
+      "name": "Sand",
+      "value": 420000,
+      "rarity": "Uncommon",
+      "image": "sand.webp"
+    },
+    {
+      "name": "Dark",
+      "value": 400000,
+      "rarity": "Uncommon",
+      "image": "dark.webp"
+    },
+    {
+      "name": "Flame",
+      "value": 250000,
+      "rarity": "Uncommon",
+      "image": "flame.webp"
+    },
+    {
+      "name": "Spike",
+      "value": 180000,
+      "rarity": "Common",
+      "image": "spike.webp"
+    },
+    {
+      "name": "Smoke",
+      "value": 100000,
+      "rarity": "Common",
+      "image": "smoke.webp"
+    },
+    {
+      "name": "Bomb",
+      "value": 80000,
+      "rarity": "Common",
+      "image": "bomb.webp"
+    },
+    {
+      "name": "Spring",
+      "value": 60000,
+      "rarity": "Common",
+      "image": "spring.webp"
+    },
+    {
+      "name": "Blade",
+      "value": 50000,
+      "rarity": "Common",
+      "image": "blade.webp"
+    },
+    {
+      "name": "Spin",
+      "value": 7500,
+      "rarity": "Common",
+      "image": "spin.webp"
+    },
+    {
+      "name": "Rocket",
+      "value": 5000,
+      "rarity": "Common",
+      "image": "rocket.webp"
+    },
+    {
+      "name": "Parrot",
+      "value": 0,
+      "rarity": "Limited",
+      "image": "parrot.webp"
+    },
+    {
+      "name": "Dragon Token",
+      "value": 0,
+      "rarity": "Limited",
+      "image": "dragon-token.webp"
+    },
+    {
+      "name": "Eclipse",
+      "value": 0,
+      "rarity": "Limited",
+      "image": "eclipse.webp"
+    }
+  ]
+}

@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Golden Values</title>
+  <link rel="icon" type="image/png" href="/assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#06080f;color:#fff;font-family:'Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+    .grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px}
+    .topbar{height:70px;background:rgba(6,8,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;padding:0 40px;position:fixed;top:0;width:100%;z-index:1000}
+    .main{flex:1;max-width:600px;margin:0 auto;padding:110px 20px 60px;width:100%}
+    .page-title{font-size:28px;font-weight:800;margin-bottom:8px}
+    .page-desc{color:#6b7280;font-size:14px;margin-bottom:32px}
+    .card{background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;margin-bottom:20px}
+    .card-title{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;color:#e5e7eb}
+    .form-row{margin-bottom:16px}
+    .form-row label{display:block;font-size:13px;color:#9ca3af;margin-bottom:6px}
+    .form-row input{width:100%;padding:12px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:.3s}
+    .form-row input:focus{border-color:#d4af37}
+    .btn{padding:12px 24px;border-radius:10px;border:none;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:.3s}
+    .btn-gold{background:linear-gradient(135deg,#d4af37,#f4d03f);color:#000}
+    .btn-gold:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(212,175,55,.3)}
+    .btn-gold:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+    .alert{padding:12px 16px;border-radius:10px;font-size:13px;margin-bottom:14px;animation:fadeIn .3s}
+    .alert-ok{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#22c55e}
+    .alert-err{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#ef4444}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+    .token-box{display:flex;align-items:center;gap:10px}
+    .token-box input{flex:1;font-family:'JetBrains Mono','Courier New',monospace;font-size:13px;letter-spacing:1px}
+    .token-toggle{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#9ca3af;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;transition:.2s;white-space:nowrap}
+    .token-toggle:hover{border-color:#d4af37;color:#fff}
+    .back-link{color:#9ca3af;text-decoration:none;font-size:14px;transition:.2s}
+    .back-link:hover{color:#fff}
+    .loading-screen{position:fixed;inset:0;background:#06080f;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px}
+    .spinner{width:40px;height:40px;border:3px solid rgba(255,255,255,.1);border-top-color:#d4af37;border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .avatar-section{display:flex;align-items:center;gap:20px;margin-bottom:16px}
+    .avatar-circle{width:80px;height:80px;border-radius:50%;border:3px solid #d4af37;overflow:hidden;background:rgba(255,255,255,.05);flex-shrink:0;position:relative;cursor:pointer}
+    .avatar-circle img{width:100%;height:100%;object-fit:cover}
+    .avatar-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55);opacity:0;transition:.2s}
+    .avatar-circle:hover .avatar-overlay{opacity:1}
+    .avatar-info{font-size:13px;color:#6b7280}
+    .avatar-info strong{color:#e5e7eb;display:block;margin-bottom:4px;font-size:14px}
+    .hidden-input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+    .code-box{background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:14px;font-family:'JetBrains Mono','Courier New',monospace;font-size:15px;text-align:center;letter-spacing:2px;color:#f4d03f;margin:12px 0;user-select:all}
+    .timer{font-size:13px;color:#9ca3af;text-align:center;margin:10px 0}
+    .timer span{color:#d4af37;font-weight:700}
+    .linked-account{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;margin-bottom:10px}
+    .linked-account img{width:40px;height:40px;border-radius:50%}
+    .linked-account .info{flex:1}
+    .linked-account .info .name{font-weight:600;font-size:14px}
+    .linked-account .info .sub{font-size:12px;color:#6b7280}
+    .linked-account .verified{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(34,197,94,.15);color:#22c55e}
+    .linked-account .remove-btn{padding:6px 10px;border-radius:8px;border:1px solid rgba(239,68,68,.2);background:transparent;color:#ef4444;cursor:pointer;font-size:11px;font-weight:600;font-family:'Inter',sans-serif;transition:.2s}
+    .linked-account .remove-btn:hover{background:rgba(239,68,68,.1)}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="loading-screen" id="loadingScreen"><div class="spinner"></div><p class="text-gray-400 text-sm">Loading settings...</p></div>
+  <nav class="topbar">
+    <a href="/" class="flex items-center gap-3" style="text-decoration:none;color:#fff">
+      <img src="/assets/images/mainLogo.png" alt="Logo" class="w-8 h-8 object-contain"><span class="font-extrabold text-xl">Golden Values</span>
+    </a>
+    <a href="/" class="back-link"><i class="ph ph-arrow-left"></i> Back</a>
+  </nav>
+  <main class="main" id="mainContent" style="display:none">
+    <h1 class="page-title">Settings</h1>
+    <p class="page-desc">Manage your account preferences and security.</p>
+    <div id="globalAlert"></div>
+
+    <!-- Avatar -->
+    <div class="card">
+      <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg> Profile Picture</div>
+      <div class="avatar-section">
+        <div class="avatar-circle" onclick="document.getElementById('avatarFile').click()">
+          <img id="avatarPreview" src="https://www.gravatar.com/avatar/?d=mp&s=160" alt="Avatar">
+          <div class="avatar-overlay"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        </div>
+        <input type="file" accept="image/*" id="avatarFile" style="display:none" onchange="handleAvatarUpload(this)">
+        <div class="avatar-info"><strong id="avatarStatus">No custom picture</strong>Click the avatar to upload a new photo.<br>Max 2MB, JPG/PNG.</div>
+      </div>
+    </div>
+
+    <!-- Banner -->
+    <div class="card">
+      <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg> Profile Banner</div>
+      <div class="form-row">
+        <label>Banner URL (optional)</label>
+        <input type="text" id="bannerInput" placeholder="https://example.com/banner.jpg" onchange="saveBanner()">
+      </div>
+      <p style="font-size:12px;color:#6b7280;margin-bottom:12px">Recommended: 1200x400px or similar ratio</p>
+      <div style="height:60px;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:8px;overflow:hidden" id="bannerPreview">
+        <img id="bannerPreviewImg" style="width:100%;height:100%;object-fit:cover;display:none">
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="card">
+      <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Profile Description</div>
+      <div class="form-row">
+        <textarea id="descriptionInput" placeholder="Tell others about yourself..." rows="3" style="width:100%;padding:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:14px;font-family:'Inter',sans-serif;resize:vertical;outline:none" onchange="saveDescription()"></textarea>
+      </div>
+    </div>
+
+    <!-- Username -->
+    <div class="card">
+      <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Username</div>
+      <div class="form-row"><label>Display Name</label><input type="text" id="usernameInput" placeholder="Your username" maxlength="24"></div>
+      <button class="btn btn-gold" onclick="saveUsername()">Save Username</button>
+    </div>
+
+    <!-- Roblox -->
+    <div class="card">
+      <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg> Roblox Accounts</div>
+      <div id="linkedAccounts"></div>
+      <div id="robloxLinkSection">
+        <div class="form-row"><label>Roblox Username</label><input type="text" id="robloxInput" placeholder="Enter your Roblox username"></div>
+        <div id="verifySection" style="display:none">
+          <p style="font-size:13px;color:#9ca3af;margin-bottom:8px">Put this code in your Roblox <strong style="color:#e5e7eb">profile description</strong>, then click Verify:</p>
+          <div class="code-box" id="verifyCode"></div>
+          <div class="timer" id="timerText">Time remaining: <span id="timerValue">3:00</span></div>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-gold" style="flex:1" onclick="checkVerification()">Verify Now</button>
+            <button class="btn" style="flex:1;background:rgba(255,255,255,.07);color:#9ca3af;border:1px solid rgba(255,255,255,.1)" onclick="cancelVerification()">Cancel</button>
+          </div>
+        </div>
+        <div id="cooldownText" style="display:none;text-align:center;padding:16px;color:#ef4444;font-size:13px"></div>
+        <button class="btn btn-gold" id="linkBtn" onclick="startVerification()">Link Roblox Account</button>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="card">
+      <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Change Password</div>
+      <div class="form-row"><label>New Password</label><input type="password" id="newPassword" placeholder="At least 6 characters" minlength="6"></div>
+      <div class="form-row"><label>Confirm New Password</label><input type="password" id="confirmPassword" placeholder="Repeat password" minlength="6"></div>
+      <button class="btn btn-gold" onclick="changePassword()">Update Password</button>
+    </div>
+
+    <!-- Token -->
+    <div class="card">
+      <div class="card-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> Recovery Token</div>
+      <p style="font-size:13px;color:#6b7280;margin-bottom:14px">Save this token — you can use it to recover your account.</p>
+      <div class="token-box"><input type="password" id="tokenDisplay" readonly value="Loading..."><button class="token-toggle" id="tokenToggle" onclick="toggleToken()">Show</button></div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/navbar-auth.js"></script>
+  <script>
+    const sb = window.__gvSupabase || supabase.createClient('https://utrahbaolwcnyisxiaft.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0cmFoYmFvbHdjbnlpc3hpYWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNjE5MTcsImV4cCI6MjA5MzgzNzkxN30.wYgWsMdNbi91zAEMivzRPo3raQuExiXTjlfTWYfB860');
+    let currentUser = null, profileData = null;
+    let verifyTimer = null, verifyCode = '', verifyUsername = '', verifyDeadline = 0;
+
+    function genToken(){const c='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';let t='';for(let i=0;i<32;i++)t+=c[Math.floor(Math.random()*c.length)];return t;}
+    function showMsg(m,ok){document.getElementById('globalAlert').innerHTML=`<div class="alert ${ok?'alert-ok':'alert-err'}">${m}</div>`;setTimeout(()=>document.getElementById('globalAlert').innerHTML='',5000);}
+
+    function genVerifyCode(){
+      const n='0123456789',l='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      const r=(s,c)=>{let o='';for(let i=0;i<c;i++)o+=s[Math.floor(Math.random()*s.length)];return o;};
+      return `GValues-${r(n,3)}${r(l,3)}-${r(n,2)}${r(l,2)}`;
+    }
+
+    async function init(){
+      const{data:{session}}=await sb.auth.getSession();
+      if(!session){window.location.href='/create-account.html';return;}
+      currentUser=session.user;
+      const{data}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
+      profileData=data;
+      if(profileData){
+        document.getElementById('usernameInput').value=profileData.username||'';
+        if(profileData.avatar_url){document.getElementById('avatarPreview').src=profileData.avatar_url;document.getElementById('avatarStatus').textContent='Custom picture set';}
+        if(profileData.banner_url){document.getElementById('bannerInput').value=profileData.banner_url;const img=document.getElementById('bannerPreviewImg');img.src=profileData.banner_url;img.style.display='block';}
+        if(profileData.description){document.getElementById('descriptionInput').value=profileData.description;}
+        if(!profileData.recovery_token){const t=genToken();await sb.from('profiles').update({recovery_token:t}).eq('id',currentUser.id);profileData.recovery_token=t;}
+        document.getElementById('tokenDisplay').value=profileData.recovery_token;
+        renderLinkedAccounts();
+      }
+      checkCooldown();
+      document.getElementById('loadingScreen').style.display='none';
+      document.getElementById('mainContent').style.display='block';
+    }
+
+    // ── Avatar ──
+    async function handleAvatarUpload(input){
+      const file=input.files[0];if(!file)return;
+      if(file.size>2*1024*1024){showMsg('Image too large. Max 2MB.',false);return;}
+      if(!file.type.startsWith('image/')){showMsg('Please select an image file.',false);return;}
+      showMsg('Uploading...',true);
+      try{
+        const ext=file.name.split('.').pop();
+        const path=`avatars/${currentUser.id}.${ext}`;
+        const{error:upErr}=await sb.storage.from('avatars').upload(path,file,{upsert:true});
+        if(upErr)throw upErr;
+        const{data:urlData}=sb.storage.from('avatars').getPublicUrl(path);
+        const url=urlData.publicUrl+'?t='+Date.now();
+        const{error:dbErr}=await sb.from('profiles').update({avatar_url:url}).eq('id',currentUser.id);
+        if(dbErr)throw dbErr;
+        document.getElementById('avatarPreview').src=url;
+        document.getElementById('avatarStatus').textContent='Custom picture set';
+        showMsg('Profile picture updated!',true);
+      }catch(e){
+        const reader=new FileReader();
+        reader.onload=async(ev)=>{
+          const{error}=await sb.from('profiles').update({avatar_url:ev.target.result}).eq('id',currentUser.id);
+          if(error){showMsg('Error: '+error.message,false);return;}
+          document.getElementById('avatarPreview').src=ev.target.result;
+          document.getElementById('avatarStatus').textContent='Custom picture set';
+          showMsg('Profile picture updated!',true);
+        };reader.readAsDataURL(file);
+      }
+    }
+
+    // ── Username ──
+    async function saveUsername(){
+      const n=document.getElementById('usernameInput').value.trim();
+      if(!n||n.length<2){showMsg('Username must be at least 2 characters.',false);return;}
+      
+      // Check if username is taken by another user
+      const{data:existing}=await sb.from('profiles').select('id').eq('username',n).neq('id',currentUser.id).single();
+      if(existing){showMsg('This username is already taken.',false);return;}
+      
+      const{error}=await sb.from('profiles').update({username:n}).eq('id',currentUser.id);
+      if(error){showMsg('Error: '+error.message,false);return;}
+      await sb.auth.updateUser({data:{full_name:n}});
+      showMsg('Username updated! Your profile is now @'+n,true);
+    }
+
+    // ── Banner ──
+    async function saveBanner(){
+      const url=document.getElementById('bannerInput').value.trim();
+      const{error}=await sb.from('profiles').update({banner_url:url||null}).eq('id',currentUser.id);
+      if(error){showMsg('Error saving banner.',false);return;}
+      const img=document.getElementById('bannerPreviewImg');
+      if(url){img.src=url;img.style.display='block';}else{img.style.display='none';}
+      showMsg('Banner updated!',true);
+    }
+
+    // ── Description ──
+    async function saveDescription(){
+      const desc=document.getElementById('descriptionInput').value.trim();
+      const{error}=await sb.from('profiles').update({description:desc||null}).eq('id',currentUser.id);
+      if(error){showMsg('Error saving description.',false);return;}
+      showMsg('Description updated!',true);
+    }
+
+    // ── Roblox Accounts ──
+    function getLinkedAccounts(){
+      try{return JSON.parse(profileData.roblox_username||'[]');}catch(e){
+        return profileData.roblox_username?[{name:profileData.roblox_username,verified:false}]:[];
+      }
+    }
+    async function saveLinkedAccounts(accounts){
+      const json=JSON.stringify(accounts);
+      const{error}=await sb.from('profiles').update({roblox_username:json}).eq('id',currentUser.id);
+      if(error){showMsg('Error saving: '+error.message,false);return;}
+      // Re-fetch to keep in sync
+      const{data}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
+      if(data)profileData=data;
+    }
+
+    function renderLinkedAccounts(){
+      const accounts=getLinkedAccounts();
+      const el=document.getElementById('linkedAccounts');
+      if(!accounts.length){el.innerHTML='';return;}
+      el.innerHTML=accounts.map((a,i)=>`
+        <div class="linked-account">
+          <img src="https://www.gravatar.com/avatar/?d=mp&s=80" id="rblxAv${i}" alt="">
+          <div class="info"><div class="name">${a.name}</div><div class="sub">${a.id?'ID: '+a.id:''}</div></div>
+          <span class="verified"><i class="ph ph-check-circle" style="color:#22c55e"></i> Verified</span>
+          <button class="remove-btn" onclick="removeAccount(${i})">Remove</button>
+        </div>
+      `).join('');
+      accounts.forEach((a,i)=>{if(a.id)loadAvatar(a.id,'rblxAv'+i);});
+    }
+
+    async function loadAvatar(userId,elId){
+      try{
+        const r=await fetch(`/api/roblox/avatar/${userId}`);
+        const d=await r.json();
+        if(d.data?.[0]?.imageUrl)document.getElementById(elId).src=d.data[0].imageUrl;
+      }catch(e){}
+    }
+
+    async function removeAccount(idx){
+      if(!confirm('Remove this Roblox account?'))return;
+      const accounts=getLinkedAccounts();accounts.splice(idx,1);
+      await saveLinkedAccounts(accounts);renderLinkedAccounts();showMsg('Account removed.',true);
+    }
+
+    // ── Verification Flow ──
+    function checkCooldown(){
+      const cd=localStorage.getItem('gv_rblx_cooldown');
+      if(cd&&Date.now()<parseInt(cd)){
+        const remaining=Math.ceil((parseInt(cd)-Date.now())/60000);
+        document.getElementById('cooldownText').style.display='block';
+        document.getElementById('cooldownText').textContent=`Please wait ${remaining} minute(s) before trying again.`;
+        document.getElementById('linkBtn').style.display='none';
+        setTimeout(checkCooldown,60000);
+      }else{
+        document.getElementById('cooldownText').style.display='none';
+        document.getElementById('linkBtn').style.display='block';
+      }
+    }
+
+    async function startVerification(){
+      const cd=localStorage.getItem('gv_rblx_cooldown');
+      if(cd&&Date.now()<parseInt(cd)){checkCooldown();return;}
+      const name=document.getElementById('robloxInput').value.trim();
+      if(!name||name.length<3){showMsg('Enter a valid Roblox username.',false);return;}
+
+      // Check if already linked
+      const accounts=getLinkedAccounts();
+      if(accounts.some(a=>a.name.toLowerCase()===name.toLowerCase())){showMsg('This account is already linked.',false);return;}
+
+      // Look up user first
+      try{
+        const r=await fetch(`/api/roblox/search?q=${encodeURIComponent(name)}`);
+        const d=await r.json();
+        const user=d.data?.find(u=>u.name.toLowerCase()===name.toLowerCase())||d.data?.[0];
+        if(!user){showMsg('Roblox user not found.',false);return;}
+        verifyUsername=user.name;
+        window._verifyUserId=user.id;
+      }catch(e){showMsg('Could not reach Roblox API. Try again later.',false);return;}
+
+      verifyCode=genVerifyCode();
+      verifyDeadline=Date.now()+180000; // 3 minutes
+      document.getElementById('verifyCode').textContent=verifyCode;
+      document.getElementById('verifySection').style.display='block';
+      document.getElementById('linkBtn').style.display='none';
+      document.getElementById('robloxInput').disabled=true;
+      startTimer();
+    }
+
+    function startTimer(){
+      clearInterval(verifyTimer);
+      verifyTimer=setInterval(()=>{
+        const left=Math.max(0,verifyDeadline-Date.now());
+        const mins=Math.floor(left/60000);
+        const secs=Math.floor((left%60000)/1000);
+        document.getElementById('timerValue').textContent=`${mins}:${secs.toString().padStart(2,'0')}`;
+        if(left<=0){
+          clearInterval(verifyTimer);
+          cancelVerification();
+          localStorage.setItem('gv_rblx_cooldown',String(Date.now()+600000)); // 10min cooldown
+          showMsg('Verification timed out. Please wait 10 minutes before trying again.',false);
+          checkCooldown();
+        }
+      },1000);
+    }
+
+    function cancelVerification(){
+      clearInterval(verifyTimer);
+      document.getElementById('verifySection').style.display='none';
+      document.getElementById('linkBtn').style.display='block';
+      document.getElementById('robloxInput').disabled=false;
+      verifyCode='';verifyUsername='';
+    }
+
+    async function checkVerification(){
+      if(!verifyCode||!verifyUsername)return;
+      const userId=window._verifyUserId;
+      try{
+        const r=await fetch(`/api/roblox/user/${userId}`);
+        const d=await r.json();
+        const desc=d.description||'';
+        if(desc.includes(verifyCode)){
+          // Verified!
+          clearInterval(verifyTimer);
+          const accounts=getLinkedAccounts();
+          accounts.push({name:verifyUsername,id:userId,verified:true,verifiedAt:new Date().toISOString()});
+          await saveLinkedAccounts(accounts);
+          renderLinkedAccounts();
+          document.getElementById('verifySection').style.display='none';
+          document.getElementById('linkBtn').style.display='block';
+          document.getElementById('robloxInput').disabled=false;
+          document.getElementById('robloxInput').value='';
+          verifyCode='';verifyUsername='';
+          showMsg(`${d.name} verified and linked!`,true);
+        }else{
+          showMsg('Code not found in description. Make sure you saved it and try again.',false);
+        }
+      }catch(e){showMsg('Error checking description. Try again.',false);}
+    }
+
+    // ── Password ──
+    async function changePassword(){
+      const pw=document.getElementById('newPassword').value;
+      const c=document.getElementById('confirmPassword').value;
+      if(pw.length<6){showMsg('Password must be at least 6 characters.',false);return;}
+      if(pw!==c){showMsg('Passwords do not match.',false);return;}
+      const{error}=await sb.auth.updateUser({password:pw});
+      if(error){showMsg(error.message,false);return;}
+      document.getElementById('newPassword').value='';document.getElementById('confirmPassword').value='';
+      showMsg('Password updated!',true);
+    }
+
+    function toggleToken(){
+      const i=document.getElementById('tokenDisplay'),b=document.getElementById('tokenToggle');
+      i.type=i.type==='password'?'text':'password';b.textContent=i.type==='password'?'Show':'Hide';
+    }
+
+    init();
+  </script>
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>

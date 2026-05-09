@@ -1,0 +1,2863 @@
+{
+  "last_date": "2026-03-27T00:00:00Z",
+  "currency": "value_points",
+  "items": [
+    {
+      "id": "travgun",
+      "name": "Traveler's Gun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 4970,
+        "demand": 6,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2023"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/9e/Traveler%27s_Gun_2023.png/revision/latest?cb=20231018105154",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "evergun",
+      "name": "Evergun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 3800,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Gifting",
+        "box": "Xmas 2023"
+      },
+      "stats": {
+        "rarity_score": 4,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/17/Evergun.png/revision/latest?cb=20231221063123",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "constellation",
+      "name": "Constellation",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 3800,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2024"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/7c/2024Constellation.png/revision/latest?cb=20241221020843",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "evergreen",
+      "name": "Evergreen",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 2980,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2023"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/57/Evergreen.png/revision/latest/scale-to-width-down/268?cb=20231221063119",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "turkey",
+      "name": "Turkey",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 1825,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Thanksgiving 2023"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/27/Turkey_2023.png/revision/latest/scale-to-width-down/268?cb=20231127080215",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "vampGun",
+      "name": "Vampire's Gun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 1975,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2024"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/c5/VampiresGun.png/revision/latest?cb=20241017022828",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "alienbeam",
+      "name": "Alienbeam",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 2700,
+        "demand": 5,
+        "trend": "Stable",
+        "history": [
+          2579,
+          1870,
+          1540,
+          1375,
+          1350
+        ]
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2025"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/6a/Alienbeam.png/revision/latest?cb=20251019081134",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "darkshot",
+      "name": "Darkshot",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 1450,
+        "demand": 6,
+        "trend": "Doing Well"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2023 Item Pack",
+        "history": [
+          1300,
+          1100
+        ]
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/c1/Darkshot.png/revision/latest?cb=20231018065003",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "darksword",
+      "name": "Darksword",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 1320,
+        "demand": 6,
+        "trend": "Doing Well"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2023 Item Pack",
+        "history": [
+          1140,
+          1000
+        ]
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/00/Darksword.png/revision/latest/scale-to-width-down/268?cb=20231018064103",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "blossom",
+      "name": "Blossom",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 1789,
+        "demand": 6,
+        "trend": "Doing Well"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Valentine 2023 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d0/BlossomGun.png/revision/latest/scale-to-width-down/268?cb=20230205182028",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "sakura",
+      "name": "Sakura",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 1191,
+        "demand": 6,
+        "trend": "Doing Well"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Valentine 2023 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 6
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f4/Sakura.png/revision/latest/scale-to-width-down/268?cb=20230203075244",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "bauble",
+      "name": "Bauble",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 987,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Gifting",
+        "box": "Xmas 2024",
+        "history": [
+          925,
+          900
+        ]
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/3/36/2024Bauble.png/revision/latest?cb=20241221020947",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "raygun",
+      "name": "Raygun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 1350,
+        "demand": 4,
+        "trend": "Doing Well",
+        "history": [
+          1250,
+          1100,
+          925
+        ]
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tier 25",
+        "box": "Hallows 2025"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/03/Raygun.png/revision/latest?cb=20251019081209",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "sunrise",
+      "name": "Sunrise",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 780,
+        "demand": 5,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Summer 2025"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/41/SunsetGun.webp/revision/latest/scale-to-width-down/268?cb=20250719033608",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "snowcannon",
+      "name": "Snowcannon",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 2750,
+        "demand": 5,
+        "trend": "Stable",
+        "history": [
+          2700,
+          575,
+          525,
+          450,
+          500
+        ]
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tier 30",
+        "box": "Xmas 2025"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 5
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/a4/Snowcannon.png/revision/latest?cb=20251219023108",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "soul",
+      "name": "Soul",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 347,
+        "demand": 4,
+        "trend": "Stable",
+        "history": [
+          320,
+          310
+        ]
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2024 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/48/SoulGun.png/revision/latest?cb=20241017022021",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "rainbow_gun",
+      "name": "Rainbow Gun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 300,
+        "demand": 4,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Easter 2023 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/0c/RainbowGun.png/revision/latest?cb=20230403090859",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "spirit",
+      "name": "Spirit",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 337,
+        "demand": 4,
+        "trend": "Stable",
+        "history": [
+          310,
+          300
+        ]
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2024 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/a1/SpiritKnife.png.png/revision/latest?cb=20241017022100",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "rainbow",
+      "name": "Rainbow",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 290,
+        "demand": 4,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Easter 2023 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f5/RainbowKnife.png/revision/latest?cb=20230403091838",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "sunset",
+      "name": "Sunset",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 275,
+        "demand": 4,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tier 25",
+        "box": "Summer 2025"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/e3/SunsetKnife.webp/revision/latest?cb=20250719033556",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "flora",
+      "name": "Flora",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 265,
+        "demand": 4,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Easter 2025 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/01/Flora_Gun.png/revision/latest?cb=20250419104249",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "bloom",
+      "name": "Bloom",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 255,
+        "demand": 4,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Easter 2025 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/63/Bloom_Knife.png/revision/latest?cb=20250419104328",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "heart_wand",
+      "name": "Heart Wand",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 560,
+        "demand": 4,
+        "trend": "Overpaid"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Valentine 2026",
+        "history": [
+          250,
+          225
+        ]
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/6c/Wand_Full_HD.png/revision/latest?cb=20260214131117",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "treat",
+      "name": "Treat",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 290,
+        "demand": 4,
+        "trend": "Underpaid For",
+        "history": [
+          280,
+          200
+        ]
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Valentine 2026 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/85/Treat_Gun.png/revision/latest?cb=20260214133244",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "sweet",
+      "name": "Sweet",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 290,
+        "demand": 4,
+        "trend": "Stable",
+        "history": [
+          245,
+          200
+        ]
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Valentine 2026 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/5e/Sweet_Knife.png/revision/latest?cb=20260214133156",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "flowerwood_gun",
+      "name": "Flowerwood Gun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 205,
+        "demand": 4,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Easter 2024 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/bb/Flowerwoodgun.webp/revision/latest?cb=20240402054334",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "flowerwood",
+      "name": "Flowerwood",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 200,
+        "demand": 4,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Easter 2024 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 4
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d7/Flowerwood.webp/revision/latest?cb=20240402054405",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "snow_dagger",
+      "name": "Snow Dagger",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 510,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2025"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/c0/SnowDagger2025.png/revision/latest?cb=20260101120412",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "xenoknife",
+      "name": "Xenoknife",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 180,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2025 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1b/Xenoknife.png/revision/latest?cb=20251019081224",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "xenoshot",
+      "name": "Xenoshot",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 180,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2025 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/e0/Xenoshot.png/revision/latest?cb=20251019081237",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "bat",
+      "name": "Bat",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 175,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Zombie",
+        "box": "Hallows 2022"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/a9/ZombieBat.png/revision/latest?cb=20221017185931",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "ocean",
+      "name": "Ocean",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 170,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Summer 2023 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b6/Ocean_gun.png/revision/latest?cb=20230705104522",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "waves",
+      "name": "Waves",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 165,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Summer 2023 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/a3/Waves_knife.png/revision/latest/scale-to-width-down/268?cb=20230705104524",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "blizzard",
+      "name": "Blizzard",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 150,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2025 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/dd/BlizzardKnife2025.png/revision/latest?cb=20260101120412",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "snowstorm",
+      "name": "Snowstorm",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 150,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2025 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/c6/SnowstormKnife2025.png/revision/latest?cb=20260101120412",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "watergun",
+      "name": "Watergun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 120,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Summer 2024"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f4/WaterHun.png/revision/latest/scale-to-width-down/268?cb=20240706075912",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "borealis",
+      "name": "Borealis",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 105,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2024 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b7/2024Borealis.png/revision/latest/scale-to-width-down/268?cb=20241221121723",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "candy",
+      "name": "Candy",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 105,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2015"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1a/Updated_Candy.png/revision/latest/scale-to-width-down/268?cb=20210520153102",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "heartblade",
+      "name": "Heartblade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 105,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Offer",
+        "box": "February Offer"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/65/HeartBlade.png/revision/latest/scale-to-width-down/268?cb=20210310190038",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "australis",
+      "name": "Australis",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 100,
+        "demand": 3,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2024 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 3
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f5/2024Australis.png/revision/latest?cb=20241221121702",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "pearlshine",
+      "name": "Pearlshine",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 55,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Summer 2024 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Pearlshine.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "pearl",
+      "name": "Pearl",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 50,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Summer 2024 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Pearl.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "luger",
+      "name": "Luger",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 50,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Gun Box #1"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/LugerUpdated.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "sugar",
+      "name": "Sugar",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 50,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2015"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Sugar_v2.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "candleflame",
+      "name": "Candleflame",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 45,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2021"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/candleflame.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "elderwood_blade",
+      "name": "Elderwood Blade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 45,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2022"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/ElderwoodBlade.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "makeshift",
+      "name": "Makeshift",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 45,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Survivor",
+        "box": "Hallows 2022"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Makeshift.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "phantom",
+      "name": "Phantom",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 45,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2022 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Phantom_Shop.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "spectre",
+      "name": "Spectre",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 45,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2022 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Spectre.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "darkbringer",
+      "name": "Darkbringer",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 45,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Mystery Crate #2"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/DarkbringerUpdated.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "elderwood_revolver",
+      "name": "Elderwood Revolver",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 45,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2019"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/ewrev.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "iceblaster",
+      "name": "Iceblaster",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 45,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2020"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/IceblasterUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "red_luger",
+      "name": "Red Luger",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 45,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Xmas 2015"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Red_Luger.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "lightbringer",
+      "name": "Lightbringer",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 40,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Mystery Crate #2"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/LightbringerUpdated.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "swirly_gun",
+      "name": "Swirly Gun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 35,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2021"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/SwirlGunUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "ornament",
+      "name": "Ornament",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 35,
+        "demand": 2,
+        "trend": "Underpaid For"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Gifting",
+        "box": "Xmas 2025"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/ornagodly.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "green_luger",
+      "name": "Green Luger",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 30,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Xmas 2015"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Green_Luger.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "laser",
+      "name": "Laser",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 27,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Gun Box #3"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/LaserUpdated.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "amerilaser",
+      "name": "Amerilaser",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 25,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "American Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/AmeriUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "hallowgun",
+      "name": "Hallowgun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 25,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2020"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/hallowgunup.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "icebeam",
+      "name": "Icebeam",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 25,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2021 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/IceBeamUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "plasmabeam",
+      "name": "Plasmabeam",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 25,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Plasmabeam Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Plasmabeam.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "swirly_blade",
+      "name": "Swirly Blade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 23,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Gifting",
+        "box": "Xmas 2021"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/SwirlyBladeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "iceflake",
+      "name": "Iceflake",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 23,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2021 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/IceFlakeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "plasmablade",
+      "name": "Plasmablade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 23,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Plasmablade Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Plasmablade.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "shark",
+      "name": "Shark",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 23,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Gun Box #2"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/SharkUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "nightblade",
+      "name": "Nightblade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 22,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Shadow Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/NightBladeUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "blaster",
+      "name": "Blaster",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 20,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Futuristic Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/BlasterUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "ginger_luger",
+      "name": "Ginger Luger",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 20,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Xmas 2018"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Ginger_LugerUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "pixel",
+      "name": "Pixel",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 20,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "8-Bit Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/PixelUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "cookiecane",
+      "name": "Cookiecane",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 18,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2022"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Cookiecane.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "gingermint",
+      "name": "Gingermint",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 18,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Gifting",
+        "box": "Xmas 2022"
+      },
+      "stats": {
+        "rarity_score": 3,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/Gingermint.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "lugercane",
+      "name": "Lugercane",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 18,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Gifting",
+        "box": "Xmas 2019"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/LugerCaneUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "minty",
+      "name": "Minty",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 18,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2019"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/MintyUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "old_glory",
+      "name": "Old Glory",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 18,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "American Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/OldGloryUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "slasher",
+      "name": "Slasher",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 18,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Knife Box #4"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/SlasherUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "battleaxe_ii",
+      "name": "Battleaxe II",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 18,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Tier 100",
+        "box": "Hallows 2018"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/BattleAxe2UP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "eternalcane",
+      "name": "Eternalcane",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 17,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Promo",
+        "box": "MM2 Shop"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/eternalcane.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "jinglegun",
+      "name": "Jinglegun",
+      "type": "godly",
+      "category": "gun",
+      "rarity": "godly",
+      "value": {
+        "base": 17,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Gifting",
+        "box": "Xmas 2020"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/JinglegunUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "virtual",
+      "name": "Virtual",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 17,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Futuristic Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/VirtualUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "gemstone",
+      "name": "Gemstone",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 17,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Mystery Box #1"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/GemstoneUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "gingerblade",
+      "name": "Gingerblade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 17,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2018"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/GingerbladeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "nebula",
+      "name": "Nebula",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 15,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Nebula Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/NebulaUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "vampires_edge",
+      "name": "Vampire's Edge",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 15,
+        "demand": 2,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2020 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 2
+      },
+      "image": "https://mm2values.com/img/VampiresedgeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "deathshard",
+      "name": "Deathshard",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 15,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Knife Box #1"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/DeathshardUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "battleaxe",
+      "name": "Battleaxe",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 12,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2017 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/Battleaxe1UP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "bioblade",
+      "name": "Bioblade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Bioblade Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/Mm2bioblade.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "chill",
+      "name": "Chill",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Xmas 2015"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/ChillUpdated4.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "clockwork",
+      "name": "Clockwork",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Steampunk Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/ClockworkUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "eternal_iii",
+      "name": "Eternal III",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Promo",
+        "box": "MM2 Shop"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/eternal3.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "eternal_iv",
+      "name": "Eternal IV",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Promo",
+        "box": "MM2 Shop"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/Eternal4UP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "fang",
+      "name": "Fang",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Knife Box #2"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/FangUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "frostsaber",
+      "name": "Frostsaber",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Bought",
+        "box": "Xmas 2017"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/FrostsaberUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "heat",
+      "name": "Heat",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Rainbow Box"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/HeatUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "spider",
+      "name": "Spider",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Bingo",
+        "box": "Hallows 2015"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/SpiderUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "tides",
+      "name": "Tides",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 10,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Knife Box #5"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/TidesUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "eternal",
+      "name": "Eternal",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 8,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Promo",
+        "box": "MM2 Shop"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/EternalUpdated.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "eternal_ii",
+      "name": "Eternal II",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 8,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Promo",
+        "box": "MM2 Shop"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/Eternal_2UP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "hallows_blade",
+      "name": "Hallow's Blade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 8,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Bought",
+        "box": "Hallows 2017"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/HallowsbladeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "hallows_edge",
+      "name": "Hallow's Edge",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 8,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2016"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/HallowsEdgeUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "handsaw",
+      "name": "Handsaw",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 8,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Xmas 2015"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/Handsaw_Png.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "xmas",
+      "name": "Xmas",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 8,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Bought",
+        "box": "Xmas 2015"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/XmasUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "boneblade",
+      "name": "Boneblade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 7,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2018"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/BonebladeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "frostbite",
+      "name": "Frostbite",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 7,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2019 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/FrostbiteUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "ghostblade",
+      "name": "Ghostblade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 7,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Hallows 2019 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/ghostblade.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "ice_dragon",
+      "name": "Ice Dragon",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 7,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Bought",
+        "box": "Xmas 2016"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/IceDragonUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "ice_shard",
+      "name": "Ice Shard",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 7,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2017 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/IceShardUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "prismatic",
+      "name": "Prismatic",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 7,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Prismatic Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/PrismaticUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "pumpking",
+      "name": "Pumpking",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 7,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Hallows 2017"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/PumpkingUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "saw",
+      "name": "Saw",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 7,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Knife Box #3"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/SawUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "eggblade",
+      "name": "Eggblade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 5,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Offer",
+        "box": "April Offer"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/EggbladeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "flames",
+      "name": "Flames",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 5,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "MM2 Classic Crafting"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/FlamesUp.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "snowflake",
+      "name": "Snowflake",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 5,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Bought",
+        "box": "Xmas 2017"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/SnowflakeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "winters_edge",
+      "name": "Winter's Edge",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 5,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Unboxed",
+        "box": "Xmas 2017"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/WinterEdgeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "peppermint",
+      "name": "Peppermint",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 4,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2020 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/peppermint.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "cookieblade",
+      "name": "Cookieblade",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 3,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Pack",
+        "box": "Xmas 2020 Item Pack"
+      },
+      "stats": {
+        "rarity_score": 2,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/CookiebladeUP.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "blue_seer",
+      "name": "Blue seer",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 3,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Season 1 Crafting"
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/blueseer.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "purple_seer",
+      "name": "Purple seer",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 3,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Season 1 Crafting"
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/purpleseer.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "red_seer",
+      "name": "Red seer",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 3,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Season 1 Crafting"
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/redseer.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "seer",
+      "name": "seer",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 3,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Crafting"
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/ee/Seer.png/revision/latest?cb=20210204082208",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "orange_seer",
+      "name": "Orange seer",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 2,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Season 1 Crafting"
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/orangeseer.png",
+      "last_dated": "2026-03-27"
+    },
+    {
+      "id": "yellow_seer",
+      "name": "Yellow seer",
+      "type": "godly",
+      "category": "knife",
+      "rarity": "godly",
+      "value": {
+        "base": 2,
+        "demand": 1,
+        "trend": "Stable"
+      },
+      "availability": {
+        "obtainable": false,
+        "method": "Crafted",
+        "box": "Season 1 Crafting"
+      },
+      "stats": {
+        "rarity_score": 1,
+        "demand_score": 1
+      },
+      "image": "https://mm2values.com/img/yellowseer.png",
+      "last_dated": "2026-03-27"
+    }
+  ]
+}

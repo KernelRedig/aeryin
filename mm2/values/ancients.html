@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ancient Value List - Golden Values</title>
+  <link rel="icon" type="image/png" href="/assets/images/faviconmm2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* CUSTOM SCROLLBAR (Tema Ancient - Roxo) */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #06080f; }
+    ::-webkit-scrollbar-thumb { background: #a855f7; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #d8b4fe; }
+
+    /* ANIMAÇÃO DE TRANSIÇÃO DE PÁGINA (SLIDE) */
+    body { 
+      background-color: #06080f; 
+      background-image: linear-gradient(rgba(6, 8, 15, 0.90), rgba(6, 8, 15, 0.95)), url('/assets/images/mm2weapons.webp'); 
+      background-size: cover; background-attachment: fixed; color: #ffffff; 
+      font-family: 'Inter', sans-serif; margin: 0; padding-top: 100px; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; 
+      /* Transição suave do Body */
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    }
+    
+    /* Classe adicionada pelo JS ao clicar num link */
+    body.slide-out { transform: translateX(-100vw); opacity: 0; }
+
+    .grid-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+    
+    .topbar { height: 70px; background: rgba(6, 8, 15, 0.7); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; position: fixed; top: 0; width: 100%; z-index: 1000; transition: transform 0.3s ease; }
+    
+    /* Adaptado para permitir o Gráfico (min-height em vez de height fixo) */
+    .item-wrapper { position: relative; border-radius: 12px; overflow: hidden; background: linear-gradient(rgba(10, 12, 20, 0.95) 0%, rgba(168, 85, 247, 0.10) 100%); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
+    .item-wrapper:hover { transform: translateY(-5px); z-index: 20; border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 20px rgba(168, 85, 247, 0.3); }
+    
+    .purple-border { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: rgba(168, 85, 247, 0.8); }
+    
+    @keyframes pulse-bg { 0%, 100% { background-color: rgba(255,255,255,0.05); } 50% { background-color: rgba(255,255,255,0.1); } }
+    .skeleton { animation: pulse-bg 1.5s infinite; border-radius: 8px; }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in-up { animation: fadeInUp 0.4s ease forwards; opacity: 0; }
+
+    /* LAYOUT DE LISTA */
+    .list-view { display: flex !important; flex-direction: column !important; gap: 12px !important; }
+    .list-view .item-wrapper { flex-direction: row !important; flex-wrap: wrap !important; min-height: 80px !important; height: auto !important; padding: 0 20px !important; }
+    .list-view .card-content { flex-direction: row !important; justify-content: space-between !important; align-items: center !important; width: 100%; height: 80px; }
+    .list-view .img-container { width: 60px !important; height: 60px !important; margin-bottom: 0 !important; flex-shrink: 0; }
+    .list-view .item-name { margin-bottom: 0 !important; text-align: left !important; width: auto !important; flex-grow: 1; padding-left: 20px; font-size: 1.1rem !important; }
+    .list-view .badge-wrapper { padding-bottom: 0 !important; margin-top: 0 !important; margin-right: 24px; flex-shrink: 0; }
+    .list-view .price-wrapper { border-top: none !important; padding-top: 0 !important; width: auto !important; gap: 16px !important; flex-shrink: 0; }
+    .list-view .purple-border { width: 3px; height: 100%; bottom: 0; left: 0; top: 0; }
+    .list-view .chart-container { width: 100% !important; margin-bottom: 15px; }
+    
+    #toast { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: #a855f7; color: white; padding: 12px 24px; border-radius: 50px; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.5); transition: bottom 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 9999; }
+    #toast.show { bottom: 30px; }
+
+    @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+    .heart { display: inline-block; color: #a855f7; animation: heartbeat 1.5s infinite; }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-purple-400 via-purple-600 to-indigo-500 z-[1001] w-0"></div>
+
+  <nav class="topbar" id="navbar">
+    <div class="flex items-center gap-8">
+      <a href="../../index.html" class="flex items-center gap-3 text-white no-underline hover:opacity-80 page-link">
+        <img src="/assets/images/mainLogo.png" alt="Logo" class="w-8 h-8 object-contain">
+        <span class="font-extrabold text-xl tracking-tight hidden sm:block">Golden Values</span>
+      </a>
+      <div class="hidden lg:flex text-gray-500 text-xs font-medium tracking-widest uppercase">
+        <a href="../../index.html" class="hover:text-white transition page-link">Home</a> <span class="mx-2">></span>
+        <span>Values</span> <span class="mx-2">></span>
+        <span class="text-purple-400">Ancients</span>
+      </div>
+    </div>
+    
+    <div class="hidden md:flex items-center gap-6 font-semibold text-sm">
+      <a href="ancients.html" class="text-purple-400 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)] border-b-2 border-purple-400 pb-1 font-bold page-link">Ancients</a>
+      <a href="chromas.html" class="text-gray-400 hover:text-white transition-colors page-link">Chromas</a>
+      <a href="vintages.html" class="text-gray-400 hover:text-white transition-colors page-link">Vintages</a>
+      <a href="evos.html" class="text-gray-400 hover:text-white transition-colors page-link">Evos</a>
+      <a href="godlies.html" class="text-gray-400 hover:text-white transition-colors page-link">Godlies</a>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-5 w-full flex-1">
+    <div class="text-center mb-8 mt-4">
+        <h1 id="typewriterTitle" class="text-4xl md:text-5xl font-extrabold mb-3 text-purple-400 drop-shadow-md min-h-[60px]"></h1>
+        <p class="text-[#8b8d98] text-lg">Current trading values and demands for all Ancient tier items.</p>
+    </div>
+
+    <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4 mb-8 bg-[#0a0c14]/80 p-4 rounded-2xl border border-white/5 backdrop-blur-md">
+      
+      <div class="relative w-full md:w-1/2 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-purple-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search Ancients (Press / to focus)" class="w-full bg-black/50 border border-white/10 text-white rounded-full py-2.5 pl-11 pr-10 focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 transition-all text-sm">
+        <button id="clearBtn" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-purple-400 hidden z-10">✖</button>
+      </div>
+
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <span id="resultCount" class="text-sm font-bold text-gray-400 w-24">0 weapons</span>
+
+        <div class="flex gap-2">
+          <select id="sortSelect" class="bg-black/50 border border-white/10 text-white text-sm rounded-lg px-3 py-2 outline-none focus:border-purple-400 cursor-pointer appearance-none">
+            <option value="high">Price: High to Low</option>
+            <option value="low">Price: Low to High</option>
+            <option value="az">Name: A to Z</option>
+          </select>
+
+          <button id="gridBtn" class="bg-purple-500/20 text-purple-400 p-2 rounded-lg border border-purple-500/50 hover:bg-purple-500/30 transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+          </button>
+          <button id="listBtn" class="bg-black/50 text-gray-400 p-2 rounded-lg border border-white/10 hover:text-white transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="noResults" class="hidden text-center text-gray-400 text-lg w-full mb-10">No weapons found matching your search.</div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 pb-20 items-start" id="itemGrid">
+       <div class="item-wrapper min-h-[210px] p-3 flex flex-col justify-between"><div class="skeleton h-20 w-full"></div><div class="skeleton h-4 w-3/4 mx-auto"></div><div class="skeleton h-6 w-1/2 mx-auto"></div></div>
+       <div class="item-wrapper min-h-[210px] p-3 flex flex-col justify-between"><div class="skeleton h-20 w-full"></div><div class="skeleton h-4 w-3/4 mx-auto"></div><div class="skeleton h-6 w-1/2 mx-auto"></div></div>
+    </div>
+  </main>
+
+  <footer class="w-full py-6 text-gray-500 text-sm border-t border-white/5 mt-auto bg-black/40">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+      <p>&copy; 2026 Golden Values. Made with <span class="heart">❤</span> by Golden Values.</p>
+    </div>
+  </footer>
+
+  <div id="toast">Value Copied!</div>
+
+  <button id="scrollTopBtn" class="fixed bottom-6 right-6 text-white p-3 rounded-full shadow-[0_0_20px_rgba(168,85,247,0.4)] opacity-0 pointer-events-none transition-all duration-300 z-50 translate-y-10" style="background: linear-gradient(135deg, #9333ea, #c084fc);">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+  </button>
+
+  <script>
+    // --- ESTADO E VARIÁVEIS GLOBAIS ---
+    let weaponsData = []; 
+    let currentSearch = ""; 
+    let currentOrder = "high"; 
+    let registeredCharts = {}; // Para o visualizador de gráficos
+    
+    // Badge Ancient
+    const badgeHtml = `<div class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-6 text-[10px] rounded-full bg-purple-500/20 text-purple-300 ring-1 ring-purple-500/50"><span class="flex-1 font-bold px-1 uppercase">Ancient</span></div>`;
+
+    // --- FUNÇÕES UTILITÁRIAS ---
+    function formatVal(num) {
+      if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+      if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+      return num.toLocaleString();
+    }
+
+    function getTrendIcon(trend) {
+      if (trend === 'Rising') return '<span class="text-green-400 text-xs ml-1" title="Rising">⬆️</span>';
+      if (trend === 'Dropping') return '<span class="text-red-400 text-xs ml-1" title="Dropping">⬇️</span>';
+      return '<span class="text-gray-500 text-xs ml-1" title="Stable">➖</span>';
+    }
+
+    function toRobux(val) { 
+      const v = typeof val === 'string' ? parseInt(val.replace(/[^0-9]/g, '')) || 0 : val; 
+      return Math.round(v * 1.68); 
+    }
+    function formatRobux(val) {
+      const r = toRobux(val);
+      if (r >= 1000000) return (r / 1000000).toFixed(1) + 'M';
+      if (r >= 1000) return (r / 1000).toFixed(1) + 'K';
+      return r.toString();
+    }
+
+    function formatMoney(val) {
+      if (val >= 1000000) return (val / 1000000).toFixed(2) + 'M';
+      if (val >= 1000) return (val / 1000).toFixed(1) + 'K';
+      return val.toFixed(2);
+    }
+
+    function toMoney(val) {
+      const curr = detectCurrency();
+      const v = typeof val === 'string' ? parseInt(val.replace(/[^0-9]/g, '')) || 0 : val;
+      return (v * curr.rate);
+    }
+
+    function detectCurrency() {
+      const currencyMap = {
+        'BR': { symbol: 'R$', rate: 0.0896, label: 'BRL' },
+        'US': { symbol: '$', rate: 0.018, label: 'USD' },
+        'CA': { symbol: '$', rate: 0.018, label: 'USD' },
+        'GB': { symbol: '£', rate: 0.014, label: 'GBP' },
+        'DE': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'FR': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'ES': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'IT': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'NL': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'JP': { symbol: '¥', rate: 2.65, label: 'JPY' },
+        'AU': { symbol: '$', rate: 0.027, label: 'AUD' }
+      };
+      const userLang = navigator.language || navigator.userLanguage || 'en';
+      const country = userLang.split('-')[1] || userLang.split('_')[1];
+      return currencyMap[country] || { symbol: '$', rate: 0.018, label: 'USD' };
+    }
+
+    window.copyValue = function(e, name, value) {
+      e.stopPropagation(); // Impede de abrir o gráfico ao clicar em copiar
+      navigator.clipboard.writeText(`${name}: ${value}`).then(() => {
+        const toast = document.getElementById('toast');
+        toast.innerText = `Copied ${name} value: ${value}`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    };
+
+    window.toggleDetails = function (idStr) { const container = document.getElementById(`details-${idStr}`); if (container.classList.contains('hidden')) { container.classList.remove('hidden'); container.classList.add('flex'); } else { container.classList.add('hidden'); container.classList.remove('flex'); } }
+
+    // --- RENDERIZAÇÃO ---
+    function renderizarArmas(armas) {
+      const grid = document.getElementById('itemGrid');
+      const count = document.getElementById('resultCount');
+      grid.innerHTML = '';
+      count.innerText = `${armas.length} weapons`;
+
+      if (armas.length === 0) return;
+
+      armas.forEach((item, index) => {
+        const safeId = item.name.replace(/[^a-zA-Z0-9]/g, ''); 
+        const valorExato = item.value.base.toLocaleString('en-US');
+        const trendIcon = getTrendIcon(item.value.trend);
+        const delay = index * 0.05; 
+
+        const div = document.createElement('div');
+        div.className = `item-wrapper flex flex-col items-center p-4 relative fade-in-up bg-black/40 min-h-[210px] h-auto`;
+        div.style.animationDelay = `${delay}s`;
+        
+        div.innerHTML = `
+          <div class="card-content flex flex-col h-full w-full items-center z-10">
+            <div class="img-container h-24 w-full flex items-center justify-center mb-3">
+              <img src="${item.image}" alt="${item.name}" class="max-h-full max-w-[90%] object-contain drop-shadow-[0_5px_10px_rgba(0,0,0,0.8)]" onerror="this.src='/assets/images/fallback-image.png'">
+            </div>
+            
+            <div class="text-base font-bold text-white mb-2 text-center w-full truncate item-name">${item.name}</div>
+            
+            <div class="badge-wrapper mt-auto pb-3">${badgeHtml}</div>
+            
+<div class="price-wrapper w-full flex flex-col gap-2 border-t border-white/10 pt-3">
+                <div class="flex items-center justify-center gap-4">
+                  <div class="flex items-center gap-1 cursor-pointer hover:bg-white/5 p-2 rounded-md transition" onclick="toggleDetails('${safeId}')">
+                    <img src="/assets/images/faviconmm2.png" class="w-4 h-4" alt="Value"><span class="text-sm font-extrabold text-white">${formatVal(item.value.base)}</span>
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </div>
+                  <button onclick="copyValue(event, '${item.name}', '${valorExato}')" class="text-gray-500 hover:text-purple-400 transition bg-white/5 p-1.5 rounded-md" title="Copy Value">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                  </button>
+                </div>
+                <div id="details-${safeId}" class="hidden flex-col gap-2 w-full mt-2 pt-2 border-t border-white/10">
+                  <div class="flex items-center justify-between bg-red-500/10 p-2 rounded border border-red-500/30">
+                    <div class="flex items-center gap-2"><img src="/assets/images/faviconmm2.png" class="w-5 h-5" alt="Robux"><span class="text-red-400 font-bold">Robux:</span></div>
+                    <span class="text-white font-bold">${formatRobux(item.value.base)} R$</span>
+                  </div>
+                  <div class="flex items-center justify-between bg-green-500/10 p-2 rounded border border-green-500/30">
+                    <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.336 2.82.904M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.336 2.82.904M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2"></path></svg><span class="text-green-400 font-bold">Money:</span></div>
+                    <span class="text-white font-bold">${detectCurrency().symbol}${formatMoney(toMoney(item.value.base))}</span>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+          <div class="purple-border z-0"></div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    // --- LÓGICA DE FILTRO E ORDENAÇÃO ---
+    function aplicarFiltrosEOrdenacao() {
+      let listaTratada = weaponsData.filter(item => item.name.toLowerCase().includes(currentSearch));
+      
+      if (currentOrder === 'high') listaTratada.sort((a, b) => b.value.base - a.value.base);
+      else if (currentOrder === 'low') listaTratada.sort((a, b) => a.value.base - b.value.base);
+      else if (currentOrder === 'az') listaTratada.sort((a, b) => a.name.localeCompare(b.name));
+
+      const noResults = document.getElementById('noResults');
+      if (listaTratada.length === 0) noResults.classList.remove('hidden');
+      else noResults.classList.add('hidden');
+
+      renderizarArmas(listaTratada);
+    }
+
+    // --- CARREGAR DADOS DA API/JSON ---
+    async function loadItems() {
+      try {
+        const res = await fetch('/data/ancients-values.json');
+        const data = await res.json();
+        weaponsData = data.items ? data.items.filter(i => i.rarity && i.rarity.toLowerCase() === 'ancient') : [];
+        
+        setTimeout(() => { 
+            aplicarFiltrosEOrdenacao(); 
+        }, 300);
+      } catch (e) {
+        document.getElementById('itemGrid').innerHTML = "<p class='text-red-400 text-center col-span-full'>Erro ao carregar dados.</p>";
+      }
+    }
+
+    // --- EVENTOS (INPUTS, BOTÕES E CLICKS) ---
+    function configurarEventos() {
+      const searchInput = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearBtn');
+      const sortSelect = document.getElementById('sortSelect');
+      const gridBtn = document.getElementById('gridBtn');
+      const listBtn = document.getElementById('listBtn');
+      const itemGrid = document.getElementById('itemGrid');
+
+      searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value.toLowerCase();
+        clearBtn.style.display = currentSearch.length > 0 ? 'block' : 'none';
+        aplicarFiltrosEOrdenacao();
+      });
+
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = ''; currentSearch = '';
+        clearBtn.style.display = 'none';
+        aplicarFiltrosEOrdenacao(); searchInput.focus();
+      });
+
+      sortSelect.addEventListener('change', (e) => {
+        currentOrder = e.target.value; aplicarFiltrosEOrdenacao();
+      });
+
+      gridBtn.addEventListener('click', () => {
+        itemGrid.classList.remove('list-view');
+        gridBtn.classList.replace('text-gray-400', 'text-purple-400'); gridBtn.classList.replace('bg-black/50', 'bg-purple-500/20'); gridBtn.style.borderColor = 'rgba(168, 85, 247, 0.5)';
+        listBtn.classList.replace('text-purple-400', 'text-gray-400'); listBtn.classList.replace('bg-purple-500/20', 'bg-black/50'); listBtn.style.borderColor = 'rgba(255,255,255,0.1)';
+      });
+
+      listBtn.addEventListener('click', () => {
+        itemGrid.classList.add('list-view');
+        listBtn.classList.replace('text-gray-400', 'text-purple-400'); listBtn.classList.replace('bg-black/50', 'bg-purple-500/20'); listBtn.style.borderColor = 'rgba(168, 85, 247, 0.5)';
+        gridBtn.classList.replace('text-purple-400', 'text-gray-400'); gridBtn.classList.replace('bg-purple-500/20', 'bg-black/50'); gridBtn.style.borderColor = 'rgba(255,255,255,0.1)';
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+            e.preventDefault(); searchInput.focus();
+        }
+      });
+    }
+
+    // --- EFEITOS VISUAIS E TRANSIÇÕES ---
+    function configurarEfeitosGlobais() {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      const navbar = document.getElementById('navbar');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.width = ((scrollTop / docHeight) * 100) + '%';
+
+        if (scrollTop > lastScrollY && scrollTop > 100) navbar.style.transform = 'translateY(-100%)';
+        else navbar.style.transform = 'translateY(0)';
+        
+        lastScrollY = scrollTop;
+
+        if (scrollTop > 300) scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-10');
+        else scrollTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10');
+      });
+
+      scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      const titulo = "Ancient Weapons";
+      const elementoTitulo = document.getElementById('typewriterTitle');
+      let i = 0;
+      function digitar() {
+        if (i < titulo.length) { elementoTitulo.innerHTML += titulo.charAt(i); i++; setTimeout(digitar, 100); }
+      }
+      setTimeout(digitar, 300);
+
+      // LÓGICA DE TRANSIÇÃO DE PÁGINA (SLIDE OUT)
+      const links = document.querySelectorAll('.page-link');
+      links.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault(); 
+          const targetUrl = this.href;
+          document.body.classList.add('slide-out');
+          setTimeout(() => { window.location.href = targetUrl; }, 400); // 400ms = tempo da transição no CSS
+        });
+      });
+    }
+
+    // INICIALIZAÇÃO
+    window.onload = () => {
+      loadItems();
+      configurarEventos();
+      configurarEfeitosGlobais();
+    };
+  </script>
+  <script src="/assets/js/watchlist-heart.js"></script>
+  
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>

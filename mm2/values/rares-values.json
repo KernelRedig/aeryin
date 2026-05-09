@@ -1,0 +1,1170 @@
+{
+  "Tier 3": [
+    {
+      "name": "Cane Knife (2018)",
+      "value": 650,
+      "rangedValue": "[600 - 650]",
+      "stability": "Receding Item Stability",
+      "demand": 3,
+      "rarity": 4,
+      "origin": "Xmas 2018 (Tier 30)",
+      "lastChange": -50,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f0/Cane_knife.png/revision/latest?cb=20190102121025"
+    },
+    {
+      "name": "Silent Night (Knife)",
+      "value": 50,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 4,
+      "origin": "Xmas 2020 (Tier 15)",
+      "lastChange": -5,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/0b/SilentNightKnife.png/revision/latest?cb=20221109072729"
+    },
+    {
+      "name": "Dungeon",
+      "value": 40,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 4,
+      "origin": "Hallows 2019 (Unboxed)",
+      "lastChange": 5,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/ab/Dungeon.png/revision/latest?cb=20201129121028"
+    },
+    {
+      "name": "Zombified Knife (2022)",
+      "value": 27,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2022 (Z, Tier 17)",
+      "lastChange": 2,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/89/Zombified_Knife_2022.png/revision/latest?cb=20221020031046"
+    },
+    {
+      "name": "Makeshift (Knife)",
+      "value": 25,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2022 (S, Tier 17)",
+      "lastChange": 5,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/4c/MakeshiftKnife.png/revision/latest?cb=20221109072202"
+    },
+    {
+      "name": "Aurora Knife (2019)",
+      "value": 13,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2019 (Tier 20)",
+      "lastChange": -2,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/15/Aurora_improved.png/revision/latest?cb=20210625173005"
+    },
+    {
+      "name": "Silent Night (Gun)",
+      "value": 12,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2020 (Unboxed)",
+      "lastChange": -1,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/6b/Silent_Night_Gun.png/revision/latest?cb=20210113171550"
+    },
+    {
+      "name": "Icicles (Gun)",
+      "value": 10,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2018 (Tier 22)",
+      "lastChange": -2,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/49/Icicles_gun.png/revision/latest?cb=20201209192835"
+    },
+    {
+      "name": "Darkknife",
+      "value": 8,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2023 (Tier 25)",
+      "lastChange": 1,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/44/Darkknife_Knife_2023.png/revision/latest?cb=20231018094918"
+    },
+    {
+      "name": "Starry Gun (2021)",
+      "value": 8,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2021 (Tier 17)",
+      "lastChange": 1,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1a/StarryGun.png/revision/latest?cb=20211226110338"
+    },
+    {
+      "name": "Floral (Knife)",
+      "value": 7,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Summer 2023 (Tier 10)",
+      "lastChange": 2,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1b/Beach_Ball.png/revision/latest?cb=20230705094929"
+    },
+    {
+      "name": "Swirl",
+      "value": 7,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2021 (Tier 15)",
+      "lastChange": 2,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d8/SwirlKnife.png/revision/latest?cb=20221109080214"
+    },
+    {
+      "name": "Toxic (Knife)",
+      "value": 7,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2018 (Tier 30)",
+      "lastChange": -1,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/96/Toxic.png/revision/latest?cb=20201209193212"
+    },
+    {
+      "name": "Vampire Gun (2018)",
+      "value": 7,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2018 (Tier 22)",
+      "lastChange": -1,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/dc/Vampire_gun.png/revision/latest?cb=20201209192938"
+    },
+    {
+      "name": "Candy Swirl (Gun)",
+      "value": 5,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2019 (Tier 24)",
+      "lastChange": -2,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/17/CandySwirlGun_improved.png/revision/latest?cb=20210612174131"
+    },
+    {
+      "name": "Magma",
+      "value": 5,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 4,
+      "origin": "Hallows 2017 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://mm2values.com/img/Magma.png"
+    },
+    {
+      "name": "Jack",
+      "value": 3,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2015 (bingo)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/63/315099010.png/revision/latest?cb=20210129001302"
+    },
+    {
+      "name": "Magma (Gun)",
+      "value": 3,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2021 (Tier 20)",
+      "lastChange": 1,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/c3/MagmaGun2021.png/revision/latest?cb=20211029113207"
+    },
+    {
+      "name": "Snakebite (Knife)",
+      "value": 3,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2019 (Tier 23)",
+      "lastChange": -2,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/05/Snakebite.png/revision/latest?cb=20201209193419"
+    },
+    {
+      "name": "Watcher Gun (2021)",
+      "value": 3,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2021 (Tier 24)",
+      "lastChange": 1,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/95/Watcher2021Gun.png/revision/latest?cb=20211029112841"
+    },
+    {
+      "name": "Monster",
+      "value": 3,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 4,
+      "origin": "Hallows 2019 (Tier 15)",
+      "lastChange": -2,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/13/Monster.png/revision/latest?cb=20201129124517"
+    },
+    {
+      "name": "Bats",
+      "value": 3,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 3,
+      "origin": "Hallows 2016 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/17/Bats_2016.png/revision/latest?cb=20201211182232"
+    },
+    {
+      "name": "Green Marble",
+      "value": 3,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 3,
+      "origin": "Hallows 2017 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/2f/Green_Marble.png/revision/latest?cb=20201211185147"
+    },
+    {
+      "name": "Sunset (Gun)",
+      "value": 2,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Summer 2023 (Tier 9)",
+      "lastChange": 1,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1b/Beach_Ball.png/revision/latest?cb=20230705094929"
+    },
+    {
+      "name": "Orange Marble",
+      "value": 2,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 3,
+      "origin": "Hallows 2016 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/40/Om.png/revision/latest?cb=20200226185812"
+    },
+    {
+      "name": "Toxic (Gun)",
+      "value": 2,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Hallows 2018 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/c8/Toxic_Gun.png/revision/latest?cb=20201209193245"
+    },
+    {
+      "name": "Ghastly (Gun)",
+      "value": 1,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2023 (Tier 21)",
+      "lastChange": 1,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/64/Ghastly_Gun_2023.png/revision/latest?cb=20231018094804"
+    },
+    {
+      "name": "Gingerbread (2017)",
+      "value": 1,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 4,
+      "origin": "Xmas 2017 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/14/Gingerbread.png/revision/latest?cb=20181223165932"
+    },
+    {
+      "name": "Aurora Gun (2019)",
+      "value": 1,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Xmas 2019 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/3/38/Aurora_Gun.png/revision/latest?cb=20201212130951"
+    },
+    {
+      "name": "Candy Swirl (Knife)",
+      "value": 1,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Xmas 2019 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/e8/CandySwirl_improved.png/revision/latest?cb=20210612173905"
+    },
+    {
+      "name": "Snakebite (Gun)",
+      "value": 1,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Hallows 2019 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f5/Snakebitegun.png/revision/latest?cb=20201129121203"
+    },
+    {
+      "name": "Vampire Knife (2018)",
+      "value": 1,
+      "rangedValue": "N/A",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Hallows 2018 (Unboxed)",
+      "lastChange": 0,
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/ce/Vampire..png/revision/latest?cb=20201209193018"
+    }
+  ],
+  "Tier 2": [
+    {
+      "name": "Snowflakes",
+      "value": "x4 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2020 (Unboxed)",
+      "image": "https://mm2values.com/img/Snowflakes.png"
+    },
+    {
+      "name": "Darkgun",
+      "value": "x4 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2023 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/cd/Darkgun_Gun_2023.png/revision/latest?cb=20231018111238"
+    },
+    {
+      "name": "Starry (Knife)",
+      "value": "x4 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2021 (Unboxed)",
+      "image": "https://mm2values.com/img/StarryKnife.png"
+    },
+    {
+      "name": "Cane (Gun)",
+      "value": "x4 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 3,
+      "origin": "Xmas 2015 (Unboxed)",
+      "image": "https://mm2values.com/img/CaneGun.png"
+    },
+    {
+      "name": "Cane (Knife)",
+      "value": "x4 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 3,
+      "origin": "Xmas 2015 (Unboxed)",
+      "image": "https://mm2values.com/img/CaneKnife.png"
+    },
+    {
+      "name": "Ginger (Gun)",
+      "value": "x4 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 3,
+      "origin": "Xmas 2015 (Unboxed)",
+      "image": "https://mm2values.com/img/GingerGun.png"
+    },
+    {
+      "name": "Ginger (Knife)",
+      "value": "x4 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 3,
+      "origin": "Xmas 2015 (Unboxed)",
+      "image": "https://mm2values.com/img/GingerKnife.png"
+    },
+    {
+      "name": "Mummy",
+      "value": "x4 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 3,
+      "origin": "Hallows 2015 (Bingo)",
+      "image": "https://mm2values.com/img/Mummy.png"
+    },
+    {
+      "name": "Ghostfire",
+      "value": "x3 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2022 (Tier 18)",
+      "image": "https://mm2values.com/img/Ghostfire.png"
+    },
+    {
+      "name": "Cane 2018 (Gun)",
+      "value": "x3 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2018 (Unboxed)",
+      "image": "https://mm2values.com/img/Cane2018Gun.png"
+    },
+    {
+      "name": "Molten (Gun)",
+      "value": "x3 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Crafting",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/83/MoltenGun.png/revision/latest?cb=20220110024555"
+    },
+    {
+      "name": "Molten (Knife)",
+      "value": "x3 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Crafting",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/dd/Molten_improved.png/revision/latest?cb=20210608230209"
+    },
+    {
+      "name": "Snowy",
+      "value": "x3 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 4,
+      "origin": "Xmas 2017 (Unboxed)",
+      "image": "https://mm2values.com/img/Snowy.png"
+    },
+    {
+      "name": "Wraith (Knife)",
+      "value": "x2 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Hallows 2022 (Tier 13)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/2c/Wraith_Knife_2022.png/revision/latest?cb=20221020190306"
+    },
+    {
+      "name": "Icicles (Knife)",
+      "value": "x2 T1 Legendaries",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Xmas 2018 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/5c/Icicles_knife.png/revision/latest?cb=20190102120952"
+    },
+    {
+      "name": "Butterflies",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Easter 2025 (8 Rare Eggs)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/c1/ButterfliesGun2025.png/revision/latest?cb=20250422011235"
+    },
+    {
+      "name": "Gingerbread (Gun)",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2022 (Tier 15)",
+      "image": "https://mm2values.com/img/GingerbreadGun.png"
+    },
+    {
+      "name": "Heart",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Valentine's 2023 (Tier 4)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/77/Heart2023.png/revision/latest?cb=20230202230054"
+    },
+    {
+      "name": "Neon [XMAS2023]",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2023 (Tier 17)",
+      "image": "https://mm2values.com/img/NeonXMAS2023.png"
+    },
+    {
+      "name": "Nuke",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Easter 2023 Bingo",
+      "image": "https://mm2values.com/img/Nuke.png"
+    },
+    {
+      "name": "Painted (Knife)",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Easter 2023 (Tier 4)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/a3/Eggs.png/revision/latest?cb=20250419111212"
+    },
+    {
+      "name": "Candleflame (Gun)",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2024 (Tier 17)",
+      "image": "https://mm2values.com/img/CandleflameGun.png"
+    },
+    {
+      "name": "Damp",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Crafting",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/02/Damp_improved.png/revision/latest?cb=20210613174124"
+    },
+    {
+      "name": "Frostflame (Knife)",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2024 (Tier 17)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/9b/Frostflame2024.png/revision/latest?cb=20241221022324"
+    },
+    {
+      "name": "Ghastly (Knife)",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2023 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/55/Ghastly.png/revision/latest?cb=20231018004612"
+    },
+    {
+      "name": "Logcutter",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2024 (Tier 15)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/00/Logcutter2024.png/revision/latest?cb=20241221022309"
+    },
+    {
+      "name": "Nether",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Crafting",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/86/Nether_improved.png/revision/latest?cb=20210613174250"
+    },
+    {
+      "name": "Spitfire",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Crafting",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/ac/Spitfire_improved.png/revision/latest?cb=20210609231020"
+    },
+    {
+      "name": "Watcher (Knife)",
+      "value": "x1 T1 Legendary",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2021 (Unboxed)",
+      "image": "https://mm2values.com/img/WatcherKnife.png"
+    },
+    {
+      "name": "Tree (2023)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2023 (Tier 15)",
+      "image": "https://mm2values.com/img/Tree2023.png"
+    },
+    {
+      "name": "Tree (Knife)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 3,
+      "origin": "Xmas 2022 (Tier 17)",
+      "image": "https://mm2values.com/img/TreeKnife.png"
+    },
+    {
+      "name": "Bio",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Easter 2023 Bingo",
+      "image": "https://mm2values.com/img/Bio.png"
+    },
+    {
+      "name": "Bones (Knife)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2020 (Unboxed)",
+      "image": "https://mm2values.com/img/BonesKnife.png"
+    },
+    {
+      "name": "Curse",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2022 (Unboxed)",
+      "image": "https://mm2values.com/img/Curse.png"
+    },
+    {
+      "name": "Frostflame (Gun)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2024 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/24/FrostflameGun2024.png/revision/latest?cb=20241221022655"
+    },
+    {
+      "name": "Ghosts (Gun)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2020 (Tier 24)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/cf/Ghosts_Gun.png/revision/latest?cb=20210223192409"
+    },
+    {
+      "name": "Gingerbread (Knife)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2022 (Unboxed)",
+      "image": "https://mm2values.com/img/GingerbreadKnife.png"
+    },
+    {
+      "name": "Gingercookie (Gun)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2025 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/4d/GingercookieGun2025.png/revision/latest?cb=20260101120412"
+    },
+    {
+      "name": "Gingercookie (Knife)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2025 (Tier 26)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/7d/GingercookieKnife2025.png/revision/latest?cb=20260101120412"
+    },
+    {
+      "name": "Hologram (Gun)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2025 (Tier 19)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/74/Halloween2025Candies.webp/revision/latest?cb=20251019000630"
+    },
+    {
+      "name": "Ice Camo",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2021 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/e3/IceCamoGun.png/revision/latest?cb=20221109075803"
+    },
+    {
+      "name": "Magma (Knife)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2021 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/6d/AAEFF911-33CD-472E-B5AE-9BC6DB8AFFB0.png/revision/latest?cb=20211029110237"
+    },
+    {
+      "name": "Pop Art (Knife)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Summer 2025 (Tier 19)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1b/Beach_Ball.png/revision/latest?cb=20230705094929"
+    },
+    {
+      "name": "Sharky",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Summer 2024 (Tier 7)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1b/Beach_Ball.png/revision/latest?cb=20230705094929"
+    },
+    {
+      "name": "Spearmint (Gun)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2025 (Tier 20)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/2a/SpearmintGun2025.png/revision/latest?cb=20260101120412"
+    },
+    {
+      "name": "Spearmint (Knife)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2025 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/74/SpearmintKnife2025.png/revision/latest?cb=20260101120412"
+    },
+    {
+      "name": "Spring",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Easter 2024 (Tier 5)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/a3/Eggs.png/revision/latest?cb=20250419111212"
+    },
+    {
+      "name": "Storm",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2024 (Tier 15)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/9f/Halloween2024Candies.png/revision/latest?cb=20241030160202"
+    },
+    {
+      "name": "Sunny",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Easter 2025 (Tier 4)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/9d/Eggs_2025.png/revision/latest?cb=20250419104516"
+    },
+    {
+      "name": "Tropical",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Summer 2025 (Tier 21)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1b/Beach_Ball.png/revision/latest?cb=20230705094929"
+    },
+    {
+      "name": "Wraith (Gun)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2022 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/3/32/Wraith_Gun_2022.png/revision/latest?cb=20221020031521"
+    },
+    {
+      "name": "Xeno (Knife)",
+      "value": "x3 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2025 (Tier 21)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/74/Halloween2025Candies.webp/revision/latest?cb=20251019000630"
+    },
+    {
+      "name": "Hologram (Knife)",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2025 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/ca/HologramKnife2025.png/revision/latest?cb=20251019103228"
+    },
+    {
+      "name": "Neon [SUMMER2025]",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Summer 2025 (Unboxed)",
+      "image": "https://mm2values.com/img/NeonSUMMER2025.png"
+    },
+    {
+      "name": "Pop Art (Gun)",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Summer 2025 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/1/1b/Beach_Ball.png/revision/latest?cb=20230705094929"
+    },
+    {
+      "name": "Portal (Knife)",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2020 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/09/5866444722.png/revision/latest?cb=20210204082959"
+    },
+    {
+      "name": "Robot",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Easter 2024 (8 Rare Eggs)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/a3/Eggs.png/revision/latest?cb=20250419111212"
+    },
+    {
+      "name": "Tree (Gun)",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Xmas 2022 (Unboxed)",
+      "image": "https://mm2values.com/img/TreeGun.png"
+    },
+    {
+      "name": "Xeno (Gun)",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 2,
+      "origin": "Hallows 2025 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d6/XenoGun2025.png/revision/latest?cb=20251019103237"
+    },
+    {
+      "name": "Heartbreak",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Valentine 2026 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/5c/Diamond_icon.png/revision/latest?cb=20230706111737"
+    },
+    {
+      "name": "Kraken",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Hallows 2024 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d3/Kraken.png/revision/latest?cb=20241017225131"
+    },
+    {
+      "name": "Ritual",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Hallows 2024 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/70/Ritual.png/revision/latest?cb=20241017225325"
+    },
+    {
+      "name": "Snowflake",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Xmas 2023 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/fb/Nevergonnagiveyouupnevergonnaletyoudown.png/revision/latest?cb=20250831063002"
+    },
+    {
+      "name": "Snowglobe",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Xmas 2023 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/3/36/Snowglobe.png/revision/latest?cb=20240105165014"
+    },
+    {
+      "name": "Yummy",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 2,
+      "origin": "Valentine 2026 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/5c/Diamond_icon.png/revision/latest?cb=20230706111737"
+    },
+    {
+      "name": "Floral (Gun)",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Summer 2024 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/e7/FloralRare.png/revision/latest?cb=20240710004527"
+    },
+    {
+      "name": "Sleigh",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Xmas 2024 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/e5/Sleigh2024.png/revision/latest?cb=20241221022717"
+    },
+    {
+      "name": "Waves",
+      "value": "x2 T1 Rares",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Summer 2024 (Unboxed)",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/5/5b/OceanBundleBanner.jpg/revision/latest?cb=20230822060427"
+    }
+  ],
+  "Tier 1": [
+    {
+      "name": "Black",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 2,
+      "rarity": 1,
+      "origin": "Rainbow Box",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/8b/Black_improved.png/revision/latest?cb=20210608214515"
+    },
+    {
+      "name": "Abstract",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 5",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/6/6f/Abstract_improved.png/revision/latest?cb=20210613153903"
+    },
+    {
+      "name": "Ace",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Gun Box 3",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/28/Ace_Icon.png/revision/latest?cb=20201025085636"
+    },
+    {
+      "name": "Bacon",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Gun Box 3",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b1/Png_%285%29.png/revision/latest?cb=20201025091014"
+    },
+    {
+      "name": "Galactic",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Gun Box 1",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/9a/Galactic_improved.png/revision/latest?cb=20210609232507"
+    },
+    {
+      "name": "Galaxy",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 1",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/86/Galaxy_improved.png/revision/latest?cb=20210613174033"
+    },
+    {
+      "name": "Hacker",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Gun Box 2",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/27/Hacker_improved.png/revision/latest?cb=20210612175628"
+    },
+    {
+      "name": "Imbued",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Gun Box 1",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/ae/ImbuedGun.png/revision/latest?cb=20201209193546"
+    },
+    {
+      "name": "iRevolver",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Gun Box 2",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/80/IRevolverIRevolver.png/revision/latest?cb=20201025090640"
+    },
+    {
+      "name": "Korblox",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 4",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/3/39/Gfhjyhu.png/revision/latest?cb=20200227151442"
+    },
+    {
+      "name": "Krypto",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 2",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/88/KryptoKnife.png/revision/latest?cb=20220716224904"
+    },
+    {
+      "name": "Musical",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 5",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/05/Musical_improved.png/revision/latest?cb=20210613000900"
+    },
+    {
+      "name": "Nightfire",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Mystery Box #2",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b1/NightfireUpdated.png/revision/latest?cb=20211006003001"
+    },
+    {
+      "name": "Nova",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 3",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d9/NovaUnreleased.png/revision/latest?cb=20220915113200"
+    },
+    {
+      "name": "Purple",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Rainbow Box",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/7/79/Purple_improved.png/revision/latest?cb=20210612180202"
+    },
+    {
+      "name": "Rainbow (Gun)",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Mystery Box #1",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f8/Rainbowgun.png/revision/latest?cb=20201201210150"
+    },
+    {
+      "name": "Rainbow (Knife)",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 1",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/c/c9/ERT_H.png/revision/latest?cb=20200227150916"
+    },
+    {
+      "name": "Space",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Mystery Box #1",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/2/27/Space.png/revision/latest?cb=20201201210014"
+    },
+    {
+      "name": "Spectrum",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 2",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/4/4d/Spectrum_improved.png/revision/latest?cb=20210612213051"
+    },
+    {
+      "name": "Squire",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 4",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/a7/Squire_improved.png/revision/latest?cb=20210613153500"
+    },
+    {
+      "name": "Vortex",
+      "value": "x4 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Knife Box 3",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/a/ae/Vortex_improved.png/revision/latest?cb=20210612152603"
+    },
+    {
+      "name": "Deep Sea",
+      "value": "x3 T1 Uncommons",
+      "stability": "Stable Item Stability",
+      "demand": 1,
+      "rarity": 1,
+      "origin": "Mystery Box #2",
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d7/DeepSeaUpdated.png/revision/latest?cb=20211006002926"
+    }
+  ]
+}

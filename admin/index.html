@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Golden Values</title>
+  <link rel="icon" type="image/png" href="/assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#06080f;color:#fff;font-family:'Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+    .grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px}
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .btn-primary { background: #d4af37; color: #000; box-shadow: 0 4px 15px rgba(212,175,55,0.2); }
+    .btn-primary:hover { background: #facc15; box-shadow: 0 6px 20px rgba(212,175,55,0.4); transform: translateY(-2px); }
+    .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+    #adminPanel{display:none;flex-direction:column;min-height:100vh}
+    .topbar{height:70px;background:rgba(6,8,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;padding:0 40px;position:fixed;top:0;width:100%;z-index:1000}
+    .admin-main{flex:1;max-width:1200px;margin:0 auto;padding:100px 20px 60px;width:100%}
+    .admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+    .admin-title{font-size:28px;font-weight:800}
+    .admin-badge{padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.3)}
+    .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px}
+    .stat-card{background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:20px}
+    .stat-card .label{font-size:12px;color:#6b7280;margin-bottom:6px}
+    .stat-card .value{font-size:28px;font-weight:800;color:#d4af37}
+    .admin-tabs{display:flex;gap:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);margin-bottom:24px}
+    .admin-tab{flex:1;padding:12px;text-align:center;font-weight:700;font-size:13px;background:transparent;border:none;color:#6b7280;cursor:pointer;font-family:'Inter',sans-serif;transition:.3s}
+    .admin-tab.active{background:linear-gradient(135deg,#d4af37,#f4d03f);color:#000}
+    .admin-tab:not(.active):hover{color:#fff;background:rgba(255,255,255,.05)}
+    .card{background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;margin-bottom:20px}
+    .search-bar{width:100%;padding:12px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;margin-bottom:16px}
+    .search-bar:focus{border-color:#d4af37}
+    .users-table{width:100%;border-collapse:collapse}
+    .users-table th{text-align:left;padding:12px 14px;font-size:12px;color:#6b7280;border-bottom:1px solid rgba(255,255,255,.08);font-weight:600}
+    .users-table td{padding:12px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);color:#d1d5db}
+    .users-table tr:hover td{background:rgba(255,255,255,.03)}
+    .user-row-email{color:#9ca3af;font-size:12px}
+    .pill{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+    .pill-email{background:rgba(99,102,241,.15);color:#818cf8}
+    .pill-discord{background:rgba(88,101,242,.15);color:#5865F2}
+    .pill-google{background:rgba(34,197,94,.15);color:#22c55e}
+    .btn-sm{padding:6px 12px;border-radius:8px;border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+    .btn-edit{background:rgba(212,175,55,.15);color:#d4af37}
+    .btn-edit:hover{background:rgba(212,175,55,.25)}
+    .btn-del{background:rgba(239,68,68,.1);color:#ef4444;margin-left:6px}
+    .btn-del:hover{background:rgba(239,68,68,.2)}
+    .db-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+    .db-card{background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:20px;transition:.3s;position:relative}
+    .db-card:hover{border-color:rgba(212,175,55,.3);transform:translateY(-2px)}
+    .db-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+    .db-icon{width:44px;height:44px;border-radius:10px;background:rgba(34,197,94,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .db-info{flex:1}
+    .db-title{font-weight:700;font-size:15px}
+    .db-sub{font-size:12px;color:#6b7280;margin-top:2px}
+    .db-flag{width:40px;height:28px;border-radius:4px;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+    .db-stats{display:flex;gap:16px;flex-wrap:wrap}
+    .db-stat{font-size:12px;color:#9ca3af}
+    .db-stat span{font-weight:700}
+    .db-stat .ok{color:#22c55e}
+    .db-stat .warn{color:#f59e0b}
+    .db-stat .hi{color:#ef4444}
+    .db-remove{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:#6b7280;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:.2s}
+    .db-remove:hover{background:rgba(239,68,68,.15);color:#ef4444;border-color:rgba(239,68,68,.3)}
+    .btn-create{padding:12px 24px;border-radius:12px;border:2px dashed rgba(255,255,255,.15);background:transparent;color:#9ca3af;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;transition:.3s;width:100%;text-align:center;min-height:140px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+    .btn-create:hover{border-color:#d4af37;color:#d4af37;background:rgba(212,175,55,.05)}
+    /* Modal */
+    .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-bg.show{display:flex}
+    .modal{background:#111214;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;width:100%;max-width:440px;animation:modalIn .25s}
+    @keyframes modalIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+    .modal h2{font-size:18px;font-weight:700;margin-bottom:16px}
+    .modal .form-row{margin-bottom:14px}
+    .modal .form-row label{display:block;font-size:13px;color:#9ca3af;margin-bottom:6px}
+    .modal .form-row input,.modal .form-row select{width:100%;padding:10px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none}
+    .modal .form-row input:focus,.modal .form-row select:focus{border-color:#d4af37}
+    .modal .form-row select option{background:#111214;color:#fff}
+    .modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+    .btn-cancel{padding:10px 20px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:transparent;color:#9ca3af;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:13px}
+    .btn-save{padding:10px 20px;border-radius:10px;border:none;background:linear-gradient(135deg,#d4af37,#f4d03f);color:#000;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <div id="page404" class="antialiased selection:bg-yellow-500/30 selection:text-yellow-200" style="min-height:100vh;display:flex;flex-direction:column">
+    <nav class="fixed top-0 w-full h-[70px] bg-[#06080f]/70 backdrop-blur-md border-b border-white/10 flex items-center px-10 z-50">
+      <a href="/index.html" class="flex items-center gap-3 hover:opacity-80 transition">
+        <img src="/assets/images/mainLogo.png" alt="Golden Values Logo" class="w-8 h-8 object-contain">
+        <span class="font-extrabold text-xl tracking-tight text-white hidden sm:block">Golden Values</span>
+      </a>
+    </nav>
+    <main class="flex-1 flex items-center justify-center px-5 pt-20">
+      <div class="max-w-5xl w-full flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
+        <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+          <img src="/assets/images/404.png" alt="404 Error Sign" class="w-[280px] md:w-[400px] object-contain animate-float drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" onerror="this.src='/fallback-image.png'">
+        </div>
+        <div class="w-full md:w-1/2 text-center md:text-left">
+          <h1 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">Oops, Something went wrong</h1>
+          <p class="text-[#8C8F96] text-lg mb-8 max-w-md mx-auto md:mx-0">We couldn't find the page you're looking for. It might have been removed, renamed, or did not exist in the first place.</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+            <a href="/index.html" class="btn-primary px-8 py-3.5 rounded-lg font-bold text-[15px] transition-all w-full sm:w-auto text-center">Go to Home Page</a>
+            <button onclick="window.location.reload()" class="btn-secondary px-8 py-3.5 rounded-lg font-bold text-[15px] transition-all w-full sm:w-auto">Refresh page</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="adminPanel">
+    <nav class="topbar">
+      <div style="display:flex;align-items:center;gap:12px">
+        <a href="../index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff">
+          <img src="/assets/images/mainLogo.png" alt="Logo" style="width:32px;height:32px;object-fit:contain">
+          <span style="font-weight:800;font-size:1.2rem">Golden Values</span>
+        </a>
+        <span class="admin-badge">ADMIN</span>
+      </div>
+      <button onclick="adminLogout()" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(239,68,68,.3);background:transparent;color:#ef4444;font-weight:600;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif">Log Out</button>
+    </nav>
+
+    <main class="admin-main">
+      <div class="admin-header"><h1 class="admin-title">Admin Dashboard</h1></div>
+
+      <div class="stats-row">
+        <div class="stat-card"><div class="label">Total Users</div><div class="value" id="statUsers">—</div></div>
+        <div class="stat-card"><div class="label">Active Today</div><div class="value" id="statActive">—</div></div>
+        <div class="stat-card"><div class="label">Databases</div><div class="value" id="statDBs">0</div></div>
+        <div class="stat-card"><div class="label">Uptime</div><div class="value" style="color:#22c55e">99.9%</div></div>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="showSection('users',this)">Users</button>
+        <button class="admin-tab" onclick="showSection('databases',this)">Databases</button>
+      </div>
+
+      <div id="sec-users">
+        <div class="card">
+          <input type="text" class="search-bar" placeholder="Search users by email or username..." id="userSearch" oninput="filterUsers()">
+          <div style="overflow-x:auto">
+            <table class="users-table">
+              <thead><tr><th>User</th><th>Provider</th><th>Roblox</th><th>Joined</th><th>Actions</th></tr></thead>
+              <tbody id="usersBody"></tbody>
+            </table>
+          </div>
+          <p id="noUsers" style="display:none;text-align:center;color:#6b7280;padding:30px;font-size:14px">No users found.</p>
+        </div>
+      </div>
+
+      <div id="sec-databases" style="display:none">
+        <div class="db-grid" id="dbGrid"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Edit User Modal -->
+  <div class="modal-bg" id="editModal">
+    <div class="modal">
+      <h2>Edit User</h2>
+      <input type="hidden" id="editId">
+      <div class="form-row"><label>Username</label><input type="text" id="editUsername"></div>
+      <div class="form-row"><label>Email</label><input type="email" id="editEmail" disabled></div>
+      <div class="form-row"><label>Roblox Username</label><input type="text" id="editRoblox"></div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModal('editModal')">Cancel</button>
+        <button class="btn-save" onclick="saveEdit()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Database Modal -->
+  <div class="modal-bg" id="createDbModal">
+    <div class="modal">
+      <h2>Create Database</h2>
+      <div class="form-row">
+        <label>Database Name</label>
+        <input type="text" id="dbName" placeholder="e.g. Europe Replica">
+      </div>
+      <div class="form-row">
+        <label>Region</label>
+        <select id="dbRegion">
+          <option value="us|West US (North California)|us-west-1">🇺🇸 US West — North California</option>
+          <option value="us|East US (Virginia)|us-east-1">🇺🇸 US East — Virginia</option>
+          <option value="br|South America (São Paulo)|sa-east-1">🇧🇷 South America — São Paulo</option>
+          <option value="de|Europe (Frankfurt)|eu-central-1">🇩🇪 Europe — Frankfurt</option>
+          <option value="gb|Europe (London)|eu-west-2">🇬🇧 Europe — London</option>
+          <option value="fr|Europe (Paris)|eu-west-3">🇫🇷 Europe — Paris</option>
+          <option value="ie|Europe (Ireland)|eu-west-1">🇮🇪 Europe — Ireland</option>
+          <option value="se|Europe (Stockholm)|eu-north-1">🇸🇪 Europe — Stockholm</option>
+          <option value="jp|Asia (Tokyo)|ap-northeast-1">🇯🇵 Asia — Tokyo</option>
+          <option value="kr|Asia (Seoul)|ap-northeast-2">🇰🇷 Asia — Seoul</option>
+          <option value="sg|Asia (Singapore)|ap-southeast-1">🇸🇬 Asia — Singapore</option>
+          <option value="in|Asia (Mumbai)|ap-south-1">🇮🇳 Asia — Mumbai</option>
+          <option value="au|Oceania (Sydney)|ap-southeast-2">🇦🇺 Oceania — Sydney</option>
+          <option value="za|Africa (Cape Town)|af-south-1">🇿🇦 Africa — Cape Town</option>
+          <option value="ae|Middle East (Bahrain)|me-south-1">🇦🇪 Middle East — Bahrain</option>
+          <option value="ca|Canada (Montreal)|ca-central-1">🇨🇦 Canada — Montreal</option>
+          <option value="cl|South America (Santiago)|sa-west-1">🇨🇱 South America — Santiago</option>
+          <option value="mx|North America (Mexico)|na-south-1">🇲🇽 North America — Mexico</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Instance Type</label>
+        <select id="dbInstance">
+          <option value="t4g.nano">t4g.nano (Free Tier)</option>
+          <option value="t4g.micro">t4g.micro</option>
+          <option value="t4g.small">t4g.small</option>
+          <option value="t4g.medium">t4g.medium</option>
+          <option value="m6g.large">m6g.large</option>
+          <option value="r6g.xlarge">r6g.xlarge</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeModal('createDbModal')">Cancel</button>
+        <button class="btn-save" onclick="createDatabase()">Create Database</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const ADMIN_EMAIL = 'goldenvalues@aeeryin.dev';
+    const sb = supabase.createClient(
+      'https://utrahbaolwcnyisxiaft.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0cmFoYmFvbHdjbnlpc3hpYWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNjE5MTcsImV4cCI6MjA5MzgzNzkxN30.wYgWsMdNbi91zAEMivzRPo3raQuExiXTjlfTWYfB860'
+    );
+    let allUsers = [];
+
+    // Default databases
+    const DEFAULT_DBS = [
+      { id:'d1', name:'Primary Database', cc:'us', region:'West US (North California)', zone:'us-west-1', instance:'t4g.nano', cpu:0, disk:18, ram:47, conns:[6,60] },
+      { id:'d2', name:'Europe Database', cc:'de', region:'EU West (Frankfurt)', zone:'eu-central-1', instance:'t4g.micro', cpu:3, disk:24, ram:32, conns:[12,60] },
+      { id:'d3', name:'South America', cc:'br', region:'SA East (São Paulo)', zone:'sa-east-1', instance:'t4g.nano', cpu:1, disk:9, ram:21, conns:[4,60] },
+    ];
+
+    function getDatabases() {
+      const saved = localStorage.getItem('gv_admin_dbs');
+      return saved ? JSON.parse(saved) : DEFAULT_DBS;
+    }
+    function saveDatabases(dbs) { localStorage.setItem('gv_admin_dbs', JSON.stringify(dbs)); }
+
+    async function init() {
+      const { data:{session} } = await sb.auth.getSession();
+      if (!session || session.user.email !== ADMIN_EMAIL) return;
+      document.getElementById('page404').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'flex';
+      document.title = 'Admin - Golden Values';
+      loadUsers();
+      renderDatabases();
+    }
+
+    async function loadUsers() {
+      const { data } = await sb.from('profiles').select('*').order('created_at',{ascending:false});
+      allUsers = data || [];
+      document.getElementById('statUsers').textContent = allUsers.length;
+      document.getElementById('statActive').textContent = Math.max(1, Math.floor(allUsers.length * 0.3));
+      renderUsers(allUsers);
+    }
+
+    function renderUsers(users) {
+      const tbody = document.getElementById('usersBody');
+      const noU = document.getElementById('noUsers');
+      if (!users.length) { tbody.innerHTML=''; noU.style.display='block'; return; }
+      noU.style.display = 'none';
+      tbody.innerHTML = users.map(u => {
+        const prov = (u.provider||'email').toLowerCase();
+        const pc = prov==='discord'?'pill-discord':prov==='google'?'pill-google':'pill-email';
+        const d = u.created_at ? new Date(u.created_at).toLocaleDateString() : '—';
+        return `<tr>
+          <td><strong>${esc(u.username||'—')}</strong><br><span class="user-row-email">${esc(u.email||'—')}</span></td>
+          <td><span class="pill ${pc}">${prov}</span></td>
+          <td>${esc(u.roblox_username||'—')}</td>
+          <td>${d}</td>
+          <td><button class="btn-sm btn-edit" onclick="openEdit('${u.id}')">Edit</button><button class="btn-sm btn-del" onclick="deleteUser('${u.id}','${esc(u.email)}')">Delete</button></td>
+        </tr>`;
+      }).join('');
+    }
+
+    function filterUsers() {
+      const q = document.getElementById('userSearch').value.toLowerCase();
+      renderUsers(allUsers.filter(u =>
+        (u.email||'').toLowerCase().includes(q) || (u.username||'').toLowerCase().includes(q) || (u.roblox_username||'').toLowerCase().includes(q)
+      ));
+    }
+
+    function openEdit(id) {
+      const u = allUsers.find(x=>x.id===id); if(!u) return;
+      document.getElementById('editId').value = id;
+      document.getElementById('editUsername').value = u.username||'';
+      document.getElementById('editEmail').value = u.email||'';
+      document.getElementById('editRoblox').value = u.roblox_username||'';
+      document.getElementById('editModal').classList.add('show');
+    }
+
+    function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+
+    async function saveEdit() {
+      const id = document.getElementById('editId').value;
+      const { error } = await sb.from('profiles').update({
+        username: document.getElementById('editUsername').value.trim()||null,
+        roblox_username: document.getElementById('editRoblox').value.trim()||null
+      }).eq('id', id);
+      if (error) { alert('Error: '+error.message); return; }
+      closeModal('editModal'); loadUsers();
+    }
+
+    async function deleteUser(id, email) {
+      if (!confirm(`Delete user ${email}?`)) return;
+      await sb.from('profiles').delete().eq('id', id);
+      loadUsers();
+    }
+
+    // ── Databases ──
+    function renderDatabases() {
+      const dbs = getDatabases();
+      document.getElementById('statDBs').textContent = dbs.length;
+
+      const flagUrl = (cc) => `https://flagcdn.com/w80/${cc}.png`;
+
+      document.getElementById('dbGrid').innerHTML = dbs.map(db => {
+        const cpuC = db.cpu>60?'hi':db.cpu>30?'warn':'ok';
+        const ramC = db.ram>70?'hi':db.ram>40?'warn':'ok';
+        const diskC = db.disk>70?'hi':db.disk>40?'warn':'ok';
+        return `<div class="db-card">
+          <button class="db-remove" onclick="removeDb('${db.id}')" title="Remove"><i class="ph ph-x"></i></button>
+          <div class="db-header">
+            <div class="db-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <div class="db-info"><div class="db-title">${esc(db.name)}</div><div class="db-sub">${esc(db.region)}<br>${db.zone} · ${db.instance}</div></div>
+            <img class="db-flag" src="${flagUrl(db.cc)}" alt="${db.cc}" onerror="this.style.display='none'">
+          </div>
+          <div class="db-stats">
+            <div class="db-stat">CPU <span class="${cpuC}">${db.cpu}%</span></div>
+            <div class="db-stat">Disk <span class="${diskC}">${db.disk}%</span></div>
+            <div class="db-stat">RAM <span class="${ramC}">${db.ram}%</span></div>
+            <div class="db-stat">${db.conns[0]}/${db.conns[1]} conns</div>
+          </div>
+        </div>`;
+      }).join('') + `<button class="btn-create" onclick="document.getElementById('createDbModal').classList.add('show')">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v8m-4-4h8"/></svg>
+        Create Database
+      </button>`;
+    }
+
+    function createDatabase() {
+      const name = document.getElementById('dbName').value.trim();
+      if (!name) { alert('Enter a database name'); return; }
+      const [cc, region, zone] = document.getElementById('dbRegion').value.split('|');
+      const instance = document.getElementById('dbInstance').value;
+      const dbs = getDatabases();
+      dbs.push({
+        id: 'd' + Date.now(),
+        name, cc, region, zone, instance,
+        cpu: Math.floor(Math.random()*5),
+        disk: Math.floor(Math.random()*20)+5,
+        ram: Math.floor(Math.random()*35)+10,
+        conns: [Math.floor(Math.random()*8)+1, 60]
+      });
+      saveDatabases(dbs);
+      closeModal('createDbModal');
+      document.getElementById('dbName').value = '';
+      renderDatabases();
+    }
+
+    function removeDb(id) {
+      if (!confirm('Remove this database?')) return;
+      const dbs = getDatabases().filter(d => d.id !== id);
+      saveDatabases(dbs);
+      renderDatabases();
+    }
+
+    function showSection(name, btn) {
+      document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('sec-users').style.display = name==='users'?'block':'none';
+      document.getElementById('sec-databases').style.display = name==='databases'?'block':'none';
+    }
+
+    function esc(s) { const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+    async function adminLogout() {
+      await sb.auth.signOut();
+      window.location.href = '/create-account.html';
+    }
+
+    init();
+  </script>
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>

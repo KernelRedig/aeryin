@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topics - Golden Values</title>
+  <link rel="icon" type="image/png" href="/assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#06080f;color:#fff;font-family:'Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+    .grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px}
+    .topbar{height:70px;background:rgba(6,8,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;padding:0 40px;position:fixed;top:0;width:100%;z-index:1000}
+    .main{flex:1;max-width:800px;margin:0 auto;padding:100px 20px 60px;width:100%}
+    .page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+    .page-title{font-size:28px;font-weight:800}
+    .btn{padding:12px 24px;border-radius:10px;border:none;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:.3s}
+    .btn-gold{background:linear-gradient(135deg,#d4af37,#f4d03f);color:#000}
+    .btn-gold:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(212,175,55,.3)}
+    .topic-card{background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;margin-bottom:12px;cursor:pointer;transition:.2s}
+    .topic-card:hover{border-color:rgba(212,175,55,.5);transform:translateX(4px)}
+    .topic-title{font-size:18px;font-weight:700;margin-bottom:6px;color:#e5e7eb}
+    .topic-preview{font-size:14px;color:#9ca3af;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .topic-meta{font-size:12px;color:#6b7280;display:flex;gap:16px}
+    .topic-meta span{display:flex;align-items:center;gap:4px}
+    .empty-state{text-align:center;padding:60px 20px;color:#6b7280}
+    .empty-state h3{font-size:20px;margin-bottom:8px;color:#9ca3af}
+    .login-prompt{text-align:center;padding:40px;background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:16px}
+    .login-prompt a{color:#d4af37}
+    .new-topic-form{background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;margin-bottom:24px;display:none}
+    .new-topic-form.show{display:block}
+    .form-group{margin-bottom:16px}
+    .form-group label{display:block;font-size:13px;color:#9ca3af;margin-bottom:6px}
+    .form-group input,.form-group textarea{width:100%;padding:12px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:.3s}
+    .form-group input:focus,.form-group textarea:focus{border-color:#d4af37}
+    .form-group textarea{min-height:100px;resize:vertical}
+    .form-actions{display:flex;gap:12px}
+    .btn-cancel{background:rgba(255,255,255,.07);color:#9ca3af;border:1px solid rgba(255,255,255,.1)}
+    .back-link{color:#9ca3af;text-decoration:none;font-size:14px;transition:.2s}
+    .back-link:hover{color:#fff}
+    .loading{position:fixed;inset:0;background:#06080f;z-index:9999;display:flex;align-items:center;justify-content:center}
+    .spinner{width:40px;height:40px;border:3px solid rgba(255,255,255,.1);border-top-color:#d4af37;border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="loading" id="loading"><div class="spinner"></div></div>
+  <nav class="topbar">
+    <a href="/" class="flex items-center gap-3" style="text-decoration:none;color:#fff">
+      <img src="/assets/images/mainLogo.png" alt="Logo" class="w-8 h-8 object-contain"><span class="font-extrabold text-xl">Golden Values</span>
+    </a>
+    <a href="/" class="back-link"><i class="ph ph-arrow-left"></i> Back</a>
+  </nav>
+  <main class="main" id="mainContent" style="display:none">
+    <div class="page-header">
+      <h1 class="page-title">Topics</h1>
+      <button class="btn btn-gold" id="newTopicBtn" onclick="toggleNewTopic()">+ New Topic</button>
+    </div>
+
+    <div class="new-topic-form" id="newTopicForm">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" id="topicTitle" placeholder="What's this about?" maxlength="100">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="topicMessage" placeholder="Share your thoughts..." maxlength="2000"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-gold" onclick="createTopic()">Post Topic</button>
+        <button class="btn btn-cancel" onclick="toggleNewTopic()">Cancel</button>
+      </div>
+    </div>
+
+    <div id="topicsList"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/navbar-auth.js"></script>
+  <script>
+    const sb = window.__gvSupabase || supabase.createClient('https://utrahbaolwcnyisxiaft.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0cmFoYmFvbHdjbnlpc3hpYWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNjE5MTcsImV4cCI6MjA5MzgzNzkxN30.wYgWsMdNbi91zAEMivzRPo3raQuExiXTjlfTWYfB860');
+    
+    let currentUser = null;
+    let topics = [];
+
+    async function init() {
+      const { data: { session } } = await sb.auth.getSession();
+      currentUser = session?.user || null;
+
+      if (!currentUser) {
+        document.getElementById('newTopicBtn').style.display = 'none';
+      }
+
+      await loadTopics();
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+    }
+
+    async function loadTopics() {
+      try {
+        const { data, error } = await sb
+          .from('topics')
+          .select('id, user_id, title, message, created_at, reply_count')
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error('Topics table error:', error);
+          document.getElementById('topicsList').innerHTML = `
+            <div class="empty-state">
+              <h3>Topics not available</h3>
+              <p>The topics system needs database tables. Please contact the administrator.</p>
+              <p style="font-size:12px;color:#6b7280;margin-top:10px">Error: ${error.message}</p>
+            </div>
+          `;
+          return;
+        }
+
+        topics = data || [];
+        
+        // Get unique user IDs and fetch profiles
+        const userIds = [...new Set(topics.map(t => t.user_id))];
+        if (userIds.length > 0) {
+          const { data: profiles } = await sb
+            .from('profiles')
+            .select('id, username, avatar_url')
+            .in('id', userIds);
+          
+          const profileMap = {};
+          (profiles || []).forEach(p => { profileMap[p.id] = p; });
+          
+          topics = topics.map(t => ({
+            ...t,
+            profiles: profileMap[t.user_id] || { username: 'Unknown', avatar_url: null }
+          }));
+        }
+        
+        renderTopics();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderTopics() {
+      const container = document.getElementById('topicsList');
+      
+      if (topics.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <h3>No topics yet</h3>
+            <p>Be the first to start a conversation!</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = topics.map(topic => {
+        const author = topic.profiles || {};
+        const date = new Date(topic.created_at).toLocaleDateString();
+        return `
+          <div class="topic-card" onclick="window.location.href='/topics/view?id=${topic.id}'">
+            <div class="topic-title">${escapeHtml(topic.title)}</div>
+            <div class="topic-preview">${escapeHtml(topic.message)}</div>
+            <div class="topic-meta">
+              <span><i class="ph ph-user"></i> ${escapeHtml(author.username || 'Unknown')}</span>
+              <span><i class="ph ph-calendar"></i> ${date}</span>
+              <span><i class="ph ph-chat-circle"></i> ${topic.reply_count || 0} replies</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleNewTopic() {
+      if (!currentUser) {
+        window.location.href = '/create-account';
+        return;
+      }
+      document.getElementById('newTopicForm').classList.toggle('show');
+    }
+
+    async function createTopic() {
+      const title = document.getElementById('topicTitle').value.trim();
+      const message = document.getElementById('topicMessage').value.trim();
+
+      if (!title || title.length < 3) {
+        alert('Title must be at least 3 characters');
+        return;
+      }
+      if (!message || message.length < 10) {
+        alert('Message must be at least 10 characters');
+        return;
+      }
+
+      const { error } = await sb.from('topics').insert({
+        user_id: currentUser.id,
+        title,
+        message
+      });
+
+      if (error) {
+        alert('Error creating topic: ' + error.message);
+        return;
+      }
+
+      document.getElementById('topicTitle').value = '';
+      document.getElementById('topicMessage').value = '';
+      document.getElementById('newTopicForm').classList.remove('show');
+      await loadTopics();
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    init();
+  </script>
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>

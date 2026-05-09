@@ -1,0 +1,583 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trade Checker - Golden Values</title>
+  <meta property="og:title" content="Golden Values - Trade Checker">
+  <meta property="og:description" content="Check if your trade is fair with our advanced trade checker tool.">
+  <meta property="og:image" content="https://goldenvalues.vercel.app/assets/images/LinkEmbed.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://goldenvalues.vercel.app/trade-checker.html">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root { 
+      --theme-color: #d4af37; /* Default to Gold (MM2) */
+      --border: rgba(255, 255, 255, 0.1); 
+    }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #06080f; }
+    ::-webkit-scrollbar-thumb { background: var(--theme-color); border-radius: 4px; transition: background 0.3s; }
+
+    body { 
+      background-color: #06080f; 
+      background-image: linear-gradient(rgba(6, 8, 15, 0.90), rgba(6, 8, 15, 0.95)), url('mm2weapons.webp'); 
+      background-size: cover; background-position: center; background-attachment: fixed; 
+      color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; min-height: 100vh;
+      display: flex; flex-direction: column; overflow-x: hidden;
+      transition: background-image 0.5s ease;
+    }
+
+    .grid-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+
+    /* Game Selector Styling */
+    .game-selector-container {
+      display: flex;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 6px;
+      border: 1px solid var(--border);
+      width: fit-content;
+      margin: 0 auto 2rem auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    
+    .game-btn {
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: #8b8d98;
+      border: none;
+      background: transparent;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .game-btn.active-mm2 {
+      background-color: rgba(212, 175, 55, 0.2);
+      color: #d4af37;
+      box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.5);
+    }
+
+    .game-btn.active-blox {
+      background-color: rgba(0, 191, 255, 0.2);
+      color: #00bfff;
+      box-shadow: inset 0 0 0 1px rgba(0, 191, 255, 0.5);
+    }
+    
+    .game-btn:not([class*="active-"]):hover { color: white; background: rgba(255,255,255,0.05); }
+
+    /* Modal de Seleção */
+    #itemSelector {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .selector-content {
+      background: #0a0c14; border: 1px solid var(--border); border-radius: 24px;
+      width: 100%; max-width: 800px; max-height: 80vh; display: flex; flex-direction: column;
+      box-shadow: 0 0 50px rgba(0,0,0,1), 0 0 30px rgba(var(--theme-color-rgb), 0.1);
+    }
+    
+    .selector-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 16px; padding: 20px; overflow-y: auto;
+    }
+    
+    .selector-grid::-webkit-scrollbar { width: 6px; }
+    .selector-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+
+    .trade-panel { 
+      background: rgba(10, 12, 20, 0.7); 
+      backdrop-filter: blur(10px); 
+      border-radius: 24px; 
+      border: 1px solid var(--border); 
+      min-height: 500px; 
+      display: flex; 
+      flex-direction: column; 
+      transition: all 0.3s ease; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .give-side { border-top: 4px solid #ef4444; }
+    .get-side { border-top: 4px solid #22c55e; }
+
+    .item-card {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+      padding: 12px; border-radius: 16px; margin-bottom: 10px; 
+      animation: slideIn 0.3s ease-out forwards;
+      transition: border-color 0.2s;
+    }
+    .item-card:hover { border-color: rgba(255,255,255,0.1); }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .add-btn {
+      border: 2px dashed rgba(255,255,255,0.15); border-radius: 16px; width: 100%; padding: 20px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      color: rgba(255,255,255,0.4); transition: all 0.3s; cursor: pointer;
+      background: rgba(255,255,255,0.02);
+    }
+    .add-btn:hover { 
+      border-color: var(--theme-color); 
+      color: var(--theme-color); 
+      background: rgba(var(--theme-color-rgb), 0.05); 
+    }
+
+    /* Verdict */
+    .verdict-text { font-size: 4rem; font-weight: 900; line-height: 1; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .win { color: #22c55e; text-shadow: 0 0 20px rgba(34, 197, 94, 0.5); transform: scale(1.1); }
+    .lose { color: #ef4444; text-shadow: 0 0 20px rgba(239, 68, 68, 0.5); transform: scale(1.1); }
+    .fair { color: var(--theme-color); text-shadow: 0 0 20px rgba(var(--theme-color-rgb), 0.5); }
+    
+    /* Loader Spinner */
+    .spinner {
+        border: 3px solid rgba(255,255,255,0.1);
+        border-radius: 50%;
+        border-top: 3px solid var(--theme-color);
+        width: 24px;
+        height: 24px;
+        animation: spin 1s linear infinite;
+        display: none;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+  </style>
+</head>
+<body class="pt-24">
+
+  <div class="grid-bg"></div>
+
+  <nav class="fixed top-0 w-full h-[70px] bg-[#06080f]/80 backdrop-blur-xl border-b border-white/10 flex items-center justify-between px-6 md:px-10 z-[1000]">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="assets/images/mainLogo.png" class="w-8 h-8 object-contain" alt="Logo">
+      <span class="font-black text-xl tracking-tighter hidden sm:block">Golden Values</span>
+    </a>
+    <div class="flex gap-4 md:gap-6 text-sm font-bold text-gray-400">
+      <a href="index.html" class="hover:text-white transition">Home</a>
+      <span class="text-white border-b-2 border-white pb-1">Trade Checker</span>
+    </div>
+  </nav>
+
+  <div id="itemSelector" onclick="closeSelector(event)">
+    <div class="selector-content" onclick="event.stopPropagation()">
+      <div class="p-6 border-b border-white/10 flex justify-between items-center bg-[#0a0c14] rounded-t-3xl">
+        <div>
+          <h2 class="text-xl font-black uppercase tracking-tight text-white">Select Item</h2>
+          <p id="selectorSideText" class="text-xs font-bold text-gray-500 uppercase tracking-widest"></p>
+        </div>
+        <button onclick="closeSelector()" class="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      
+      <div class="p-4 bg-[#0a0c14]">
+        <div class="relative flex items-center gap-3">
+          <div class="relative w-full">
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="dbSearch" oninput="renderSelector()" placeholder="Search by name..." class="w-full bg-white/5 border border-white/10 rounded-2xl py-3 pl-12 pr-4 outline-none focus:border-white/30 transition-all text-white placeholder-gray-500">
+          </div>
+          <div id="dbLoading" class="spinner"></div>
+        </div>
+      </div>
+
+      <div class="selector-grid bg-black/20 flex-1" id="dbGrid">
+        </div>
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 w-full flex-1 pb-10">
+    
+    <div class="text-center mb-8">
+      <h1 class="text-5xl font-black mb-3 text-white tracking-tight">Trade Checker</h1>
+      <p class="text-gray-400 font-medium text-lg">Compare values and see if your trade is a Win, Fair, or Loss.</p>
+    </div>
+
+    <div class="game-selector-container">
+      <button id="btn-game-mm2" onclick="setGameMode('mm2')" class="game-btn active-mm2">MM2</button>
+      <button id="btn-game-blox" onclick="setGameMode('blox')" class="game-btn">Blox Fruits</button>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-11 gap-6 lg:gap-8 items-start">
+      
+      <div class="lg:col-span-4 trade-panel give-side p-5 sm:p-6">
+        <div class="flex justify-between items-end mb-6 border-b border-white/5 pb-4">
+          <div>
+            <h2 class="text-2xl font-black text-red-500 uppercase tracking-tighter">You Give</h2>
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">Your Items</p>
+          </div>
+          <div class="text-right">
+            <p class="text-3xl sm:text-4xl font-black text-white" id="giveTotal">0</p>
+          </div>
+        </div>
+
+        <div id="giveBasket" class="flex-1 overflow-y-auto pr-1" style="max-height: 400px;">
+          </div>
+
+        <div class="mt-4 pt-4 border-t border-white/5">
+          <button onclick="openSelector('give')" class="add-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+            <span class="text-xs font-black uppercase tracking-widest">Add Item</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-3 flex flex-col items-center justify-center py-8 lg:py-20">
+        <p class="text-xs font-black text-gray-500 uppercase tracking-[0.2em] mb-4">Verdict</p>
+        <div id="verdictLabel" class="verdict-text fair text-center">FAIR</div>
+        <div id="diffLabel" class="text-sm font-bold text-gray-300 mt-6 bg-white/5 px-5 py-2 rounded-full uppercase tracking-widest border border-white/5">Difference: 0</div>
+        
+        <button onclick="resetAll()" class="mt-10 group flex items-center gap-2 text-gray-500 hover:text-white transition font-black text-xs uppercase tracking-widest bg-black/40 px-4 py-2 rounded-lg border border-white/5 hover:border-white/20">
+          <svg class="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          Reset
+        </button>
+      </div>
+
+      <div class="lg:col-span-4 trade-panel get-side p-5 sm:p-6">
+        <div class="flex justify-between items-end mb-6 border-b border-white/5 pb-4">
+          <div>
+            <h2 class="text-2xl font-black text-green-500 uppercase tracking-tighter">They Give</h2>
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mt-1">Their Items</p>
+          </div>
+          <div class="text-right">
+            <p class="text-3xl sm:text-4xl font-black text-white" id="getTotal">0</p>
+          </div>
+        </div>
+
+        <div id="getBasket" class="flex-1 overflow-y-auto pr-1" style="max-height: 400px;">
+           </div>
+
+        <div class="mt-4 pt-4 border-t border-white/5">
+          <button onclick="openSelector('get')" class="add-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+            <span class="text-xs font-black uppercase tracking-widest">Add Item</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="py-8 text-center text-xs font-bold text-gray-600 tracking-wider border-t border-white/5 mt-auto bg-black/40">
+    &copy; 2026 Golden Values.
+  </footer>
+
+  <script>
+    // --- STATE ---
+    let currentGame = 'mm2'; 
+    let databases = {
+      mm2: [],
+      blox: []
+    };
+    
+    let inventories = {
+      mm2: { give: {}, get: {} },
+      blox: { give: {}, get: {} }
+    };
+    
+    let activeSide = 'give';
+    let isLoading = false;
+
+    // --- GAME MODE LOGIC ---
+    function setGameMode(game) {
+      if (currentGame === game) return;
+      currentGame = game;
+      
+      const btnMM2 = document.getElementById('btn-game-mm2');
+      const btnBlox = document.getElementById('btn-game-blox');
+      
+      if (game === 'mm2') {
+        btnMM2.className = 'game-btn active-mm2';
+        btnBlox.className = 'game-btn';
+        document.body.style.backgroundImage = "linear-gradient(rgba(6, 8, 15, 0.90), rgba(6, 8, 15, 0.95)), url('mm2weapons.webp')";
+        document.documentElement.style.setProperty('--theme-color', '#d4af37'); 
+        document.documentElement.style.setProperty('--theme-color-rgb', '212, 175, 55');
+      } else {
+        btnBlox.className = 'game-btn active-blox';
+        btnMM2.className = 'game-btn';
+        document.body.style.backgroundImage = "linear-gradient(rgba(6, 8, 15, 0.90), rgba(6, 8, 15, 0.95)), url('bloxfruits-bg.webp')";
+        document.documentElement.style.setProperty('--theme-color', '#00bfff'); 
+        document.documentElement.style.setProperty('--theme-color-rgb', '0, 191, 255');
+      }
+
+      if (databases[currentGame].length === 0) {
+        fetchDatabase(currentGame);
+      } else {
+        updateUI();
+      }
+    }
+
+    // --- DATA FETCHING (Correct paths based on user's original setup) ---
+    async function fetchDatabase(game) {
+      setLoading(true);
+      try {
+        if (game === 'mm2') {
+          const files = [
+            'ancients-values.json', 
+            'godly-values.json', 
+            'vintages-values.json', 
+            'chromas-values.json'
+          ];
+          for (const f of files) {
+            const res = await fetch(f).catch(() => null);
+            if (res?.ok) {
+              const data = await res.json();
+              if (data.items) {
+                  const normalized = data.items.map(it => ({
+                      id: `mm2_${it.name.replace(/[^a-zA-Z0-9]/g, '')}`,
+                      name: it.name,
+                      value: it.value.base || it.value, 
+                      image: it.image
+                  }));
+                  databases.mm2 = databases.mm2.concat(normalized);
+              }
+            }
+          }
+        } else if (game === 'blox') {
+          const res = await fetch('blox-fruits/fruits.json').catch(() => null);
+          if (res?.ok) {
+            const data = await res.json();
+            if (data.items) {
+               data.items.forEach(it => {
+                   const isGamepassOrLimited = it.rarity.toLowerCase().includes('gamepass') || it.rarity.toLowerCase().includes('limited');
+                   
+                   databases.blox.push({
+                       id: `blox_reg_${it.name.replace(/[^a-zA-Z0-9]/g, '')}`,
+                       name: `${it.name}`,
+                       value: it.value,
+                       image: it.image 
+                   });
+                   
+                   if (!isGamepassOrLimited && it.value > 0) {
+                       databases.blox.push({
+                           id: `blox_perm_${it.name.replace(/[^a-zA-Z0-9]/g, '')}`,
+                           name: `Perm ${it.name}`,
+                           value: it.value * 2,
+                           image: it.image
+                       });
+                   }
+               });
+            }
+          }
+        }
+      } catch (e) {
+        console.error(`Erro ao carregar dados de ${game}:`, e);
+      } finally {
+        setLoading(false);
+        updateUI(); 
+      }
+    }
+
+    function setLoading(state) {
+      isLoading = state;
+      document.getElementById('dbLoading').style.display = state ? 'block' : 'none';
+    }
+
+    // --- FORMATTING ---
+    function formatVal(num) {
+      if (num >= 1000000000) return (num / 1000000000).toFixed(2) + 'B';
+      if (num >= 1000000) return (num / 1000000).toFixed(2) + 'M';
+      if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+      return num.toLocaleString();
+    }
+
+    // --- GET IMAGE SOURCE ---
+    function getImgSrc(item) {
+        if (!item.image) return 'fallback-image.png';
+        if (item.image.startsWith('http')) return item.image; // Se for link da internet, usa o link diretamente
+        
+        // Se for ficheiro local, aplica a lógica antiga
+        if (currentGame === 'mm2' && !item.image.startsWith('mm2/')) {
+            return `mm2/${item.image}`;
+        } else if (currentGame === 'blox' && !item.image.startsWith('blox-fruits/')) {
+            return `blox-fruits/${item.image}`;
+        }
+        return item.image;
+    }
+
+    // --- MODAL & SELECTOR ---
+    function openSelector(side) {
+      activeSide = side;
+      document.getElementById('selectorSideText').innerText = side === 'give' ? "Adding to Your Side" : "Adding to Their Side";
+      document.getElementById('itemSelector').style.display = 'flex';
+      document.getElementById('dbSearch').value = '';
+      
+      setTimeout(() => document.getElementById('dbSearch').focus(), 50);
+      
+      renderSelector();
+    }
+
+    function closeSelector(event) {
+      document.getElementById('itemSelector').style.display = 'none';
+    }
+
+    function renderSelector() {
+      const grid = document.getElementById('dbGrid');
+      const query = document.getElementById('dbSearch').value.toLowerCase();
+      grid.innerHTML = '';
+
+      const currentDb = databases[currentGame];
+      if (!currentDb || currentDb.length === 0) {
+          grid.innerHTML = `<div class="col-span-full text-center text-gray-500 py-10 font-bold">Loading items or database not found...</div>`;
+          return;
+      }
+
+      const filtered = currentDb.filter(it => it.name.toLowerCase().includes(query))
+                                .sort((a,b) => b.value - a.value);
+
+      const maxRender = 100; 
+      
+      filtered.slice(0, maxRender).forEach(item => {
+        const div = document.createElement('div');
+        div.className = "flex flex-col items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 cursor-pointer transition-all hover:-translate-y-1 h-36";
+        div.style.borderColor = "rgba(255,255,255,0.05)";
+        div.onmouseover = () => div.style.borderColor = currentGame === 'mm2' ? "rgba(212,175,55,0.5)" : "rgba(0,191,255,0.5)";
+        div.onmouseout = () => div.style.borderColor = "rgba(255,255,255,0.05)";
+        
+        div.onclick = () => { addItem(item.id); };
+        
+        const imgSrc = getImgSrc(item);
+
+        div.innerHTML = `
+          <div class="h-14 w-full flex items-center justify-center mb-2">
+             <img src="${imgSrc}" class="max-h-full max-w-[90%] object-contain drop-shadow-md" onerror="this.src='fallback-image.png'">
+          </div>
+          <div class="text-[10px] font-black uppercase text-center w-full mb-1 leading-tight line-clamp-2 text-white/90">${item.name}</div>
+          <div class="text-xs font-black ${currentGame === 'mm2' ? 'text-yellow-500' : 'text-cyan-400'} mt-auto">${formatVal(item.value)}</div>
+        `;
+        grid.appendChild(div);
+      });
+      
+      if(filtered.length > maxRender) {
+          const warning = document.createElement('div');
+          warning.className = "col-span-full text-center text-xs text-gray-500 mt-4";
+          warning.innerText = `Showing ${maxRender} of ${filtered.length} items. Keep typing to narrow results.`;
+          grid.appendChild(warning);
+      }
+    }
+
+    // --- INVENTORY MANAGEMENT ---
+    function addItem(id) {
+      const inv = inventories[currentGame][activeSide];
+      inv[id] = (inv[id] || 0) + 1;
+      updateUI();
+    }
+
+    function adjustQty(id, side, delta) {
+      const inv = inventories[currentGame][side];
+      inv[id] += delta;
+      if (inv[id] <= 0) delete inv[id];
+      updateUI();
+    }
+
+    // --- UI UPDATES ---
+    function updateUI() {
+      renderBasket('give');
+      renderBasket('get');
+      
+      const totalGive = calculateTotal(inventories[currentGame].give);
+      const totalGet = calculateTotal(inventories[currentGame].get);
+      
+      document.getElementById('giveTotal').innerText = formatVal(totalGive);
+      document.getElementById('getTotal').innerText = formatVal(totalGet);
+      
+      calculateVerdict(totalGive, totalGet);
+    }
+
+    function calculateTotal(inv) {
+      const currentDb = databases[currentGame];
+      return Object.entries(inv).reduce((acc, [id, qty]) => {
+        const item = currentDb.find(it => it.id === id);
+        return acc + (item ? item.value * qty : 0);
+      }, 0);
+    }
+
+    function renderBasket(side) {
+      const container = document.getElementById(`${side}Basket`);
+      const inv = inventories[currentGame][side];
+      const currentDb = databases[currentGame];
+      
+      container.innerHTML = '';
+
+      if (Object.keys(inv).length === 0) {
+          container.innerHTML = `<div class="h-full flex items-center justify-center text-gray-600 text-sm font-bold uppercase tracking-wider py-10 border-2 border-dashed border-white/5 rounded-2xl">Empty</div>`;
+          return;
+      }
+
+      Object.entries(inv).forEach(([id, qty]) => {
+        const item = currentDb.find(it => it.id === id);
+        if(!item) return;
+        
+        const imgSrc = getImgSrc(item);
+        
+        const div = document.createElement('div');
+        div.className = "item-card";
+        div.innerHTML = `
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 flex items-center justify-center bg-black/40 rounded-xl border border-white/5 p-1">
+                <img src="${imgSrc}" class="max-h-full max-w-full object-contain" onerror="this.src='fallback-image.png'">
+            </div>
+            <div>
+              <div class="text-[11px] font-black uppercase text-white/90 leading-tight">${item.name}</div>
+              <div class="text-sm font-extrabold ${currentGame === 'mm2' ? 'text-yellow-500' : 'text-cyan-400'} mt-1">${formatVal(item.value)}</div>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-1 bg-black/60 rounded-lg p-1 border border-white/10">
+            <button onclick="adjustQty('${id}', '${side}', -1)" class="w-7 h-7 flex items-center justify-center rounded hover:bg-red-500/20 hover:text-red-400 transition font-bold text-gray-400">-</button>
+            <span class="text-sm font-black w-6 text-center text-white">${qty}</span>
+            <button onclick="adjustQty('${id}', '${side}', 1)" class="w-7 h-7 flex items-center justify-center rounded hover:bg-green-500/20 hover:text-green-400 transition font-bold text-gray-400">+</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function calculateVerdict(give, get) {
+      const label = document.getElementById('verdictLabel');
+      const diffLabel = document.getElementById('diffLabel');
+      const diff = get - give;
+      
+      diffLabel.innerText = `Diff: ${diff > 0 ? '+' : ''}${formatVal(diff)}`;
+      
+      if (give === 0 && get === 0) {
+        label.innerText = "FAIR"; label.className = "verdict-text fair";
+        return;
+      }
+
+      const margin = give * 0.05;
+
+      if (get > give + margin) {
+        label.innerText = "WIN"; label.className = "verdict-text win";
+      } else if (get < give - margin) {
+        label.innerText = "LOSE"; label.className = "verdict-text lose";
+      } else {
+        label.innerText = "FAIR"; label.className = "verdict-text fair";
+      }
+    }
+
+    function resetAll() {
+      if(confirm(`Reset the entire ${currentGame.toUpperCase()} trade?`)) {
+        inventories[currentGame] = { give: {}, get: {} }; 
+        updateUI();
+      }
+    }
+
+    // --- INITIALIZATION ---
+    window.onload = () => {
+        fetchDatabase('mm2');
+    };
+  </script>
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>

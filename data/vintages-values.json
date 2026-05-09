@@ -1,0 +1,126 @@
+{
+  "last_update": "2026-03-27T00:00:00Z",
+  "currency": "value_points",
+  "items": [    
+    {
+      "id": "blood",
+      "name": "Blood",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 8, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (4,000 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/88/Blood_Updated.png/revision/latest?cb=20210722103802",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "ghost",
+      "name": "Ghost",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 10, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (1,200 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d1/GhostUpdated.png/revision/latest?cb=20210826011153",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "laser",
+      "name": "Laser",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 8, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (1,200 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/f/f7/54798135.png/revision/latest?cb=20210121142411",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "america",
+      "name": "America",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 7, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (1,200 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/0/06/99ada3d2ed367aa358c7284dd9c6a13b.png/revision/latest?cb=20201025090107",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "prince",
+      "name": "Prince",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 6, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (2,000 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/8/80/Prince_improved.png/revision/latest?cb=20210612185250",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "shadow",
+      "name": "Shadow",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 6, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (3,000 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/b/b0/ShadowUpdated.png/revision/latest/scale-to-width-down/268?cb=20210924143204",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "phaser",
+      "name": "Phaser",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 5, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (2,000 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/d/d8/PhaserUpdated.png/revision/latest?cb=20210807155459",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "cowboy",
+      "name": "Cowboy",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 4, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (800 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/9/96/144290769.png/revision/latest/scale-to-width-down/268?cb=20210121142258",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "golden",
+      "name": "Golden",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 1, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (3,500 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/3/3a/GoldenUpdated.png/revision/latest?cb=20210807155926",
+      "last_updated": "2026-03-27"
+    },
+    {
+      "id": "splitter",
+      "name": "Splitter",
+      "type": "Vintage",
+      "category": "knife",
+      "rarity": "Vintage",
+      "value": { "base": 4, "demand": 1, "trend": "Stable" },
+      "availability": { "obtainable": false, "method": "Pack", "box": "MM1 (800 Coins)" },
+      "stats": { "rarity_score": 2, "demand_score": 3 },
+      "image": "https://static.wikia.nocookie.net/murder-mystery-2/images/e/e5/SplitterRotated.webp/revision/latest?cb=20240706224042",
+      "last_updated": "2026-03-27"
+    }
+  ]
+}

@@ -1,0 +1,706 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Value List - Golden Values</title>
+  <link rel="icon" type="image/png" href="/assets/images/faviconmm2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #06080f;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #a855f7;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9333ea;
+    }
+
+    body {
+      background-color: #06080f;
+      background-image: linear-gradient(rgba(6, 8, 15, 0.90), rgba(6, 8, 15, 0.95)), url('/assets/images/mm2weapons.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding-top: 100px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    #particles-js {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background-color: #06080f;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease;
+    }
+
+    .pulse-logo {
+      width: 120px;
+      height: 120px;
+      animation: pulse 1.5s infinite alternate;
+      filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.8));
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+
+    .topbar {
+      height: 70px;
+      background: rgba(6, 8, 15, 0.7);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    .item-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(rgba(10, 12, 20, 0.95) 0%, rgba(168, 85, 247, 0.05) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+      --glow-color: rgba(168, 85, 247, 0.4);
+    }
+
+    .item-wrapper:hover {
+      transform: translateY(-5px);
+      z-index: 20;
+      border-color: rgba(168, 85, 247, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px var(--glow-color);
+    }
+
+    .purple-border {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(168, 85, 247, 0.8);
+    }
+
+    @keyframes pulse-bg {
+
+      0%,
+      100% {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      50% {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .skeleton {
+      animation: pulse-bg 1.5s infinite;
+      border-radius: 8px;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    .list-view {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+
+    .list-view .item-wrapper {
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      min-height: 80px !important;
+      height: auto !important;
+      padding: 0 20px !important;
+    }
+
+    .list-view .card-content {
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      width: 100%;
+      height: 80px;
+    }
+
+    .list-view .img-container {
+      width: 60px !important;
+      height: 60px !important;
+      margin-bottom: 0 !important;
+      flex-shrink: 0;
+    }
+
+    .list-view .item-name {
+      margin-bottom: 0 !important;
+      text-align: left !important;
+      width: auto !important;
+      flex-grow: 1;
+      padding-left: 20px;
+      font-size: 1.1rem !important;
+    }
+
+    .list-view .badge-wrapper {
+      padding-bottom: 0 !important;
+      margin-top: 0 !important;
+      margin-right: 24px;
+      flex-shrink: 0;
+    }
+
+    .list-view .price-wrapper {
+      border-top: none !important;
+      padding-top: 0 !important;
+      width: auto !important;
+      gap: 16px !important;
+      flex-shrink: 0;
+    }
+
+    .global-search {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .global-search:focus-within {
+      border-color: #a855f7;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 40px rgba(168, 85, 247, 0.5);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 9999;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+
+<body class="pt-[80px]">
+
+  <div id="loader">
+    <img src="/assets/images/mainLogo.png" alt="Loading" class="pulse-logo mb-4">
+    <h2 class="text-xl font-bold text-purple-500 tracking-widest animate-pulse">LOADING VALUES...</h2>
+  </div>
+
+  <div id="particles-js"></div>
+  <div class="grid-bg"></div>
+
+  <nav class="topbar">
+    <div class="flex items-center gap-4">
+      <a href="../../index.html" class="flex items-center gap-3 hover:opacity-80 transition">
+        <img src="/assets/images/mainLogo.png" alt="Golden Values Logo" class="w-8 h-8 object-contain">
+        <span class="font-extrabold text-xl tracking-tight text-white hidden sm:block">Golden Values</span>
+      </a>
+    </div>
+    <div class="hidden md:flex items-center gap-6 font-semibold text-sm">
+      <a href="ancients.html" class="text-gray-400 hover:text-white transition-colors">Ancients</a>
+      <a href="chromas.html" class="text-gray-400 hover:text-white transition-colors">Chromas</a>
+      <a href="vintages.html" class="text-gray-400 hover:text-white transition-colors">Vintages</a>
+      <a href="evos.html" class="text-gray-400 hover:text-white transition-colors">Evos</a>
+      <a href="godlies.html" class="text-gray-400 hover:text-white transition-colors">Godlies</a>
+      <a href="unique.html" class="text-gray-400 hover:text-white transition-colors">Uniques</a>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-5 w-full flex-1">
+    <div class="text-center mb-8 mt-4">
+      <h1 id="typewriterTitle"
+        class="text-4xl md:text-5xl font-extrabold mb-3 text-purple-500 drop-shadow-md min-h-[60px]"></h1>
+      <p class="text-[#8b8d98] text-lg">Current trading values and demands for all Common tier items.</p>
+    </div>
+
+    <div
+      class="w-full flex flex-col md:flex-row justify-between items-center gap-4 mb-8 bg-[#0a0c14]/80 p-4 rounded-2xl border border-white/5 backdrop-blur-md">
+
+      <div class="relative w-full md:w-1/2 group global-search rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-purple-500 transition-colors"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input type="text" id="searchInput"
+          class="w-full bg-black/50 border border-white/10 text-white rounded-full py-2.5 pl-11 pr-16 focus:outline-none focus:border-purple-500 transition-all text-sm placeholder-gray-500">
+
+        <div class="absolute right-4 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-1 pointer-events-none"
+          id="ctrlKHint">
+          <kbd
+            class="bg-white/10 text-gray-400 px-1.5 py-0.5 rounded text-[10px] border border-white/20 font-bold">CTRL</kbd>
+          <kbd
+            class="bg-white/10 text-gray-400 px-1.5 py-0.5 rounded text-[10px] border border-white/20 font-bold">K</kbd>
+        </div>
+        <button id="clearBtn"
+          class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white hidden z-10"><i class="ph ph-x"></i></button>
+      </div>
+
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <span id="resultCount" class="text-sm font-bold text-gray-400 w-24">0 weapons</span>
+
+        <div class="flex gap-2">
+          <select id="sortSelect"
+            class="bg-black/50 border border-white/10 text-white text-sm rounded-lg px-3 py-2 outline-none focus:border-purple-500 cursor-pointer appearance-none">
+            <option value="az">Name: A to Z</option>
+            <option value="high">Price: High to Low</option>
+            <option value="low">Price: Low to High</option>
+          </select>
+
+          <button id="gridBtn"
+            class="bg-purple-500/20 text-purple-500 p-2 rounded-lg border border-purple-500/30 hover:bg-purple-500/30 transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+              </path>
+            </svg>
+          </button>
+          <button id="listBtn"
+            class="bg-black/50 text-gray-400 p-2 rounded-lg border border-white/10 hover:text-white transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="noResults" class="hidden text-center text-gray-400 text-lg w-full mb-10">No weapons found matching your
+      search.</div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 pb-20 items-start" id="itemGrid">
+      <div class="item-wrapper min-h-[210px] p-3 flex flex-col justify-between">
+        <div class="skeleton h-20 w-full"></div>
+        <div class="skeleton h-4 w-3/4 mx-auto"></div>
+        <div class="skeleton h-6 w-1/2 mx-auto"></div>
+      </div>
+      <div class="item-wrapper min-h-[210px] p-3 flex flex-col justify-between">
+        <div class="skeleton h-20 w-full"></div>
+        <div class="skeleton h-4 w-3/4 mx-auto"></div>
+        <div class="skeleton h-6 w-1/2 mx-auto"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="w-full py-6 text-gray-500 text-sm border-t border-white/5 mt-auto bg-black/40">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+      <p>&copy; 2026 Golden Values. Made with <span class="heart"><i class="ph ph-heart"></i></span> by Golden Values.</p>
+    </div>
+  </footer>
+
+  <div id="toast">Value Copied!</div>
+
+  <button id="scrollTopBtn"
+    class="fixed bottom-6 right-6 bg-purple-500 hover:bg-purple-400 text-white p-3 rounded-full shadow-[0_0_20px_rgba(168,85,247,0.4)] opacity-0 pointer-events-none transition-all duration-300 z-50 translate-y-10">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+  </button>
+
+  <script>
+    let weaponsData = [];
+    let currentSearch = "";
+    let currentOrder = "az";
+    let registeredCharts = {};
+
+    const badgeHtml = `<div class="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap px-1 h-6 text-[10px] rounded-full bg-purple-500/20 text-purple-300 ring-1 ring-purple-500/50"><span class="flex-1 font-bold px-1 uppercase">Common</span></div>`;
+
+    function formatVal(val) {
+      return val;
+    }
+
+    function getTrendIcon() {
+      return '<span class="text-gray-500 text-xs ml-1"><i class="ph ph-minus"></i></span>';
+    }
+
+    function toRobux(val) { 
+      const v = typeof val === 'string' ? parseInt(val.replace(/[^0-9]/g, '')) || 0 : val; 
+      return Math.round(v * 1.68); 
+    }
+    function formatRobux(val) {
+      const r = toRobux(val);
+      if (r >= 1000000) return (r / 1000000).toFixed(1) + 'M';
+      if (r >= 1000) return (r / 1000).toFixed(1) + 'K';
+      return r.toString();
+    }
+
+    function formatMoney(val) {
+      if (val >= 1000000) return (val / 1000000).toFixed(2) + 'M';
+      if (val >= 1000) return (val / 1000).toFixed(1) + 'K';
+      return val.toFixed(2);
+    }
+
+    function toMoney(val) {
+      const curr = detectCurrency();
+      const v = typeof val === 'string' ? parseInt(val.replace(/[^0-9]/g, '')) || 0 : val;
+      return (v * curr.rate);
+    }
+
+    function detectCurrency() {
+      const currencyMap = {
+        'BR': { symbol: 'R$', rate: 0.0896, label: 'BRL' },
+        'US': { symbol: '$', rate: 0.018, label: 'USD' },
+        'CA': { symbol: '$', rate: 0.018, label: 'USD' },
+        'GB': { symbol: '£', rate: 0.014, label: 'GBP' },
+        'DE': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'FR': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'ES': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'IT': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'NL': { symbol: '€', rate: 0.0165, label: 'EUR' },
+        'JP': { symbol: '¥', rate: 2.65, label: 'JPY' },
+        'AU': { symbol: '$', rate: 0.027, label: 'AUD' }
+      };
+      const userLang = navigator.language || navigator.userLanguage || 'en';
+      const country = userLang.split('-')[1] || userLang.split('_')[1];
+      return currencyMap[country] || { symbol: '$', rate: 0.018, label: 'USD' };
+    }
+
+    window.copyValue = function (e, name, value) {
+      e.stopPropagation();
+      navigator.clipboard.writeText(`${name}: ${value}`).then(() => {
+        const toast = document.getElementById('toast');
+        toast.innerText = `Copied ${name} value: ${value}`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    };
+
+    window.toggleDetails = function (idStr) { const container = document.getElementById(`details-${idStr}`); if (container.classList.contains('hidden')) { container.classList.remove('hidden'); container.classList.add('flex'); } else { container.classList.add('hidden'); container.classList.remove('flex'); } }
+
+    function renderWeapons(weapons) {
+      const grid = document.getElementById('itemGrid');
+      const count = document.getElementById('resultCount');
+      grid.innerHTML = '';
+      count.innerText = `${weapons.length} weapons`;
+
+      if (weapons.length === 0) return;
+
+      weapons.forEach((item, index) => {
+        const safeId = item.name.replace(/[^a-zA-Z0-9]/g, '');
+        const exactValue = item.value;
+        const delay = index * 0.03;
+
+        const div = document.createElement('div');
+        div.className = `item-wrapper flex flex-col items-center p-4 relative fade-in-up bg-black/40 min-h-[210px] h-auto`;
+        div.style.animationDelay = `${delay}s`;
+
+        div.innerHTML = `
+          <div class="card-content flex flex-col h-full w-full items-center z-10">
+            
+            <div class="img-container h-24 w-full flex items-center justify-center mb-3">
+              <img src="../../mm2images/commons/${item.image}" alt="${item.name}" class="max-h-full max-w-[90%] object-contain drop-shadow-[0_5px_10px_rgba(0,0,0,0.8)]" onerror="this.src='/assets/images/fallback-image.png'">
+            </div>
+            
+            <div class="text-base font-bold text-white mb-2 text-center w-full truncate item-name">${item.name}</div>
+            
+            <div class="badge-wrapper mt-auto pb-3">${badgeHtml}</div>
+            
+            <div class="price-wrapper w-full flex flex-col gap-2 border-t border-white/10 pt-3">
+                <div class="flex items-center justify-center gap-4">
+                  <div class="flex items-center gap-1 cursor-pointer hover:bg-white/5 p-2 rounded-md transition" onclick="toggleDetails('${safeId}')">
+                    <img src="/assets/images/faviconmm2.png" class="w-4 h-4" alt="Value"><span class="text-sm font-extrabold text-white">${item.value}</span>
+                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </div>
+                  <button onclick="copyValue(event, '${item.name}', '${exactValue}')" class="text-gray-500 hover:text-purple-500 transition bg-white/5 p-1.5 rounded-md" title="Copy Value">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                  </button>
+                </div>
+                <div id="details-${safeId}" class="hidden flex-col gap-2 w-full mt-2 pt-2 border-t border-white/10">
+                  <div class="flex items-center justify-between bg-red-500/10 p-2 rounded border border-red-500/30">
+                    <div class="flex items-center gap-2"><img src="/assets/images/faviconmm2.png" class="w-5 h-5" alt="Robux"><span class="text-red-400 font-bold">Robux:</span></div>
+                    <span class="text-white font-bold">${formatRobux(item.value)} R$</span>
+                  </div>
+                  <div class="flex items-center justify-between bg-green-500/10 p-2 rounded border border-green-500/30">
+                    <div class="flex items-center gap-2"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.336 2.82.904M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.336 2.82.904M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2"></path></svg><span class="text-green-400 font-bold">Money:</span></div>
+                    <span class="text-white font-bold">${detectCurrency().symbol}${formatMoney(toMoney(item.value))}</span>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+          <div class="purple-border z-0"></div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    function applyFiltersAndSort() {
+      let filteredList = weaponsData.filter(item => item.name.toLowerCase().includes(currentSearch));
+
+      if (currentOrder === 'high') filteredList.sort((a, b) => {
+        const valA = parseValue(b.value);
+        const valB = parseValue(a.value);
+        return valB - valA;
+      });
+      else if (currentOrder === 'low') filteredList.sort((a, b) => {
+        const valA = parseValue(a.value);
+        const valB = parseValue(b.value);
+        return valA - valB;
+      });
+      else if (currentOrder === 'az') filteredList.sort((a, b) => a.name.localeCompare(b.name));
+
+      const noResults = document.getElementById('noResults');
+      if (filteredList.length === 0) noResults.classList.remove('hidden');
+      else noResults.classList.add('hidden');
+
+      renderWeapons(filteredList);
+    }
+
+    function parseValue(val) {
+      if (typeof val === 'string') {
+        const match = val.match(/(\d+)/);
+        return match ? parseInt(match[1]) : 0;
+      }
+      return val;
+    }
+
+    async function loadItems() {
+      try {
+        const res = await fetch('common-values.json');
+        const data = await res.json();
+
+        weaponsData = [];
+
+        const addItemsWithTier = (tierName, items) => {
+          items.forEach(item => {
+            weaponsData.push({
+              name: item.name,
+              value: item.value,
+              demand: item.demand,
+              rarity: item.rarity,
+              origin: item.origin,
+              type: item.type || ''
+            });
+          });
+        };
+
+        for (const [tier, items] of Object.entries(data)) {
+          if (Array.isArray(items)) {
+            addItemsWithTier(tier, items);
+          }
+        }
+
+        setTimeout(() => {
+          applyFiltersAndSort();
+          const loader = document.getElementById('loader');
+          loader.style.opacity = '0';
+          setTimeout(() => loader.style.display = 'none', 500);
+        }, 800);
+      } catch (e) {
+        console.error('Error loading data:', e);
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('itemGrid').innerHTML = "<p class='text-red-400 text-center col-span-full'>Error loading data.</p>";
+      }
+    }
+
+    function setupEvents() {
+      const searchInput = document.getElementById('searchInput');
+      const sortSelect = document.getElementById('sortSelect');
+      const gridBtn = document.getElementById('gridBtn');
+      const listBtn = document.getElementById('listBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const itemGrid = document.getElementById('itemGrid');
+
+      searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value.toLowerCase();
+        clearBtn.classList.toggle('hidden', currentSearch === '');
+        applyFiltersAndSort();
+      });
+
+      sortSelect.addEventListener('change', (e) => {
+        currentOrder = e.target.value;
+        applyFiltersAndSort();
+      });
+
+      gridBtn.addEventListener('click', () => {
+        itemGrid.classList.remove('list-view');
+        itemGrid.classList.add('grid');
+        gridBtn.classList.add('bg-purple-500/20', 'text-purple-500', 'border-purple-500/30');
+        gridBtn.classList.remove('bg-black/50', 'text-gray-400', 'border-white/10');
+        listBtn.classList.remove('bg-purple-500/20', 'text-purple-500', 'border-purple-500/30');
+        listBtn.classList.add('bg-black/50', 'text-gray-400', 'border-white/10');
+      });
+
+      listBtn.addEventListener('click', () => {
+        itemGrid.classList.add('list-view');
+        listBtn.classList.add('bg-purple-500/20', 'text-purple-500', 'border-purple-500/30');
+        listBtn.classList.remove('bg-black/50', 'text-gray-400', 'border-white/10');
+        gridBtn.classList.remove('bg-purple-500/20', 'text-purple-500', 'border-purple-500/30');
+        gridBtn.classList.add('bg-black/50', 'text-gray-400', 'border-white/10');
+      });
+
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        currentSearch = '';
+        clearBtn.classList.add('hidden');
+        applyFiltersAndSort();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          searchInput.focus();
+        }
+      });
+
+      searchInput.addEventListener('focus', () => {
+        document.getElementById('ctrlKHint').classList.add('hidden');
+      });
+
+      searchInput.addEventListener('blur', () => {
+        if (searchInput.value === '') {
+          document.getElementById('ctrlKHint').classList.remove('hidden');
+        }
+      });
+    }
+
+    function initExtraEffects() {
+      particlesJS("particles-js", {
+        particles: { number: { value: 30 }, color: { value: ["#a855f7", "#ffffff"] }, shape: { type: "circle" }, opacity: { value: 0.4, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 1, direction: "top", out_mode: "out" } },
+        interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "bubble" } } },
+        retina_detect: true
+      });
+
+      const inputSearch = document.getElementById('searchInput');
+      const ctrlKHint = document.getElementById('ctrlKHint');
+      const phrases = ["Search Common...", "Find Weapon...", "Search..."];
+      let i = 0, j = 0, isDeleting = false;
+
+      function typeWriter() {
+        const currentPhrase = phrases[i];
+        if (isDeleting) { inputSearch.placeholder = currentPhrase.substring(0, j - 1); j--; }
+        else { inputSearch.placeholder = currentPhrase.substring(0, j + 1); j++; }
+
+        let typeSpeed = isDeleting ? 40 : 80;
+        if (!isDeleting && j === currentPhrase.length) { typeSpeed = 2000; isDeleting = true; }
+        else if (isDeleting && j === 0) { isDeleting = false; i = (i + 1) % phrases.length; typeSpeed = 500; }
+
+        if (document.activeElement !== inputSearch && inputSearch.value === "") setTimeout(typeWriter, typeSpeed);
+      }
+      setTimeout(typeWriter, 1000);
+    }
+
+    function setupGlobalEffects() {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      const navbar = document.getElementById('navbar');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.width = (scrollTop / docHeight * 100) + '%';
+        if (scrollTop > lastScrollY && scrollTop > 100) navbar.style.transform = 'translateY(-100%)';
+        else navbar.style.transform = 'translateY(0)';
+        lastScrollY = scrollTop;
+        if (scrollTop > 300) scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-10');
+        else scrollTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10');
+      });
+
+      scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      const title = "Common Weapons";
+      const titleElement = document.getElementById('typewriterTitle');
+      let i = 0;
+      function type() {
+        if (i < title.length) { titleElement.innerHTML += title.charAt(i); i++; setTimeout(type, 100); }
+      }
+      setTimeout(type, 300);
+    }
+
+    window.onload = () => {
+      loadItems();
+      setupEvents();
+      initExtraEffects();
+      setupGlobalEffects();
+    };
+  </script>
+  <script src="/assets/js/watchlist-heart.js"></script>
+  <script src="/assets/js/security.js"></script>
+</body>
+
+</html>

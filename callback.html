@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecionando... - Golden Values</title>
+  <script>
+    // Legacy callback redirect - all auth goes through /auth/callback
+    window.location.href = '/auth/callback' + window.location.hash;
+  </script>
+</head>
+<body style="background:#06080f;color:white;font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;">
+  <p>Redirecionando...</p>
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>

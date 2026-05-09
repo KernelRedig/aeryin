@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Calculator - Golden Values</title>
+
+  <link rel="icon" type="image/png" href="assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <style>
+    :root { --gold: #d4af37; --panel: rgba(10, 12, 20, 0.7); --border: rgba(255, 255, 255, 0.1); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #06080f; }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+    body {
+      background-color: #06080f; background-image: linear-gradient(rgba(6, 8, 15, 0.90), rgba(6, 8, 15, 0.95)), url('mm2weapons.webp');
+      background-size: cover; background-attachment: fixed; color: #ffffff; font-family: 'Inter', sans-serif;
+      margin: 0; padding-top: 90px; overflow-x: hidden; min-height: 100vh;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+    }
+
+    /* Transição de Saída */
+    body.slide-out { transform: translateX(-100vw); opacity: 0; }
+
+    .grid-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; }
+
+    /* Layout e Sidebars */
+    .inventory-layout { max-width: 1750px; margin: 0 auto; padding: 0 20px 60px 20px; display: grid; grid-template-columns: 260px 1fr 360px; gap: 25px; }
+    .filter-panel { position: sticky; top: 90px; height: fit-content; background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 20px; backdrop-filter: blur(10px); }
+    .sidebar { position: sticky; top: 90px; height: calc(100vh - 110px); display: flex; flex-direction: column; gap: 15px; }
+
+    /* Cards e Grid */
+    .items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    .item-wrapper { position: relative; border-radius: 12px; background: linear-gradient(rgba(10, 12, 20, 0.95) 0%, rgba(255, 255, 255, 0.03) 100%); transition: all 0.3s; border: 1px solid transparent; cursor: grab; overflow: hidden; }
+    .item-wrapper:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.2); }
+    .item-wrapper.selected { border-color: var(--gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+    
+    .rainbow-border { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #d90000, #e0da32, #01d803, #00d0da, #3e0fd6, #dc06e0); }
+    .qty-indicator { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.8); border: 1px solid var(--gold); color: var(--gold); font-size: 11px; font-weight: 800; padding: 2px 6px; border-radius: 6px; z-index: 10; }
+
+    /* Calculadora Dropzone */
+    .total-card { background: var(--panel); border: 1px solid var(--border); backdrop-filter: blur(15px); border-radius: 16px; padding: 25px; text-align: center; }
+    .dropzone { flex: 1; border: 2px dashed rgba(255,255,255,0.1); border-radius: 16px; background: rgba(0,0,0,0.2); overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px; transition: 0.3s; }
+    .dropzone.drag-over { border-color: var(--gold); background: rgba(212, 175, 55, 0.05); }
+
+    /* Níveis de Inventário */
+    .inv-rank { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 100px; display: inline-block; margin-bottom: 10px; }
+    .rank-noob { background: #374151; color: #9ca3af; }
+    .rank-pro { background: #9333ea; color: #f3e8ff; box-shadow: 0 0 10px rgba(147, 51, 234, 0.3); }
+    .rank-god { background: linear-gradient(90deg, #d4af37, #fce788); color: #000; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+
+    /* Flying Item Animation */
+    .flying-item { position: fixed; z-index: 9999; pointer-events: none; transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1); width: 50px; height: 50px; object-fit: contain; }
+
+    /* Buttons */
+    .btn-icon { p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition flex items-center justify-center; }
+    .btn-action { background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; width: 100%; padding: 14px; border-radius: 12px; font-weight: 800; cursor: pointer; transition: 0.3s; }
+    .btn-action:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3); }
+
+    /* Utils */
+    .fade-in-up { animation: fadeInUp 0.4s ease forwards; opacity: 0; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    #toast { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 12px 30px; border-radius: 50px; font-weight: bold; transition: 0.4s; z-index: 9999; }
+    #toast.show { bottom: 30px; }
+
+    /* Modo Foco */
+    body.focus-mode #navbar { transform: translateY(-100%); }
+    body.focus-mode .filter-panel { opacity: 0; pointer-events: none; }
+  </style>
+</head>
+<body>
+
+  <div class="grid-bg"></div>
+
+  <div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-yellow-600 via-yellow-200 to-yellow-600 z-[1001] w-0"></div>
+
+  <nav class="topbar flex justify-between items-center px-10 fixed w-full top-0 z-[1000]" id="navbar">
+    <a href="index.html" class="flex items-center gap-3 no-underline transition hover:opacity-80">
+      <img src="assets/images/mainLogo.png" alt="Logo" class="w-8 h-8">
+      <span class="font-black text-xl tracking-tighter">Golden Values</span>
+    </a>
+    <div class="flex gap-3">
+      <button onclick="toggleFocusMode()" class="bg-white/5 border border-white/10 hover:bg-white/10 p-2.5 rounded-xl transition text-gray-400 hover:text-white" title="Focus Mode">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+      </button>
+      <button id="userLoginBtn" class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black px-5 py-2 rounded-xl font-bold flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08c-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+        Login
+      </button>
+    </div>
+  </nav>
+
+  <div class="inventory-layout pt-10">
+    
+    <aside class="filter-panel">
+      <h3 class="text-white font-black text-sm uppercase tracking-widest mb-6 opacity-50">Filter Items</h3>
+      <div class="flex flex-col gap-2">
+        <button class="filter-item text-left p-3 rounded-xl flex items-center gap-3 transition-all" data-selected="true" onclick="setFilter('all', this)">
+          <div class="w-2 h-2 rounded-full bg-white"></div>
+          <span class="text-sm font-bold">All Weapons</span>
+        </button>
+        <button class="filter-item text-left p-3 rounded-xl flex items-center gap-3 transition-all" onclick="setFilter('chroma', this)">
+          <div class="w-2 h-2 rounded-full" style="background: linear-gradient(to bottom, red, blue)"></div>
+          <span class="text-sm font-bold">Chromas</span>
+        </button>
+        <button class="filter-item text-left p-3 rounded-xl flex items-center gap-3 transition-all" onclick="setFilter('ancient', this)">
+          <div class="w-2 h-2 rounded-full bg-purple-500"></div>
+          <span class="text-sm font-bold">Ancients</span>
+        </button>
+        <button class="filter-item text-left p-3 rounded-xl flex items-center gap-3 transition-all" onclick="setFilter('godly', this)">
+          <div class="w-2 h-2 rounded-full bg-pink-500"></div>
+          <span class="text-sm font-bold">Godlies</span>
+        </button>
+      </div>
+    </aside>
+
+    <main>
+      <div class="flex justify-between items-center mb-8">
+        <h1 id="typewriterTitle" class="text-4xl font-black"></h1>
+        <div class="relative group">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" id="search" placeholder="Search items..." class="bg-white/5 border border-white/10 rounded-full pl-10 pr-6 py-2.5 text-sm outline-none focus:border-yellow-500 transition-all w-64">
+        </div>
+      </div>
+      
+      <div id="noResults" class="hidden text-center text-gray-500 py-20">No items found.</div>
+      <div class="items-grid" id="itemsGrid"></div>
+    </main>
+
+    <aside class="sidebar" id="captureArea">
+      <div class="total-card">
+        <div id="invRank" class="inv-rank rank-noob">Beginner Trader</div>
+        <h3 class="text-[10px] text-gray-500 uppercase font-black tracking-widest mb-1">Estimated Value</h3>
+        <div class="text-5xl font-black text-yellow-500 mb-2" id="totalValue">0</div>
+        <p class="text-xs text-gray-400 font-bold mb-6" id="totalCount">0 items selected</p>
+        
+        <div class="flex gap-2 mb-6">
+          <button onclick="shareInventory()" class="flex-1 bg-white/5 border border-white/10 p-2.5 rounded-xl hover:bg-white/10 transition" title="Share Link">
+            <svg class="mx-auto w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          </button>
+          <button onclick="takeScreenshot()" class="flex-1 bg-white/5 border border-white/10 p-2.5 rounded-xl hover:bg-white/10 transition" title="Save Image">
+            <svg class="mx-auto w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </button>
+          <button onclick="clearAll()" class="flex-1 bg-white/5 border border-white/10 p-2.5 rounded-xl hover:bg-white/10 transition hover:border-red-500/50" title="Clear All">
+            <svg class="mx-auto w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+          </button>
+        </div>
+
+        <div class="h-40 mb-4 bg-black/20 rounded-xl p-2 relative">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+
+      <div class="dropzone" id="basket" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+        <div id="emptyMsg" class="m-auto text-gray-600 text-xs font-bold text-center flex flex-col items-center gap-3">
+          <svg class="w-8 h-8 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          DRAG ITEMS HERE
+        </div>
+      </div>
+
+      <button class="btn-action mt-2 flex items-center justify-center gap-2" id="syncBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        Sync Inventory
+      </button>
+    </aside>
+  </div>
+
+  <div id="toast">Value Copied!</div>
+
+  <script>
+    let allItems = [];
+    let userInventory = {};
+    let currentFilter = 'all';
+    let chart = null;
+
+    // --- SONS ---
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playPop(freq) {
+      if(audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine'; osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+    }
+
+    // --- CARREGAMENTO ---
+    async function loadData() {
+      const files = ['ancients-values.json', 'godly-values.json', 'vintages-values.json', 'chromas-values.json'];
+      try {
+        for (const file of files) {
+          const res = await fetch(file).catch(() => null);
+          if (res?.ok) {
+            const data = await res.json();
+            allItems = allItems.concat(data.items);
+          }
+        }
+        // Gera IDs únicos se não existirem
+        allItems.forEach((it, idx) => { if(!it.id) it.id = `item_${idx}`; });
+        renderGrid();
+        initChart();
+        checkHash();
+      } catch (e) { console.error("Database error", e); }
+    }
+
+    // --- GRID ---
+    function renderGrid() {
+      const grid = document.getElementById('itemsGrid');
+      const search = document.getElementById('search').value.toLowerCase();
+      grid.innerHTML = '';
+
+      let filtered = allItems.filter(it => {
+        const matchesFilter = currentFilter === 'all' || it.rarity.toLowerCase() === currentFilter;
+        const matchesSearch = it.name.toLowerCase().includes(search);
+        return matchesFilter && matchesSearch;
+      });
+
+      if (filtered.length === 0) document.getElementById('noResults').classList.remove('hidden');
+      else document.getElementById('noResults').classList.add('hidden');
+
+      filtered.forEach((item, idx) => {
+        const qty = userInventory[item.id] || 0;
+        const wrapper = document.createElement('div');
+        wrapper.className = `item-wrapper p-3 flex flex-col items-center fade-in-up ${qty > 0 ? 'selected' : ''}`;
+        wrapper.style.animationDelay = `${idx * 0.02}s`;
+        wrapper.draggable = true;
+        wrapper.ondragstart = (e) => e.dataTransfer.setData("text/plain", item.id);
+        wrapper.onclick = (e) => { if(qty === 0) adjustQty(item.id, 1); spawnFlyEffect(e, item.image); };
+
+        wrapper.innerHTML = `
+          ${qty > 0 ? `<div class="qty-indicator">x${qty}</div>` : ''}
+          <div class="h-20 w-full flex items-center justify-center mb-2">
+            <img src="${item.image}" class="max-h-full max-w-[80%] object-contain" loading="lazy" onerror="this.src='fallback-image.png'">
+          </div>
+          <div class="text-[11px] font-black text-center truncate w-full mb-1 opacity-80 uppercase">${item.name}</div>
+          <div class="flex items-center gap-1">
+            <img src="assets/images/mainFavicon.png" class="w-3 h-3">
+            <span class="text-xs font-black text-yellow-500">${item.value.base.toLocaleString()}</span>
+          </div>
+          ${['chroma', 'godly'].includes(item.rarity.toLowerCase()) ? '<div class="rainbow-border"></div>' : ''}
+        `;
+        grid.appendChild(wrapper);
+      });
+    }
+
+    // --- ANIMAÇÃO DE VOAR ---
+    function spawnFlyEffect(e, imgSrc) {
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.className = 'flying-item';
+      img.style.left = `${e.clientX}px`;
+      img.style.top = `${e.clientY}px`;
+      document.body.appendChild(img);
+
+      const basket = document.getElementById('basket').getBoundingClientRect();
+      setTimeout(() => {
+        img.style.left = `${basket.left + basket.width/2}px`;
+        img.style.top = `${basket.top + basket.height/2}px`;
+        img.style.transform = 'scale(0) rotate(360deg)';
+        img.style.opacity = '0';
+        setTimeout(() => img.remove(), 600);
+      }, 50);
+    }
+
+    // --- LOGICA CALCULADORA ---
+    function adjustQty(id, delta) {
+      if (!userInventory[id]) userInventory[id] = 0;
+      userInventory[id] += delta;
+      if (userInventory[id] <= 0) delete userInventory[id];
+      
+      playPop(delta > 0 ? 800 : 400);
+      updateTotals();
+      renderGrid();
+    }
+
+    function updateTotals() {
+      let total = 0;
+      let count = 0;
+      const basket = document.getElementById('basket');
+      const emptyMsg = document.getElementById('emptyMsg');
+      
+      basket.innerHTML = '';
+      
+      const itemsInInv = Object.entries(userInventory);
+      if(itemsInInv.length === 0) {
+        basket.appendChild(emptyMsg);
+      } else {
+        // Encontra a arma mais cara para dar a Coroa 👑
+        let maxVal = -1;
+        let kingId = null;
+        itemsInInv.forEach(([id, qty]) => {
+          const it = allItems.find(i => i.id === id);
+          if(it && it.value.base > maxVal) { maxVal = it.value.base; kingId = id; }
+        });
+
+        itemsInInv.forEach(([id, qty]) => {
+          const it = allItems.find(i => i.id === id);
+          if(!it) return;
+          total += (it.value.base * qty);
+          count += qty;
+
+          const div = document.createElement('div');
+          div.className = "flex items-center justify-between bg-white/5 p-2 rounded-lg border border-white/5 animate-fade-scale-in";
+          div.innerHTML = `
+            <div class="flex items-center gap-2">
+              <img src="${it.image}" class="w-8 h-8 object-contain">
+              <div class="text-left">
+                <div class="text-[10px] font-black leading-none">${it.name} ${id === kingId ? '<span class="text-yellow-500">👑</span>' : ''}</div>
+                <div class="text-[9px] text-yellow-500/80 font-bold">${it.value.base.toLocaleString()}</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="number" value="${qty}" class="w-10 bg-black/40 border border-white/10 rounded text-center text-xs font-bold py-1" onchange="manualQty('${id}', this.value)">
+              <button onclick="adjustQty('${id}', -${qty})" class="text-white/20 hover:text-red-500 transition">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            </div>
+          `;
+          basket.appendChild(div);
+        });
+      }
+
+      document.getElementById('totalValue').innerText = total.toLocaleString();
+      document.getElementById('totalCount').innerText = `${count} items in collection`;
+      
+      // Update Rank
+      const rank = document.getElementById('invRank');
+      if(total > 50000) { rank.innerText = "God Level ⚡"; rank.className = "inv-rank rank-god"; }
+      else if(total > 10000) { rank.innerText = "Pro Trader"; rank.className = "inv-rank rank-pro"; }
+      else { rank.innerText = "Beginner Trader"; rank.className = "inv-rank rank-noob"; }
+
+      updateChart();
+    }
+
+    function manualQty(id, val) {
+      const n = parseInt(val);
+      userInventory[id] = n > 0 ? n : 0;
+      if(userInventory[id] === 0) delete userInventory[id];
+      updateTotals();
+      renderGrid();
+    }
+
+    // --- CHART ---
+    function initChart() {
+      const ctx = document.getElementById('pieChart').getContext('2d');
+      chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: { labels: ['Chromas', 'Ancients', 'Godlies', 'Others'], datasets: [{ data: [0,0,0,0], backgroundColor: ['#3b82f6', '#a855f7', '#ec4899', '#374151'], borderWidth: 0 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
+      });
+    }
+
+    function updateChart() {
+      const data = [0,0,0,0];
+      Object.entries(userInventory).forEach(([id, qty]) => {
+        const it = allItems.find(i => i.id === id);
+        if(!it) return;
+        const r = it.rarity.toLowerCase();
+        if(r === 'chroma') data[0] += qty;
+        else if(r === 'ancient') data[1] += qty;
+        else if(r === 'godly') data[2] += qty;
+        else data[3] += qty;
+      });
+      chart.data.datasets[0].data = data;
+      chart.update();
+    }
+
+    // --- UTILS ---
+    function setFilter(rarity, btn) {
+      currentFilter = rarity;
+      document.querySelectorAll('.filter-item').forEach(b => b.setAttribute('data-selected', 'false'));
+      btn.setAttribute('data-selected', 'true');
+      renderGrid();
+    }
+
+    function toggleFocusMode() {
+      document.body.classList.toggle('focus-mode');
+    }
+
+    function clearAll() {
+      if(confirm("Empty your basket?")) { userInventory = {}; updateTotals(); renderGrid(); }
+    }
+
+    function shareInventory() {
+      const hash = btoa(JSON.stringify(userInventory));
+      const url = `${window.location.origin}${window.location.pathname}#inv=${hash}`;
+      navigator.clipboard.writeText(url).then(() => {
+        const t = document.getElementById('toast');
+        t.innerText = "Share Link Copied!"; t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3000);
+      });
+    }
+
+    function checkHash() {
+      const h = window.location.hash;
+      if(h.includes('#inv=')) {
+        try {
+          userInventory = JSON.parse(atob(h.split('=')[1]));
+          updateTotals();
+          renderGrid();
+        } catch(e) {}
+      }
+    }
+
+    function takeScreenshot() {
+      html2canvas(document.getElementById('captureArea'), { backgroundColor: '#06080f' }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'my-inventory.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+
+    // --- DRAG EVENTS ---
+    function handleDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+    function handleDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+    function handleDrop(e) {
+      e.preventDefault();
+      e.currentTarget.classList.remove('drag-over');
+      const id = e.dataTransfer.getData("text/plain");
+      if(id) adjustQty(id, 1);
+    }
+
+    // --- TYPEWRITER ---
+    const titleText = "Inventory Calculator";
+    let ti = 0;
+    function type() {
+      if(ti < titleText.length) {
+        document.getElementById('typewriterTitle').innerHTML += titleText.charAt(ti);
+        ti++; setTimeout(type, 100);
+      }
+    }
+
+    window.onload = () => {
+      loadData();
+      type();
+      
+      const search = document.getElementById('search');
+      search.addEventListener('input', renderGrid);
+      document.addEventListener('keydown', (e) => { if(e.key === '/') { e.preventDefault(); search.focus(); } });
+    };
+  </script>
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>

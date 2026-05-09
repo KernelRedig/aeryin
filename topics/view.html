@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic - Golden Values</title>
+  <link rel="icon" type="image/png" href="/assets/images/mainFavicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#06080f;color:#fff;font-family:'Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column}
+    .grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px}
+    .topbar{height:70px;background:rgba(6,8,15,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;padding:0 40px;position:fixed;top:0;width:100%;z-index:1000}
+    .main{flex:1;max-width:800px;margin:0 auto;padding:100px 20px 60px;width:100%}
+    .back-link{color:#9ca3af;text-decoration:none;font-size:14px;transition:.2s}
+    .back-link:hover{color:#fff}
+    .topic-header{background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;margin-bottom:24px;position:relative}
+    .topic-title{font-size:24px;font-weight:800;margin-bottom:12px}
+    .topic-meta{font-size:13px;color:#9ca3af;margin-bottom:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .topic-meta img{width:24px;height:24px;border-radius:50%;border:1px solid #d4af37}
+    .topic-message{font-size:15px;line-height:1.7;color:#e5e7eb;white-space:pre-wrap}
+    .section-title{font-size:18px;font-weight:700;margin-bottom:16px;color:#e5e7eb}
+    .reply-form{background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px;margin-bottom:24px}
+    .reply-form textarea{width:100%;padding:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:14px;font-family:'Inter',sans-serif;resize:vertical;min-height:80px;outline:none}
+    .reply-form textarea:focus{border-color:#d4af37}
+    .btn{padding:10px 20px;border-radius:10px;border:none;font-weight:700;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;transition:.3s}
+    .btn-gold{background:linear-gradient(135deg,#d4af37,#f4d03f);color:#000}
+    .btn-gold:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(212,175,55,.3)}
+    .reply-card{background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px;margin-bottom:12px;position:relative}
+    .reply-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+    .reply-header img{width:32px;height:32px;border-radius:50%;border:2px solid #d4af37}
+    .reply-author{font-weight:600;font-size:14px}
+    .reply-date{font-size:12px;color:#6b7280}
+    .reply-message{font-size:14px;line-height:1.6;color:#d1d5db;white-space:pre-wrap}
+    .login-prompt{text-align:center;padding:20px;background:rgba(10,12,20,.9);border:1px solid rgba(255,255,255,.1);border-radius:16px;margin-bottom:24px;color:#9ca3af}
+    .login-prompt a{color:#d4af37}
+    .loading{position:fixed;inset:0;background:#06080f;z-index:9999;display:flex;align-items:center;justify-content:center}
+    .spinner{width:40px;height:40px;border:3px solid rgba(255,255,255,.1);border-top-color:#d4af37;border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .not-found{text-align:center;padding:60px 20px}
+    .not-found h1{font-size:32px;margin-bottom:12px;color:#d4af37}
+
+    /* Creator badge */
+    .badge-creator{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;background:rgba(212,175,55,.15);color:#d4af37;border:1px solid rgba(212,175,55,.3)}
+    /* Edited tag */
+    .tag-edited{font-size:11px;color:#6b7280;font-style:italic;margin-left:4px}
+    /* Action buttons */
+    .msg-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+    .msg-actions button{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#9ca3af;font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+    .msg-actions button:hover{background:rgba(255,255,255,.08);color:#e5e7eb}
+    .msg-actions .btn-delete{border-color:rgba(239,68,68,.2)}
+    .msg-actions .btn-delete:hover{background:rgba(239,68,68,.1);color:#f87171}
+    /* Reply-to indicator */
+    .replying-to{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);border-radius:10px;margin-bottom:10px;font-size:13px;color:#d4af37}
+    .replying-to .cancel-reply{margin-left:auto;cursor:pointer;color:#6b7280;background:none;border:none;font-size:16px;font-family:'Inter',sans-serif}
+    .replying-to .cancel-reply:hover{color:#fff}
+    /* Edit modal */
+    .edit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px}
+    .edit-modal{background:#111214;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;width:100%;max-width:500px}
+    .edit-modal h3{font-size:18px;font-weight:700;margin-bottom:16px}
+    .edit-modal textarea{width:100%;padding:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#fff;font-size:14px;font-family:'Inter',sans-serif;resize:vertical;min-height:100px;outline:none}
+    .edit-modal textarea:focus{border-color:#d4af37}
+    .edit-actions{display:flex;gap:10px;margin-top:14px;justify-content:flex-end}
+    .btn-cancel{background:rgba(255,255,255,.07);color:#9ca3af;border:1px solid rgba(255,255,255,.1)}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="loading" id="loading"><div class="spinner"></div></div>
+  <nav class="topbar">
+    <a href="/" class="flex items-center gap-3" style="text-decoration:none;color:#fff">
+      <img src="/assets/images/mainLogo.png" alt="Logo" class="w-8 h-8 object-contain"><span class="font-extrabold text-xl">Golden Values</span>
+    </a>
+    <a href="/topics" class="back-link"><i class="ph ph-arrow-left"></i> All Topics</a>
+  </nav>
+  <main class="main" id="mainContent" style="display:none">
+    <div id="topicContent"></div>
+    <div id="repliesSection"></div>
+  </main>
+  <div id="editOverlay" class="edit-overlay" style="display:none">
+    <div class="edit-modal">
+      <h3 id="editTitle">Edit Message</h3>
+      <textarea id="editText"></textarea>
+      <div class="edit-actions">
+        <button class="btn btn-cancel" onclick="closeEdit()">Cancel</button>
+        <button class="btn btn-gold" onclick="saveEdit()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/assets/js/navbar-auth.js"></script>
+  <script>
+    const sb = window.__gvSupabase || supabase.createClient('https://utrahbaolwcnyisxiaft.supabase.co','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV0cmFoYmFvbHdjbnlpc3hpYWZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgyNjE5MTcsImV4cCI6MjA5MzgzNzkxN30.wYgWsMdNbi91zAEMivzRPo3raQuExiXTjlfTWYfB860');
+
+    let currentUser = null;
+    let topicId = null;
+    let topicData = null;
+    let replyingTo = null;
+    let editingType = null; // 'topic' or 'reply'
+    let editingId = null;
+
+    async function init() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      if (!id) { window.location.href = '/topics'; return; }
+      topicId = parseInt(id);
+      const { data: { session } } = await sb.auth.getSession();
+      currentUser = session?.user || null;
+      await loadTopic();
+      await loadReplies();
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+    }
+
+    async function loadTopic() {
+      const { data: topic, error } = await sb
+        .from('topics')
+        .select('id, user_id, title, message, created_at, reply_count, edited_at')
+        .eq('id', topicId).single();
+
+      if (error || !topic) {
+        document.getElementById('mainContent').innerHTML = `
+          <div class="not-found"><h1>Topic not found</h1>
+          <a href="/topics" class="back-link"><i class="ph ph-arrow-left"></i> Back to Topics</a></div>`;
+        return;
+      }
+      topicData = topic;
+      const { data: profile } = await sb.from('profiles').select('username, avatar_url').eq('id', topic.user_id).single();
+      const author = profile || {};
+      const date = new Date(topic.created_at).toLocaleString();
+      const isOwner = currentUser && currentUser.id === topic.user_id;
+      const editedTag = topic.edited_at ? '<span class="tag-edited">(edited)</span>' : '';
+
+      let ownerActions = '';
+      if (isOwner) {
+        ownerActions = `<div class="msg-actions">
+          <button onclick="openEdit('topic',${topic.id},'${btoa(unescape(encodeURIComponent(topic.message)))}')"><i class="ph ph-pencil-simple"></i> Edit</button>
+          <button class="btn-delete" onclick="deleteTopic(${topic.id})"><i class="ph ph-trash"></i> Delete</button>
+        </div>`;
+      }
+
+      document.getElementById('topicContent').innerHTML = `
+        <div class="topic-header">
+          <h1 class="topic-title">${escapeHtml(topic.title)}</h1>
+          <div class="topic-meta">
+            <img src="${author.avatar_url || 'https://www.gravatar.com/avatar/?d=mp&s=48'}" alt="" onerror="this.src='https://www.gravatar.com/avatar/?d=mp&s=48'">
+            <span>${escapeHtml(author.username || 'Unknown')}</span>
+            <span class="badge-creator"><i class="ph ph-crown-simple"></i> Creator</span>
+            <span>•</span><span>${date}</span>${editedTag}
+          </div>
+          <div class="topic-message">${escapeHtml(topic.message)}</div>
+          ${ownerActions}
+        </div>`;
+      document.title = topic.title + ' - Golden Values';
+    }
+
+    async function loadReplies() {
+      const { data: replies, error } = await sb
+        .from('topic_replies')
+        .select('id, topic_id, user_id, message, created_at, edited_at')
+        .eq('topic_id', topicId)
+        .order('created_at', { ascending: true });
+
+      if (error) { console.error(error); return; }
+
+      const userIds = [...new Set((replies || []).map(r => r.user_id))];
+      let profileMap = {};
+      if (userIds.length > 0) {
+        const { data: profiles } = await sb.from('profiles').select('id, username, avatar_url').in('id', userIds);
+        (profiles || []).forEach(p => { profileMap[p.id] = p; });
+      }
+
+      const list = (replies || []).map(r => ({
+        ...r,
+        profiles: profileMap[r.user_id] || { username: 'Unknown', avatar_url: null }
+      }));
+
+      const section = document.getElementById('repliesSection');
+      const count = list.length;
+
+      // Reply form or login prompt
+      let formHtml = '';
+      if (!currentUser) {
+        formHtml = `<div class="login-prompt"><a href="/create-account">Sign in</a> to reply to this topic</div>`;
+      } else {
+        formHtml = `<div class="reply-form" id="replyForm">
+          <div id="replyingToBar" style="display:none"></div>
+          <textarea id="replyMessage" placeholder="Write a reply..." maxlength="1000"></textarea>
+          <div style="margin-top:12px"><button class="btn btn-gold" onclick="postReply()">Post Reply</button></div>
+        </div>`;
+      }
+
+      // Replies list
+      let repliesHtml = list.map(reply => {
+        const a = reply.profiles;
+        const d = new Date(reply.created_at).toLocaleString();
+        const isCreator = topicData && reply.user_id === topicData.user_id;
+        const isOwner = currentUser && currentUser.id === reply.user_id;
+        const editedTag = reply.edited_at ? '<span class="tag-edited">(edited)</span>' : '';
+        const creatorBadge = isCreator ? '<span class="badge-creator"><i class="ph ph-crown-simple"></i> Creator</span>' : '';
+
+        let actions = [];
+        if (currentUser) actions.push(`<button onclick="setReplyTo('${escapeHtml(a.username || 'Unknown')}')"><i class="ph ph-arrow-bend-up-left"></i> Reply</button>`);
+        if (isOwner) {
+          actions.push(`<button onclick="openEdit('reply',${reply.id},'${btoa(unescape(encodeURIComponent(reply.message)))}')"><i class="ph ph-pencil-simple"></i> Edit</button>`);
+          actions.push(`<button class="btn-delete" onclick="deleteReply(${reply.id})"><i class="ph ph-trash"></i> Delete</button>`);
+        }
+
+        return `<div class="reply-card">
+          <div class="reply-header">
+            <img src="${a.avatar_url || 'https://www.gravatar.com/avatar/?d=mp&s=64'}" alt="" onerror="this.src='https://www.gravatar.com/avatar/?d=mp&s=64'">
+            <span class="reply-author">${escapeHtml(a.username || 'Unknown')}</span>
+            ${creatorBadge}
+            <span class="reply-date">${d}</span>${editedTag}
+          </div>
+          <div class="reply-message">${escapeHtml(reply.message)}</div>
+          ${actions.length ? '<div class="msg-actions">' + actions.join('') + '</div>' : ''}
+        </div>`;
+      }).join('');
+
+      section.innerHTML = formHtml +
+        `<h2 class="section-title">${count} ${count === 1 ? 'Reply' : 'Replies'}</h2>` +
+        (count === 0 ? '<p style="color:#6b7280">No replies yet. Be the first to respond!</p>' : repliesHtml);
+    }
+
+    // --- Reply To ---
+    function setReplyTo(username) {
+      replyingTo = username;
+      const bar = document.getElementById('replyingToBar');
+      if (bar) {
+        bar.style.display = 'flex';
+        bar.className = 'replying-to';
+        bar.innerHTML = `<i class="ph ph-arrow-bend-up-left"></i> Replying to <strong>@${escapeHtml(username)}</strong>
+          <button class="cancel-reply" onclick="cancelReply()">✕</button>`;
+      }
+      const ta = document.getElementById('replyMessage');
+      if (ta) { ta.focus(); ta.value = `@${username} `; }
+    }
+    function cancelReply() {
+      replyingTo = null;
+      const bar = document.getElementById('replyingToBar');
+      if (bar) bar.style.display = 'none';
+      const ta = document.getElementById('replyMessage');
+      if (ta) ta.value = '';
+    }
+
+    // --- Post Reply ---
+    async function postReply() {
+      const msg = document.getElementById('replyMessage').value.trim();
+      if (!msg || msg.length < 2) { alert('Message must be at least 2 characters'); return; }
+      const { error } = await sb.from('topic_replies').insert({ topic_id: topicId, user_id: currentUser.id, message: msg });
+      if (error) { alert('Error: ' + error.message); return; }
+      replyingTo = null;
+      document.getElementById('replyMessage').value = '';
+      await loadReplies();
+    }
+
+    // --- Edit ---
+    function openEdit(type, id, b64msg) {
+      editingType = type; editingId = id;
+      document.getElementById('editText').value = decodeURIComponent(escape(atob(b64msg)));
+      document.getElementById('editTitle').textContent = type === 'topic' ? 'Edit Topic' : 'Edit Reply';
+      document.getElementById('editOverlay').style.display = 'flex';
+    }
+    function closeEdit() {
+      document.getElementById('editOverlay').style.display = 'none';
+      editingType = null; editingId = null;
+    }
+    async function saveEdit() {
+      const newMsg = document.getElementById('editText').value.trim();
+      if (!newMsg || newMsg.length < 2) { alert('Message too short'); return; }
+      const table = editingType === 'topic' ? 'topics' : 'topic_replies';
+      const { error } = await sb.from(table).update({ message: newMsg, edited_at: new Date().toISOString() }).eq('id', editingId);
+      if (error) { alert('Error: ' + error.message); return; }
+      closeEdit();
+      if (editingType === 'topic') await loadTopic(); else await loadReplies();
+    }
+
+    // --- Delete ---
+    async function deleteTopic(id) {
+      if (!confirm('Delete this entire topic and all replies?')) return;
+      await sb.from('topic_replies').delete().eq('topic_id', id);
+      const { error } = await sb.from('topics').delete().eq('id', id);
+      if (error) { alert('Error: ' + error.message); return; }
+      window.location.href = '/topics';
+    }
+    async function deleteReply(id) {
+      if (!confirm('Delete this reply?')) return;
+      const { error } = await sb.from('topic_replies').delete().eq('id', id);
+      if (error) { alert('Error: ' + error.message); return; }
+      await loadReplies();
+    }
+
+    function escapeHtml(text) {
+      const d = document.createElement('div');
+      d.textContent = text;
+      return d.innerHTML;
+    }
+
+    init();
+  </script>
+  <script src="/assets/js/security.js"></script>
+</body>
+</html>
