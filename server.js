@@ -66,8 +66,6 @@ function ensureDir(dir) {
   }
 }
 
-ensureDir(BACKUP_DIR);
-
 function getPassword() {
   if (fs.existsSync(ADMIN_PASSWORD_FILE)) {
     return fs.readFileSync(ADMIN_PASSWORD_FILE, 'utf8').trim();
@@ -484,9 +482,11 @@ app.get('/api/user/:username', (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
 app.get('/@:username', (req, res) => {
   const { username } = req.params;
