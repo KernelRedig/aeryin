@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, { extensions: ['html'] }));
 app.use(express.urlencoded({ extended: true }));
 
 // Profile routes (@username)
