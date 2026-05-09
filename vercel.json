@@ -7,10 +7,11 @@
     }
   },
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/server.js"
-    }
+    { "source": "/api/(.*)", "destination": "/server.js" },
+    { "source": "/oauth/(.*)", "destination": "/server.js" },
+    { "source": "/@(.*)", "destination": "/server.js" },
+    { "source": "/topics", "destination": "/server.js" },
+    { "source": "/topics/(.*)", "destination": "/server.js" }
   ],
   "headers": [
     {
